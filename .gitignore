@@ -1,0 +1,10 @@
+# Local Python environments and generated metadata, retained across code restores.
+.venv*/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+.env.*
+# New query traces and reports are local outputs; keep the empty directory marker.
+results/*
+!results/.gitkeep

@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "domainrag-benchmark"
+version = "0.1.0"
+description = "A reproducible benchmark for domain-document retrieval augmented generation."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "fangxu0221" }]
+dependencies = []
+
+[project.optional-dependencies]
+embedding = ["sentence-transformers>=3.0,<6"]
+reranker = [
+  "sentence-transformers[onnx]>=5.0,<6",
+  "transformers>=4.41,<4.55",
+]
+
+[tool.setuptools.packages.find]
+include = ["domainrag*"]

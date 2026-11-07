@@ -1,0 +1,13 @@
+{
+  "retriever": "embedding",
+  "docs_path": "data/llm_notes/docs",
+  "eval_path": "data/llm_notes/eval.jsonl",
+  "chunk_size": 420,
+  "chunk_overlap": 80,
+  "top_k": 3,
+  "embedding": {
+    "model": "BAAI/bge-small-zh-v1.5",
+    "query_instruction": "为这个句子生成表示以用于检索相关文章：",
+    "batch_size": 32
+  }
+}
