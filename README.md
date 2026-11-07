@@ -13,8 +13,10 @@ DomainRAG-Benchmark/
 ├── domainrag/        # 19个核心模块：检索、生成、Agent及其依赖
 ├── configs/          # BM25、BGE、RRF、Reranker四个基础配置
 ├── data/llm_notes/   # 暂留的11篇知识文档及配套旧题集
+├── data/railway/     # 新采集的9份12306官方资料、原始响应与来源索引
+├── scripts/          # 独立采集工具；不参与普通问答运行
 ├── tests/            # 核心回归测试，冻结校验使用临时合成样本
-├── docs/             # 主线导航 + 数据流复习，两篇文档
+├── docs/             # 主线导航、数据流复习、铁路资料采集说明
 ├── results/          # 新运行的输出位置；历史内容已归档
 ├── .venv-web/        # 保留的本地Python环境；主线不加载Web框架
 ├── pyproject.toml
@@ -72,6 +74,8 @@ python -B -X utf8 -m unittest discover -s tests -v
 当前62项测试通过，验证控制流、计算、证据与异常边界；另2项旧研究专项测试随脚本归档，没有作为当前套件跳过。
 
 ## 后续替换知识库
+
+第一版12306铁路旅客资料已采集到 `data/railway/`：六个FAQ专题（62组问答）、两份须知（20项）、一份国铁集团客运规程（115条）。原始HTML/正文脚本与Markdown同时保留，来源和版本见 `sources.json`。当前配置仍使用旧学习资料，铁路 `eval.jsonl` 暂空。内容、校验和接入边界见 [铁路旅客知识库：第一版采集说明](docs/铁路旅客知识库_第一版.md)。
 
 1. 把新资料放在独立目录，例如 `data/knowledge/`；当前尚未创建或启用该目录。
 2. 现有读取器支持UTF-8 `.md` / `.txt`。PDF、Word等需先转换或增加解析能力。

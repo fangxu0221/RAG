@@ -1,0 +1,55 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><title id="page-title">铁路旅客购票须知</title><meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><meta name="format-detection" content="telephone=no"><meta name="format-detection" content="email=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="page-name" content="buyTicketsInstruction"><meta name="proj-name" content="h5-12306-offlineh5"><meta name="version" content="0.1.0"><style>html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0;outline:0;border:0;background:transparent;vertical-align:baseline;font-style:inherit;font-size:100%}html{height:100%;font-family:system-ui,-apple-system,BlinkMacSystemFont,Helvetica Neue,Helvetica,sans-serif;line-height:normal;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}body{font-size:14px;line-height:1.3;-webkit-user-select:none}li{list-style:none}a{text-decoration:none}a:active{outline:0}button[disabled],html input[disabled]{cursor:default}img{vertical-align:middle}button,input,select,textarea{margin:0;padding:0;font-size:100%;font-family:inherit}button,input{line-height:normal}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"]{cursor:pointer;-webkit-appearance:button}input[type="search"]{-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;-webkit-appearance:textfield}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}audio:not([controls]){display:none;height:0}[hidden],template{display:none}dfn{font-style:italic}code,kbd,pre,samp{font-size:1em;font-family:monospace,serif}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}table{border-spacing:0;border-collapse:collapse}</style><script>let ua = window.navigator.userAgent;
+      let fontSizeRatio = ua.match(/FONT-(\S*)-FONT/) && ua.match(/FONT-(\S*)-FONT/)[1] || 1;
+      // (function(a){var e=document.documentElement;var d=document.createElement("style");var b;dpr=1;e.firstElementChild.appendChild(d);e.setAttribute("data-dpr",dpr);function c(){var h=e.clientWidth;var j="}";if(!navigator.userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i)&&h>1024){h=640;j=";max-width:"+h+"px;margin-right:auto!important;margin-left:auto!important;}"}a.rem=h/10;if(location.search.match(/hairlines=true/i)){document.querySelector("html").classList.add("hairlines")}if(a.devicePixelRatio&&devicePixelRatio>=2){if(!a.RATIO_HACK){e.style.fontSize="20px";var g=document.createElement("div");var i=document.createElement("body");var f=e.firstElementChild||e.firstChild;g.style.border="1rem solid transparent";g.style.width="0";g.style.borderLeft=".5px solid transparent";g.style.borderRight=".5px solid transparent";i.appendChild(g);e.insertBefore(i,f);a.RATIO_HACK=40/g.offsetHeight;a.rem=a.rem*a.RATIO_HACK;if(g.offsetWidth==1){document.querySelector("html").classList.add("hairlines")}e.removeChild(i);e.style.fontSize=""}else{a.rem=a.rem*a.RATIO_HACK}}d.innerHTML="html{font-size:"+a.rem * fontSizeRatio + "px!important;}body{font-size:"+12*(h/320)+"px"+j}a.dpr=dpr;a.addEventListener("resize",function(){c()},false);a.addEventListener("pageshow",function(f){if(f.persisted){c()}},false);c()})(window);
+      (function(a){
+        var e=document.documentElement;var d=document.createElement("style");
+        var b;dpr=1;
+        e.firstElementChild.appendChild(d);
+        e.setAttribute("data-dpr",dpr);
+        function c() {
+          var h=e.clientWidth;
+          var j="}";
+          if(!navigator.userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i)&&h>1024){
+            h=640;j=";max-width:1200px;margin-right:auto!important;margin-left:auto!important;}"
+          }
+          a.rem=48;
+          if(location.search.match(/hairlines=true/i)){
+            document.querySelector("html").classList.add("hairlines")
+          }
+          if(a.devicePixelRatio&&devicePixelRatio>=2){
+            if(!a.RATIO_HACK){
+              e.style.fontSize="20px";
+              var g=document.createElement("div");
+              var i=document.createElement("body");
+              var f=e.firstElementChild||e.firstChild;
+              g.style.border="1rem solid transparent";
+              g.style.width="0";
+              g.style.borderLeft=".5px solid transparent";
+              g.style.borderRight=".5px solid transparent";
+              i.appendChild(g);
+              e.insertBefore(i,f);
+              a.RATIO_HACK=40/g.offsetHeight;
+              a.rem=a.rem*a.RATIO_HACK;
+              if(g.offsetWidth==1){document.querySelector("html").classList.add("hairlines")}e.removeChild(i);
+              e.style.fontSize=""
+            }else{
+              a.rem=a.rem*a.RATIO_HACK
+            }
+          }
+
+          let scale = fontSizeRatio;
+          // 480-680为折叠屏展开竖屏 680-960为手机横屏以及折叠屏展开横屏，实验室大屏为1080
+          if (h < 480){
+            scale = fontSizeRatio * 0.8;
+          }
+          
+          let htmlfontsize = a.rem * scale;
+          let bodyfontsize = 12*(h/320);
+          // d.innerHTML="html{font-size:"+a.rem * fontSizeRatio + "px!important;}body{font-size:"+12*(h/320)+"px"+j;
+          // d.innerHTML="html{font-size:"+htmlfontsize + "px!important;}body{font-size:"+bodyfontsize+"px;"+j;
+          e.style = "font-size:"+a.rem * fontSizeRatio + "px!important;";
+          d.style = "font-size:"+bodyfontsize+"px;"
+        }
+        a.dpr=dpr;a.addEventListener("resize",function(){c()},false);
+        a.addEventListener("pageshow",function(f){if(f.persisted){c()}},false);c()
+        })(window);</script><!-- custom style and style insert here --><link href="css/buyTicketsInstruction.3c1f2f8.css" rel="stylesheet"></head><body><div id="app"></div><script type="text/javascript" src="https://a.alipayobjects.com/g/h5-lib/vue/2.1.6/vue.min.js"></script><script type="text/javascript" src="https://as.alipayobjects.com/g/luna-component/luna-fastclick/0.1.0/index.js"></script><script type="text/javascript" src="js/common.3c1f2f8.js"></script><script type="text/javascript" src="js/buyTicketsInstruction.3c1f2f8.js"></script></body></html>

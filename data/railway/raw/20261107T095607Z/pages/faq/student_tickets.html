@@ -1,0 +1,275 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+    <title>中国铁路12306网站</title>
+    <script src="../resources/js/framework/jquery-1.9.1.js" type="text/javascript"></script>
+    <!-- js i18n -->
+    <script src="../resources/js/i18n/messages_zh_CN.js" type="text/javascript"></script>
+    <script src="../resources/js/rich/dhtmlxcommon.js"></script>
+    <script src="../resources/js/rich/windows/dhtmlxwindows.js" type="text/javascript"></script>
+    <script src="../resources/js/rich/dhtmlxcontainer.js" type="text/javascript"></script>
+    <script src="../resources/js/framework/baseInit.js" type="text/javascript"></script>
+    <script script="javascript">
+        /*<![CDATA[*/
+        var ctx = "";
+        /*]]>*/
+    </script>
+    <script src="../resources/js/help/header_footer.js"></script>
+    <script src="../resources/js/common.js" type="text/javascript"></script>
+    <link href="../resources/css/common.css" rel="stylesheet" />
+    <link href="../resources/css/help.css" rel="stylesheet" type="text/css" />
+    <script src="../resources/js/help/help.js"></script>
+
+
+    <script type="text/javascript">
+        $(function() {
+            $.sidebar_init(19);
+        });
+    </script>
+</head>
+
+<body>
+    <!--header start-->
+    <div class="header">
+    </div>
+    <!--header end-->
+
+    <!--页面主体  开始-->
+    <div class="content clearfix">
+        <!--当前位置 开始-->
+        <div class="crumbs">
+            您现在的位置：<a href="../gonggao/help.html">出行指南</a>&nbsp;>&nbsp;<a href="#nogo">常见问题</a>&nbsp;>&nbsp;<strong>学生</strong>
+        </div>
+        <!--当前位置 结束-->
+
+        <!--左侧导航 开始-->
+        <div class="sidebar">
+            <div class="layout my">
+                <div class="lay-hd">常见问题</div>
+                <div class="lay-bd">
+                    <div class="nav-label" style="top:59px;"><span></span></div>
+                    <dl>
+                        <dt><a href="#nogo">车票</a><b></b></dt>
+                        <dd id="help1_1"><a id="ticketType" href="#nogo">车票的种类</a></dd>
+                        <dd id="help1_2"><a id="realNameTicket" href="#nogo">实名制车票</a></dd>
+                        <dd id="help1_3"><a id="reimburseVoucher" href="#nogo">报销凭证</a></dd>
+                    </dl>
+                    <dl>
+                        <dt><a href="#nogo">购票</a><b></b></dt>
+                        <dd id="help2_1"><a id="ticketWindow" href="#nogo">售票窗口购票</a></dd>
+                        <dd id="help2_2"><a id="ticketVendor" href="#nogo">自动售票机购票</a></dd>
+                        <dd id="help2_3"><a id="phoneBooking" href="#nogo">电话订票</a></dd>
+                        <dd id="help2_4"><a id="onlineBooking" href="#nogo">互联网购票</a></dd>
+                        <dd id="help2_5"><a id="alternate" href="#nogo">候补购票</a></dd>
+                        <dd id="help2_6"><a id="contactReserve" href="#nogo">联系方式预留</a></dd>
+                    </dl>
+                    <dl>
+                        <dt><a href="#nogo">改签</a><b></b></dt>
+                        <dd id="help3_1"><a id="windowEndorse" href="#nogo">改签</a></dd>
+                        <dd id="help3_3"><a id="changeOrDelay" href="#nogo">列车变更或延迟</a></dd>
+                    </dl>
+                    <dl>
+                        <dt><a href="#nogo">退票</a><b></b></dt>
+                        <dd id="help4_1"><a id="windowRefund" href="#nogo">售票窗口退票</a></dd>
+                        <dd id="help4_2"><a id="onlineRefund" href="#nogo">互联网退票</a></dd>
+                    </dl>
+                    <dl>
+                        <dt><a href="#nogo">特殊旅客服务</a><b></b></dt>
+                        <dd id="help5_1"><a id="children" href="#nogo">儿童</a></dd>
+                        <dd id="help5_2"><a id="student" href="#nogo">学生</a></dd>
+                        <dd id="help5_3"><a id="disabledSoldier" href="#nogo">残疾军人</a></dd>
+                        <dd id="help5_4"><a id="disabledPassenger" href="#nogo">残疾旅客</a></dd>
+                        <dd id="help5_5"><a id="specialKeyPassengers" href="#nogo">特殊重点旅客</a></dd>
+                    </dl>
+                    <dl>
+                        <dt><a href="#nogo">携带品和行李</a><b></b></dt>
+                        <dd id="help6_1"><a id="luggage" href="#nogo">随身携带品</a></dd>
+                        <dd id="help6_2"><a id="luggageTransportation" href="#nogo">行李托运</a></dd>
+                        <dd id="help6_3"><a id="insuredTransportation" href="#nogo">保价运输</a></dd>
+                        <dd id="help6_4"><a id="compensation" href="#nogo">索赔</a></dd>
+                    </dl>
+                    <dl>
+                        <dt><a href="#nogo">进站乘车</a><b></b></dt>
+                        <dd id="help7_1"><a id="enterAndExit" href="#nogo">进出站</a></dd>
+                        <dd id="help7_2"><a id="riding" href="#nogo">乘车</a></dd>
+                    </dl>
+                    <dl class="on">
+                        <dt><a href="#nogo">特殊情况 </a><b></b></dt>
+                        <dd id="help8_1"><a id="soldByMistake" href="#nogo">误售误购</a></dd>
+                        <dd id="help8_2"><a id="ticketLost" href="#nogo">丢失购票时使用的有效身份证件</a></dd>
+                        <dd id="help8_3"><a id="sickOnTheTrain" href="#nogo">途中生病</a></dd>
+                        <dd id="help8_4"><a id="personalInjury" href="#nogo">人身伤害</a></dd>
+                        <dd id="help8_5"><a id="lostItem" href="#nogo">遗失物品</a></dd>
+                        <dd id="help8_6" class="cur"><a id="airconditionMalfunction" href="#nogo">空调故障</a></dd>
+                        <dd id="help8_7"><a id="trafficSuspension" href="#nogo">运输中断</a></dd>
+                        <dd id="help8_8"><a id="specialLine" href="#nogo">特殊线路</a></dd>
+                    </dl>
+                    <dl>
+                        <dt><a href="#nogo">客运服务</a><b></b></dt>
+                        <dd id="help9_1"><a id="railwayService" href="#nogo">站车服务</a></dd>
+                        <dd id="help9_2"><a id="dining" href="#nogo">餐饮</a></dd>
+                    </dl>
+                    <dl>
+                        <dt><a href="#nogo">互联网售票</a><b></b></dt>
+                        <dd id="help10_1"><a id="checkIdentity" href="#nogo">身份核验</a></dd>
+                        <dd id="help10_2"><a id="register" href="#nogo">用户注册</a></dd>
+                        <dd id="help10_3"><a id="buyTicket" href="#nogo">购票</a></dd>
+                        <dd id="help10_4"><a id="onlinePay" href="#nogo">在线支付</a></dd>
+                    </dl>
+					<dl>
+                    <dt><a href="#nogo">广深港跨境列车</a><b></b></dt>
+	                    <!-- <dd id="help11_1"><a id="gsgcp" href="#nogo">车票</a></dd> -->
+	                    <dd id="help11_2"><a id="gsggp" href="#nogo">购票</a></dd>
+	                    <dd id="help11_3"><a id="gsgbg" href="#nogo">车票变更</a></dd>
+	                    <dd id="help11_4"><a id="gsglkfw" href="#nogo">特殊旅客服务</a></dd>
+	                    <dd id="help11_5"><a id="gsgxdp" href="#nogo">携带品和行李</a></dd>
+	                    <dd id="help11_6"><a id="gsgcc" href="#nogo">进站乘车</a></dd>
+	                    <dd id="help11_7"><a id="gsgtsqk" href="#nogo">特殊情况</a></dd>
+	                </dl>
+                    <!--点击后DL添加样式on后下拉项DD会自动下限-->
+                </div>
+            </div>
+        </div>
+        <!--左侧导航 结束-->
+
+        <!-- 右侧主体开始 -->
+        <div class="main">
+            <ul class="q-list">
+            	<li class="on">
+                    <dt>1. 新生如何通过线上购买学生票？</dt>
+                    <dd>
+                        &nbsp;&nbsp;&nbsp;&nbsp;第一步：需要使用新生本人身份信息注册铁路12306账户，优惠类型选为学生。<br/> 
+                        &nbsp;&nbsp;&nbsp;&nbsp;第二步：打开铁路12306App-我的-学生优惠资质核验专区填写相关优惠信息(姓名、证件号码、学校和家庭所在地、预计毕业年份)-提交审核后，购买学生优惠票即可。<br/> 
+                        &nbsp;&nbsp;&nbsp;&nbsp;新生通过线上购买学生票后，可持身份证和录取通知书到窗口进行资质核验，刷身份证进站乘车。如未进行线下核验，则凭录取通知书从人工检票口进站乘车。<br/> 
+                    </dd>
+                </li>
+                <li>
+                    <dt>2. 哪些学生可以购买学生优惠票？</dt>
+                    <dd>
+                        <!-- &nbsp;&nbsp;&nbsp;&nbsp;在全日制高等学校（含国务院教育行政部门、省级人民政府审批设置的实施高等学历教育的民办学校），承担研究生教育任务的科学研究机构，军事院校，普通中、小学和中等职业学校（含有实施学历教育资格的公办及民办中等专业学校、职业高中、技工学校），国务院或国家宗教事务局批准的正式宗教院校就读的学生、研究生，家庭居住地和学校所在地不在同一城市时，凭附有标注减价优惠区间和火车票学生优惠卡的学生证（中、小学生凭加盖学校公章的书面证明），优惠区间应加盖院校公章，每学年（10月1日至次年9月30日）可购买家庭居住地至院校（实习地点）所在地之间四次单程的学生优惠票。新生凭录取通知书、毕业生凭盖有院校公章的学校书面证明当年可购买一次学生优惠票。学生优惠票限于使用普通旅客列车硬座、硬卧和动车组列车二等座。<br/>  -->
+                        &nbsp;&nbsp;&nbsp;&nbsp;在全日制高等学校（含国务院教育行政部门、省级人民政府审批设置的实施高等学历教育的民办学校），承担研究生教育任务的科学研究机构，军事院校，普通中、小学和中等职业学校（含有实施学历教育资格的公办及民办中等专业学校、职业高中、技工学校），国务院或国家宗教事务局批准的正式宗教院校就读的学生、研究生，家庭居住地和学校所在地不在同一城市时，凭附有标注减价优惠区间和火车票学生优惠卡的学生证（中、小学生凭加盖学校公章的书面证明），优惠区间应加盖院校公章，每学年（10月1日至次年9月30日）可购买家庭居住地至院校（实习地点）所在地之间四次单程的学生优惠票。<br/> 
+                        &nbsp;&nbsp;&nbsp;&nbsp;新生凭录取通知书当年开学前可购买1次从家庭居住地到学校所在地学生优惠票；毕业生凭盖有院校公章的学校书面证明当年可购买1次从学校所在地出发的学生优惠票。<br/> 
+                        &nbsp;&nbsp;&nbsp;&nbsp;学生每学年乘车前应在线完成学生优惠资质核验或到车站指定售票窗口或自动售票机办理一次本人居民身份证件与火车票学生优惠卡的优惠资质核验手续。未办理或未通过优惠资质核验购买学生优惠票乘车时，列车应先办理补收票价差额手续，开具客运记录。旅客到站后可凭车补车票、学生证和购票时所使用的有效身份证件（列车如开具纸质客运记录，还应携带纸质客运记录），30日以内到车站售票窗口办理资质核验和退票手续。车站核实学生所购学生优惠票符合有关规定后，为其办理资质核验，扣减学生火车票优惠卡次数，退还车补车票票款，不收退票费。<br/> 
+                        &nbsp;&nbsp;&nbsp;&nbsp;华侨学生和港澳台学生可购买学校所在地车站至口岸城市车站间的学生优惠票。铁路运输企业另有规定的除外。<br/> 
+                        &nbsp;&nbsp;&nbsp;&nbsp;火车票学生优惠卡内需载明学生姓名、有效身份证件号码、优惠乘车区间、入学日期、优惠乘车次数等信息。应有而没有“火车票学生优惠卡”，“火车票学生优惠卡”所载信息不全、不能识别或者与学生证记载不一致的，不发售学生优惠票。<br/> 
+                        &nbsp;&nbsp;&nbsp;&nbsp;学生优惠票根据减价优惠区间按相对近径路或合理径路发售。在减价优惠区间内购买联程车票时，开车时间在5天以内的扣减1次优惠乘车次数。超过减价优惠区间的，不发售学生优惠票。<br/> 
+                        &nbsp;&nbsp;&nbsp;&nbsp;优惠乘车次数按学年使用有效，当学年不能使用下学年的次数，当学年未使用的不能留作下学年使用。<br/> 
+                        <!-- &nbsp;&nbsp;&nbsp;&nbsp;在全日制高等学校（含国务院教育行政部门、省级人民政府审批设置的实施高等学历教育的民办学校），承担研究生教育任务的科学研究机构，军事院校，普通中、小学和中等职业学校（含有实施学历教育资格的公办及民办中等专业学校、职业高中、技工学校），国务院或国家宗教事务局批准的正式宗教院校就读的学生、研究生，家庭居住地和学校所在地不在同一城市时，凭附有标注减价优惠区间和火车票学生优惠卡的学生证（中、小学生凭加盖学校公章的书面证明），优惠区间应加盖院校公章，每学年（10月1日至次年9月30日）可购买家庭居住地至院校（实习地点）所在地之间四次单程的学生优惠票。新生凭录取通知书、毕业生凭盖有院校公章的学校书面证明当年可购买一次学生优惠票。学生优惠票限于使用普通旅客列车硬座、硬卧和动车组列车二等座、二等包座、多功能座、一等座和动车组卧铺各席别。<br/> 
+                        &nbsp;&nbsp;&nbsp;&nbsp;学生每学年乘车前应通过12306网站或到车站指定售票窗口、自动售票机办理一次学生优惠资质核验手续。通过车站指定售票窗口或自动售票机办理学生优惠资质核验手续时，应出具本人有效身份证件和学生证（附有火车票学生优惠卡），没有火车票学生优惠卡，火车票学生优惠卡所载信息不全、不能识别或者与学生证记载不一致的，无法通过学生优惠资质核验。<br/> 
+                        &nbsp;&nbsp;&nbsp;&nbsp;华侨学生和港澳台学生可购买学校所在地车站至口岸城市车站间的学生优惠票。铁路运输企业另有规定的除外。<br/> 
+                        &nbsp;&nbsp;&nbsp;&nbsp;火车票学生优惠卡内需载明学生姓名、有效身份证件号码、优惠乘车区间、入学日期、优惠乘车次数等信息。应有而没有“火车票学生优惠卡”，“火车票学生优惠卡”所载信息不全、不能识别或者与学生证记载不一致的，不发售学生优惠票。<br/>  -->
+                        <!-- &nbsp;&nbsp;&nbsp;&nbsp;学生证的减价优惠区间更改时，应重新加盖院校公章，并修改火车票学生优惠卡内相关信息。<br/>  -->
+                        <!-- &nbsp;&nbsp;&nbsp;&nbsp;学生优惠票根据减价优惠区间按相对近径路或合理径路发售。在减价优惠区间内购买联程车票时，扣减一次优惠乘车次数。超过减价优惠区间的，不发售学生优惠票。优惠乘车次数按学年使用有效，当学年不能使用下一学年的次数，当学年未使用的不能留作下学年使用。<br/>  -->
+                        <!-- &nbsp;&nbsp;&nbsp;&nbsp;学生优惠票根据减价优惠区间按相对近径路或合理径路发售。在减价优惠区间内购买联程车票时，开车时间在5天以内的扣减1次优惠乘车次数。超过减价优惠区间的，不发售学生优惠票。<br/> 
+                        &nbsp;&nbsp;&nbsp;&nbsp;优惠乘车次数按学年使用有效，当学年不能使用下学年的次数，当学年未使用的不能留作下学年使用。<br/>  -->
+                    </dd>
+                </li>
+                <li>
+                    <dt>3. 学生可购买哪些席别的学生优惠票？ </dt>
+                    <dd>
+                        &nbsp;&nbsp;&nbsp;&nbsp;学生优惠票限于使用普通旅客列车硬座、硬卧和动车组列车二等座、二等包座、多功能座、一等座和动车组卧铺各席别。<br/>
+                    </dd>
+                </li>
+                <li>
+                    <dt>4. 新生（毕业生）如何购买学生优惠票？ </dt>
+                    <dd>
+                        &nbsp;&nbsp;&nbsp;&nbsp;新生凭录取通知书可以在12306网站（含手机APP）或车站人工窗口在开学前购买一次学生家庭所在地至学校所在地之间的单程学生票。<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;毕业生凭盖有院校公章的学校书面证明可以在12306网站（含手机APP）或车站人工窗口购买1次从学校所在地出发的学生优惠票。<br/>
+                    </dd>
+                </li>
+                <li>
+                    <dt>5. 网络购买学生票，优惠区间不符、优惠次数超出怎么办？</dt>
+                    <dd>
+                        &nbsp;&nbsp;&nbsp;&nbsp;学生票（区间不符，优惠次数超出）凭本人有效身份证件原件和学生优惠卡，到车站售票窗口办理补票手续。<br/>
+                    </dd>
+                </li>
+                <li>
+                    <dt>6. 能否分段购买学生票？</dt>
+                    <dd>
+                        &nbsp;&nbsp;&nbsp;&nbsp;按照学生证载明的优惠乘车区间，如没有直达列车或其中一段乘坐动车组列车可以分段购买。<br/>
+                    </dd>
+                </li>
+                <li>
+                    <dt>7. 什么情况不能发售学生票？ </dt>
+                    <dd>
+                        &nbsp;&nbsp;&nbsp;&nbsp;火车票学生优惠卡内需载明学生姓名、有效身份证件号码、优惠乘车区间、入学日期、优惠乘车次数等信息。应有而没有“火车票学生优惠卡”，“火车票学生优惠卡”所载信息不全，不能识别或者与学生证记载不一致的，不能发售学生优惠票。<br/>
+                    </dd>
+                </li>
+                <li>
+                    <dt>8. 学生优惠票如何资质核验和进站？</dt>
+                    <dd>
+                        &nbsp;&nbsp;&nbsp;&nbsp;符合购买学生票条件且未核验学生资质的旅客，应通过12306网站提前办理在校资质核验（12306网站在校资质核验仅对您的在校学生身份进行核验，学生票优惠区间由站车在途中进行核验。请确保所填写的学生票优惠乘车区间与学生证中记载的优惠乘车区间一致。乘车过程中，如核验发现所填写优惠乘车区间与学生证中优惠乘车区间不一致时，对于超过学生证上记载的区间乘车的，核收超过区间的票价差额，已核减的优惠次数不予退还;对于不符合学生证中优惠乘车区间或不符合减价优惠条件的，按全程全价核收票价差额，退还已核减的优惠次数）。您也可以到车站指定窗口或自动售/取票机，凭居民身份证和学生优惠卡人工办理资质核验。通过12306在校资质核验和人工资质核验的旅客可凭居民身份证件自助办理实名制验证和进出站检票，核验手续应当在乘车前办理。<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;购买学生票的旅客请务必随身携带学生证凭证乘车，以便铁路工作人员在车站和列车上核验。<br/>
+                    </dd>
+                </li>
+                <li>
+                    <dt>9. 新生（毕业生）购买学生优惠票后如何进站乘车？</dt>
+                    <dd>
+                        &nbsp;&nbsp;&nbsp;&nbsp;由于新生（毕业生）无学生优惠卡，无法办理学生资质审核，所以新生可凭录取通知书（毕业生凭学校开具的书面证明）及购票时所使用的有效身份证件通过人工检票通道进站乘车。<br/>
+                    </dd>
+                </li>
+                <li>
+                    <dt>10. 学生优惠票价格如何计算？</dt>
+                    <dd>
+                        &nbsp;&nbsp;&nbsp;&nbsp;学生优惠票可享受普速旅客列车硬座客票、加快票、空调票和动车组列车二等座、一等座、多功能座和动车组卧铺各席别的票价优惠。学生优惠票普速旅客列车票价按硬座客票和相应附加票公布票价的50%计算，持学生优惠票乘车的学生使用普速旅客列车硬卧时，应另收全价硬卧票价，有空调时还应另收半价空调票票价。学生优惠票动车组列车票价按照相应列车席别全价执行票价的75%计算。动车组列车全价执行票价不低于公布票价的40%时，学生优惠票票价最低为相应列车席别公布票价的40%；动车组列车全价执行票价低于公布票价的40%时，学生优惠票票价按全价执行票价执行。<br/>
+                    </dd>
+                    </dd>
+                </li>
+                <li>
+                    <dt>11. 什么时候可以买学生优惠票？ </dt>
+                    <dd>
+                        &nbsp;&nbsp;&nbsp;&nbsp;每学年（10月1日至次年9月30日）可购买家庭居住地至院校（实习地点）所在地之间四次单程的学生优惠票。<br/>
+                    </dd>
+                </li>
+                <li>
+                    <dt>12. 父母分居两地时怎么办？</dt>
+                    <dd>
+                        &nbsp;&nbsp;&nbsp;&nbsp;学生的父母都不在学校所在地，并分两处居住时，由学生选择一处，并登记在学生减价优待证上。<br/>
+                    </dd>
+                </li>
+                <li>
+                    <dt>13. 父母迁居时怎么办？</dt>
+                    <dd>
+                        &nbsp;&nbsp;&nbsp;&nbsp;学生父母迁居时，请提出申请，经学校确认后，可修改学生减价优待凭证上的乘车区间，加盖学校公章，同时修改“学生火车票优惠卡”的相关信息。<br/>
+                    </dd>
+                </li>
+                <li>
+                    <dt>14. 回家后，学校迁移或调整怎么办？</dt>
+                    <dd>
+                        &nbsp;&nbsp;&nbsp;&nbsp;学生回家后，院校迁移或调整，凭学校证明和学生减价优待证，可以发售从家庭所在地到院校新迁所在地的学生优惠票。<br/>
+                    </dd>
+                </li>
+                <li>
+                    <dt>15. 超过减价优待凭证上记载的区间乘车时怎么办？</dt>
+                    <dd>
+                        &nbsp;&nbsp;&nbsp;&nbsp;学生减价优待证记载的车站是没有快车或直通车停靠的车站时，离该站最近的大站（可以超过减价优待证规定的区间）可以发售学生优惠票；因此超过减价优待证上记载的区间乘车时，对超过区间按一般旅客办理，核收票价差额。不符合规定条件、超过减价优待证记载的区间乘车时，按全程全价核收票价差额。<br/>
+                    </dd>
+                </li>
+                <li>
+                    <dt>16. 华侨学生和港澳台学生怎么办理学生优惠票？</dt>
+                    <dd>
+                        &nbsp;&nbsp;&nbsp;&nbsp;华侨学生和港澳台学生可购买学校所在地车站至口岸城市车站间的学生优惠票。铁路运输企业另有规定的除外。<br/>
+                    </dd>
+                </li>
+                <li>
+                    <dt>17. 只有学生证，没有身份证，能否购买实名制车票？</dt>
+                    <dd>
+                        &nbsp;&nbsp;&nbsp;&nbsp;不能，学生证不是实名制购票有效身份证件。<br/>
+                    </dd>
+                </li>
+            </ul>
+        </div>
+        <!-- 右侧主体结束 -->
+    </div>
+    <!--页面主体  结束-->
+
+    <!--页面底部  开始-->
+    <div class="footer">
+    </div>
+    <!--页面底部  结束-->
+
+</body>
+
+</html>

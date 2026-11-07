@@ -13,6 +13,7 @@ authors = [{ name = "fangxu0221" }]
 dependencies = []
 
 [project.optional-dependencies]
+collection = ["lxml>=5,<7"]
 embedding = ["sentence-transformers>=3.0,<6"]
 reranker = [
   "sentence-transformers[onnx]>=5.0,<6",
