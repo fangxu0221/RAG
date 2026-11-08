@@ -1,0 +1,1004 @@
+[
+  {
+    "id": "rail-dev-002",
+    "ranked_top10": [
+      {
+        "rank": 1,
+        "chunk_id": "faq/online_refunds.md#0001",
+        "source": "faq/online_refunds.md",
+        "start": 340,
+        "end": 760,
+        "score": 2.060984
+      },
+      {
+        "rank": 2,
+        "chunk_id": "regulations/passenger_transport_rules.md#0023",
+        "source": "regulations/passenger_transport_rules.md",
+        "start": 7820,
+        "end": 8240,
+        "score": 1.688268
+      },
+      {
+        "rank": 3,
+        "chunk_id": "faq/ticket_changes.md#0002",
+        "source": "faq/ticket_changes.md",
+        "start": 680,
+        "end": 1100,
+        "score": 1.180284
+      },
+      {
+        "rank": 4,
+        "chunk_id": "faq/window_refunds.md#0001",
+        "source": "faq/window_refunds.md",
+        "start": 340,
+        "end": 760,
+        "score": 0.847469
+      },
+      {
+        "rank": 5,
+        "chunk_id": "regulations/passenger_transport_rules.md#0015",
+        "source": "regulations/passenger_transport_rules.md",
+        "start": 5100,
+        "end": 5520,
+        "score": 0.292091
+      },
+      {
+        "rank": 6,
+        "chunk_id": "regulations/passenger_transport_rules.md#0027",
+        "source": "regulations/passenger_transport_rules.md",
+        "start": 9180,
+        "end": 9600,
+        "score": -0.032201
+      },
+      {
+        "rank": 7,
+        "chunk_id": "faq/online_booking.md#0003",
+        "source": "faq/online_booking.md",
+        "start": 1020,
+        "end": 1440,
+        "score": -1.180513
+      },
+      {
+        "rank": 8,
+        "chunk_id": "regulations/passenger_transport_rules.md#0005",
+        "source": "regulations/passenger_transport_rules.md",
+        "start": 1700,
+        "end": 2120,
+        "score": -1.190148
+      },
+      {
+        "rank": 9,
+        "chunk_id": "regulations/passenger_transport_rules.md#0001",
+        "source": "regulations/passenger_transport_rules.md",
+        "start": 340,
+        "end": 760,
+        "score": -3.483796
+      },
+      {
+        "rank": 10,
+        "chunk_id": "faq/student_tickets.md#0008",
+        "source": "faq/student_tickets.md",
+        "start": 2720,
+        "end": 3110,
+        "score": -3.573921
+      }
+    ],
+    "before_reranking_top10": [
+      {
+        "rank": 1,
+        "chunk_id": "faq/online_booking.md#0003",
+        "source": "faq/online_booking.md",
+        "start": 1020,
+        "end": 1440,
+        "score": 0.032266
+      },
+      {
+        "rank": 2,
+        "chunk_id": "faq/ticket_changes.md#0002",
+        "source": "faq/ticket_changes.md",
+        "start": 680,
+        "end": 1100,
+        "score": 0.030366
+      },
+      {
+        "rank": 3,
+        "chunk_id": "regulations/passenger_transport_rules.md#0027",
+        "source": "regulations/passenger_transport_rules.md",
+        "start": 9180,
+        "end": 9600,
+        "score": 0.016393
+      },
+      {
+        "rank": 4,
+        "chunk_id": "faq/window_refunds.md#0001",
+        "source": "faq/window_refunds.md",
+        "start": 340,
+        "end": 760,
+        "score": 0.016129
+      },
+      {
+        "rank": 5,
+        "chunk_id": "regulations/passenger_transport_rules.md#0023",
+        "source": "regulations/passenger_transport_rules.md",
+        "start": 7820,
+        "end": 8240,
+        "score": 0.016129
+      },
+      {
+        "rank": 6,
+        "chunk_id": "faq/online_refunds.md#0001",
+        "source": "faq/online_refunds.md",
+        "start": 340,
+        "end": 760,
+        "score": 0.015625
+      },
+      {
+        "rank": 7,
+        "chunk_id": "regulations/passenger_transport_rules.md#0015",
+        "source": "regulations/passenger_transport_rules.md",
+        "start": 5100,
+        "end": 5520,
+        "score": 0.015625
+      },
+      {
+        "rank": 8,
+        "chunk_id": "regulations/passenger_transport_rules.md#0001",
+        "source": "regulations/passenger_transport_rules.md",
+        "start": 340,
+        "end": 760,
+        "score": 0.015385
+      },
+      {
+        "rank": 9,
+        "chunk_id": "regulations/passenger_transport_rules.md#0005",
+        "source": "regulations/passenger_transport_rules.md",
+        "start": 1700,
+        "end": 2120,
+        "score": 0.015385
+      },
+      {
+        "rank": 10,
+        "chunk_id": "faq/student_tickets.md#0008",
+        "source": "faq/student_tickets.md",
+        "start": 2720,
+        "end": 3110,
+        "score": 0.015152
+      }
+    ]
+  },
+  {
+    "id": "rail-dev-003",
+    "ranked_top10": [
+      {
+        "rank": 1,
+        "chunk_id": "regulations/passenger_transport_rules.md#0009",
+        "source": "regulations/passenger_transport_rules.md",
+        "start": 3060,
+        "end": 3480,
+        "score": 1.316182
+      },
+      {
+        "rank": 2,
+        "chunk_id": "faq/student_tickets.md#0001",
+        "source": "faq/student_tickets.md",
+        "start": 340,
+        "end": 760,
+        "score": 1.054467
+      },
+      {
+        "rank": 3,
+        "chunk_id": "notices/ticket_purchase_notice.md#0003",
+        "source": "notices/ticket_purchase_notice.md",
+        "start": 1020,
+        "end": 1440,
+        "score": 0.329814
+      },
+      {
+        "rank": 4,
+        "chunk_id": "notices/ticket_purchase_notice.md#0002",
+        "source": "notices/ticket_purchase_notice.md",
+        "start": 680,
+        "end": 1100,
+        "score": 0.302544
+      },
+      {
+        "rank": 5,
+        "chunk_id": "faq/student_tickets.md#0003",
+        "source": "faq/student_tickets.md",
+        "start": 1020,
+        "end": 1440,
+        "score": -0.493942
+      },
+      {
+        "rank": 6,
+        "chunk_id": "faq/student_tickets.md#0004",
+        "source": "faq/student_tickets.md",
+        "start": 1360,
+        "end": 1780,
+        "score": -0.655664
+      },
+      {
+        "rank": 7,
+        "chunk_id": "faq/student_tickets.md#0002",
+        "source": "faq/student_tickets.md",
+        "start": 680,
+        "end": 1100,
+        "score": -1.308637
+      },
+      {
+        "rank": 8,
+        "chunk_id": "regulations/passenger_transport_rules.md#0010",
+        "source": "regulations/passenger_transport_rules.md",
+        "start": 3400,
+        "end": 3820,
+        "score": -1.325675
+      },
+      {
+        "rank": 9,
+        "chunk_id": "faq/student_tickets.md#0007",
+        "source": "faq/student_tickets.md",
+        "start": 2380,
+        "end": 2800,
+        "score": -1.626125
+      },
+      {
+        "rank": 10,
+        "chunk_id": "regulations/passenger_transport_rules.md#0011",
+        "source": "regulations/passenger_transport_rules.md",
+        "start": 3740,
+        "end": 4160,
+        "score": -1.834706
+      }
+    ],
+    "before_reranking_top10": [
+      {
+        "rank": 1,
+        "chunk_id": "faq/student_tickets.md#0003",
+        "source": "faq/student_tickets.md",
+        "start": 1020,
+        "end": 1440,
+        "score": 0.031545
+      },
+      {
+        "rank": 2,
+        "chunk_id": "notices/ticket_purchase_notice.md#0003",
+        "source": "notices/ticket_purchase_notice.md",
+        "start": 1020,
+        "end": 1440,
+        "score": 0.031498
+      },
+      {
+        "rank": 3,
+        "chunk_id": "regulations/passenger_transport_rules.md#0009",
+        "source": "regulations/passenger_transport_rules.md",
+        "start": 3060,
+        "end": 3480,
+        "score": 0.031319
+      },
+      {
+        "rank": 4,
+        "chunk_id": "faq/student_tickets.md#0001",
+        "source": "faq/student_tickets.md",
+        "start": 340,
+        "end": 760,
+        "score": 0.031281
+      },
+      {
+        "rank": 5,
+        "chunk_id": "regulations/passenger_transport_rules.md#0011",
+        "source": "regulations/passenger_transport_rules.md",
+        "start": 3740,
+        "end": 4160,
+        "score": 0.030622
+      },
+      {
+        "rank": 6,
+        "chunk_id": "notices/ticket_purchase_notice.md#0002",
+        "source": "notices/ticket_purchase_notice.md",
+        "start": 680,
+        "end": 1100,
+        "score": 0.030579
+      },
+      {
+        "rank": 7,
+        "chunk_id": "faq/student_tickets.md#0004",
+        "source": "faq/student_tickets.md",
+        "start": 1360,
+        "end": 1780,
+        "score": 0.030331
+      },
+      {
+        "rank": 8,
+        "chunk_id": "faq/student_tickets.md#0007",
+        "source": "faq/student_tickets.md",
+        "start": 2380,
+        "end": 2800,
+        "score": 0.02967
+      },
+      {
+        "rank": 9,
+        "chunk_id": "regulations/passenger_transport_rules.md#0010",
+        "source": "regulations/passenger_transport_rules.md",
+        "start": 3400,
+        "end": 3820,
+        "score": 0.028778
+      },
+      {
+        "rank": 10,
+        "chunk_id": "faq/student_tickets.md#0002",
+        "source": "faq/student_tickets.md",
+        "start": 680,
+        "end": 1100,
+        "score": 0.015385
+      }
+    ]
+  },
+  {
+    "id": "rail-dev-004",
+    "ranked_top10": [
+      {
+        "rank": 1,
+        "chunk_id": "faq/ticket_changes.md#0005",
+        "source": "faq/ticket_changes.md",
+        "start": 1700,
+        "end": 2120,
+        "score": -1.351196
+      },
+      {
+        "rank": 2,
+        "chunk_id": "regulations/passenger_transport_rules.md#0016",
+        "source": "regulations/passenger_transport_rules.md",
+        "start": 5440,
+        "end": 5860,
+        "score": -1.767055
+      },
+      {
+        "rank": 3,
+        "chunk_id": "faq/window_refunds.md#0002",
+        "source": "faq/window_refunds.md",
+        "start": 680,
+        "end": 1029,
+        "score": -1.807018
+      },
+      {
+        "rank": 4,
+        "chunk_id": "faq/ticket_changes.md#0003",
+        "source": "faq/ticket_changes.md",
+        "start": 1020,
+        "end": 1440,
+        "score": -1.886071
+      },
+      {
+        "rank": 5,
+        "chunk_id": "notices/ticket_purchase_notice.md#0005",
+        "source": "notices/ticket_purchase_notice.md",
+        "start": 1700,
+        "end": 2120,
+        "score": -2.015449
+      },
+      {
+        "rank": 6,
+        "chunk_id": "notices/ticket_purchase_notice.md#0004",
+        "source": "notices/ticket_purchase_notice.md",
+        "start": 1360,
+        "end": 1780,
+        "score": -2.261324
+      },
+      {
+        "rank": 7,
+        "chunk_id": "faq/window_refunds.md#0001",
+        "source": "faq/window_refunds.md",
+        "start": 340,
+        "end": 760,
+        "score": -2.802511
+      },
+      {
+        "rank": 8,
+        "chunk_id": "faq/ticket_changes.md#0002",
+        "source": "faq/ticket_changes.md",
+        "start": 680,
+        "end": 1100,
+        "score": -2.840811
+      },
+      {
+        "rank": 9,
+        "chunk_id": "faq/ticket_changes.md#0001",
+        "source": "faq/ticket_changes.md",
+        "start": 340,
+        "end": 760,
+        "score": -3.340324
+      },
+      {
+        "rank": 10,
+        "chunk_id": "notices/ticket_purchase_notice.md#0006",
+        "source": "notices/ticket_purchase_notice.md",
+        "start": 2040,
+        "end": 2304,
+        "score": -3.505076
+      }
+    ],
+    "before_reranking_top10": [
+      {
+        "rank": 1,
+        "chunk_id": "notices/ticket_purchase_notice.md#0005",
+        "source": "notices/ticket_purchase_notice.md",
+        "start": 1700,
+        "end": 2120,
+        "score": 0.032522
+      },
+      {
+        "rank": 2,
+        "chunk_id": "faq/window_refunds.md#0002",
+        "source": "faq/window_refunds.md",
+        "start": 680,
+        "end": 1029,
+        "score": 0.032266
+      },
+      {
+        "rank": 3,
+        "chunk_id": "faq/window_refunds.md#0001",
+        "source": "faq/window_refunds.md",
+        "start": 340,
+        "end": 760,
+        "score": 0.030769
+      },
+      {
+        "rank": 4,
+        "chunk_id": "notices/ticket_purchase_notice.md#0004",
+        "source": "notices/ticket_purchase_notice.md",
+        "start": 1360,
+        "end": 1780,
+        "score": 0.03055
+      },
+      {
+        "rank": 5,
+        "chunk_id": "faq/ticket_changes.md#0005",
+        "source": "faq/ticket_changes.md",
+        "start": 1700,
+        "end": 2120,
+        "score": 0.030415
+      },
+      {
+        "rank": 6,
+        "chunk_id": "notices/ticket_purchase_notice.md#0006",
+        "source": "notices/ticket_purchase_notice.md",
+        "start": 2040,
+        "end": 2304,
+        "score": 0.029644
+      },
+      {
+        "rank": 7,
+        "chunk_id": "faq/ticket_changes.md#0002",
+        "source": "faq/ticket_changes.md",
+        "start": 680,
+        "end": 1100,
+        "score": 0.029412
+      },
+      {
+        "rank": 8,
+        "chunk_id": "faq/ticket_changes.md#0003",
+        "source": "faq/ticket_changes.md",
+        "start": 1020,
+        "end": 1440,
+        "score": 0.015873
+      },
+      {
+        "rank": 9,
+        "chunk_id": "regulations/passenger_transport_rules.md#0016",
+        "source": "regulations/passenger_transport_rules.md",
+        "start": 5440,
+        "end": 5860,
+        "score": 0.015625
+      },
+      {
+        "rank": 10,
+        "chunk_id": "faq/ticket_changes.md#0001",
+        "source": "faq/ticket_changes.md",
+        "start": 340,
+        "end": 760,
+        "score": 0.015152
+      }
+    ]
+  },
+  {
+    "id": "rail-dev-006",
+    "ranked_top10": [
+      {
+        "rank": 1,
+        "chunk_id": "regulations/passenger_transport_rules.md#0021",
+        "source": "regulations/passenger_transport_rules.md",
+        "start": 7140,
+        "end": 7560,
+        "score": -0.906743
+      },
+      {
+        "rank": 2,
+        "chunk_id": "regulations/passenger_transport_rules.md#0017",
+        "source": "regulations/passenger_transport_rules.md",
+        "start": 5780,
+        "end": 6200,
+        "score": -1.759372
+      },
+      {
+        "rank": 3,
+        "chunk_id": "regulations/passenger_transport_rules.md#0020",
+        "source": "regulations/passenger_transport_rules.md",
+        "start": 6800,
+        "end": 7220,
+        "score": -2.135413
+      },
+      {
+        "rank": 4,
+        "chunk_id": "regulations/passenger_transport_rules.md#0016",
+        "source": "regulations/passenger_transport_rules.md",
+        "start": 5440,
+        "end": 5860,
+        "score": -2.192394
+      },
+      {
+        "rank": 5,
+        "chunk_id": "regulations/passenger_transport_rules.md#0019",
+        "source": "regulations/passenger_transport_rules.md",
+        "start": 6460,
+        "end": 6880,
+        "score": -2.213553
+      },
+      {
+        "rank": 6,
+        "chunk_id": "regulations/passenger_transport_rules.md#0018",
+        "source": "regulations/passenger_transport_rules.md",
+        "start": 6120,
+        "end": 6540,
+        "score": -2.8421
+      },
+      {
+        "rank": 7,
+        "chunk_id": "notices/travel_notice.md#0002",
+        "source": "notices/travel_notice.md",
+        "start": 680,
+        "end": 1100,
+        "score": -2.934681
+      },
+      {
+        "rank": 8,
+        "chunk_id": "faq/ticket_changes.md#0001",
+        "source": "faq/ticket_changes.md",
+        "start": 340,
+        "end": 760,
+        "score": -3.178727
+      },
+      {
+        "rank": 9,
+        "chunk_id": "faq/ticket_changes.md#0000",
+        "source": "faq/ticket_changes.md",
+        "start": 0,
+        "end": 420,
+        "score": -3.464526
+      },
+      {
+        "rank": 10,
+        "chunk_id": "faq/online_booking.md#0000",
+        "source": "faq/online_booking.md",
+        "start": 0,
+        "end": 420,
+        "score": -5.95047
+      }
+    ],
+    "before_reranking_top10": [
+      {
+        "rank": 1,
+        "chunk_id": "regulations/passenger_transport_rules.md#0017",
+        "source": "regulations/passenger_transport_rules.md",
+        "start": 5780,
+        "end": 6200,
+        "score": 0.032266
+      },
+      {
+        "rank": 2,
+        "chunk_id": "regulations/passenger_transport_rules.md#0016",
+        "source": "regulations/passenger_transport_rules.md",
+        "start": 5440,
+        "end": 5860,
+        "score": 0.031754
+      },
+      {
+        "rank": 3,
+        "chunk_id": "notices/travel_notice.md#0002",
+        "source": "notices/travel_notice.md",
+        "start": 680,
+        "end": 1100,
+        "score": 0.031099
+      },
+      {
+        "rank": 4,
+        "chunk_id": "regulations/passenger_transport_rules.md#0019",
+        "source": "regulations/passenger_transport_rules.md",
+        "start": 6460,
+        "end": 6880,
+        "score": 0.030536
+      },
+      {
+        "rank": 5,
+        "chunk_id": "regulations/passenger_transport_rules.md#0021",
+        "source": "regulations/passenger_transport_rules.md",
+        "start": 7140,
+        "end": 7560,
+        "score": 0.030366
+      },
+      {
+        "rank": 6,
+        "chunk_id": "regulations/passenger_transport_rules.md#0020",
+        "source": "regulations/passenger_transport_rules.md",
+        "start": 6800,
+        "end": 7220,
+        "score": 0.016129
+      },
+      {
+        "rank": 7,
+        "chunk_id": "faq/ticket_changes.md#0000",
+        "source": "faq/ticket_changes.md",
+        "start": 0,
+        "end": 420,
+        "score": 0.015625
+      },
+      {
+        "rank": 8,
+        "chunk_id": "regulations/passenger_transport_rules.md#0018",
+        "source": "regulations/passenger_transport_rules.md",
+        "start": 6120,
+        "end": 6540,
+        "score": 0.015385
+      },
+      {
+        "rank": 9,
+        "chunk_id": "faq/online_booking.md#0000",
+        "source": "faq/online_booking.md",
+        "start": 0,
+        "end": 420,
+        "score": 0.015152
+      },
+      {
+        "rank": 10,
+        "chunk_id": "faq/ticket_changes.md#0001",
+        "source": "faq/ticket_changes.md",
+        "start": 340,
+        "end": 760,
+        "score": 0.014925
+      }
+    ]
+  },
+  {
+    "id": "rail-dev-007",
+    "ranked_top10": [
+      {
+        "rank": 1,
+        "chunk_id": "regulations/passenger_transport_rules.md#0008",
+        "source": "regulations/passenger_transport_rules.md",
+        "start": 2720,
+        "end": 3140,
+        "score": 0.051227
+      },
+      {
+        "rank": 2,
+        "chunk_id": "notices/ticket_purchase_notice.md#0001",
+        "source": "notices/ticket_purchase_notice.md",
+        "start": 340,
+        "end": 760,
+        "score": -0.08448
+      },
+      {
+        "rank": 3,
+        "chunk_id": "faq/children_tickets.md#0000",
+        "source": "faq/children_tickets.md",
+        "start": 0,
+        "end": 420,
+        "score": -0.496901
+      },
+      {
+        "rank": 4,
+        "chunk_id": "faq/children_tickets.md#0001",
+        "source": "faq/children_tickets.md",
+        "start": 340,
+        "end": 760,
+        "score": -2.161082
+      },
+      {
+        "rank": 5,
+        "chunk_id": "faq/children_tickets.md#0002",
+        "source": "faq/children_tickets.md",
+        "start": 680,
+        "end": 879,
+        "score": -2.823074
+      },
+      {
+        "rank": 6,
+        "chunk_id": "notices/travel_notice.md#0002",
+        "source": "notices/travel_notice.md",
+        "start": 680,
+        "end": 1100,
+        "score": -3.249237
+      },
+      {
+        "rank": 7,
+        "chunk_id": "faq/online_booking.md#0005",
+        "source": "faq/online_booking.md",
+        "start": 1700,
+        "end": 2120,
+        "score": -4.308596
+      },
+      {
+        "rank": 8,
+        "chunk_id": "faq/online_booking.md#0004",
+        "source": "faq/online_booking.md",
+        "start": 1360,
+        "end": 1780,
+        "score": -4.594323
+      },
+      {
+        "rank": 9,
+        "chunk_id": "faq/online_booking.md#0006",
+        "source": "faq/online_booking.md",
+        "start": 2040,
+        "end": 2460,
+        "score": -5.276931
+      },
+      {
+        "rank": 10,
+        "chunk_id": "faq/online_booking.md#0007",
+        "source": "faq/online_booking.md",
+        "start": 2380,
+        "end": 2491,
+        "score": -6.003722
+      }
+    ],
+    "before_reranking_top10": [
+      {
+        "rank": 1,
+        "chunk_id": "notices/ticket_purchase_notice.md#0001",
+        "source": "notices/ticket_purchase_notice.md",
+        "start": 340,
+        "end": 760,
+        "score": 0.032002
+      },
+      {
+        "rank": 2,
+        "chunk_id": "faq/children_tickets.md#0000",
+        "source": "faq/children_tickets.md",
+        "start": 0,
+        "end": 420,
+        "score": 0.031778
+      },
+      {
+        "rank": 3,
+        "chunk_id": "regulations/passenger_transport_rules.md#0008",
+        "source": "regulations/passenger_transport_rules.md",
+        "start": 2720,
+        "end": 3140,
+        "score": 0.031498
+      },
+      {
+        "rank": 4,
+        "chunk_id": "faq/children_tickets.md#0001",
+        "source": "faq/children_tickets.md",
+        "start": 340,
+        "end": 760,
+        "score": 0.030331
+      },
+      {
+        "rank": 5,
+        "chunk_id": "faq/online_booking.md#0006",
+        "source": "faq/online_booking.md",
+        "start": 2040,
+        "end": 2460,
+        "score": 0.016393
+      },
+      {
+        "rank": 6,
+        "chunk_id": "faq/online_booking.md#0007",
+        "source": "faq/online_booking.md",
+        "start": 2380,
+        "end": 2491,
+        "score": 0.016129
+      },
+      {
+        "rank": 7,
+        "chunk_id": "notices/travel_notice.md#0002",
+        "source": "notices/travel_notice.md",
+        "start": 680,
+        "end": 1100,
+        "score": 0.015385
+      },
+      {
+        "rank": 8,
+        "chunk_id": "faq/children_tickets.md#0002",
+        "source": "faq/children_tickets.md",
+        "start": 680,
+        "end": 879,
+        "score": 0.015152
+      },
+      {
+        "rank": 9,
+        "chunk_id": "faq/online_booking.md#0004",
+        "source": "faq/online_booking.md",
+        "start": 1360,
+        "end": 1780,
+        "score": 0.015152
+      },
+      {
+        "rank": 10,
+        "chunk_id": "faq/online_booking.md#0005",
+        "source": "faq/online_booking.md",
+        "start": 1700,
+        "end": 2120,
+        "score": 0.014925
+      }
+    ]
+  },
+  {
+    "id": "rail-dev-008",
+    "ranked_top10": [
+      {
+        "rank": 1,
+        "chunk_id": "faq/ticket_changes.md#0003",
+        "source": "faq/ticket_changes.md",
+        "start": 1020,
+        "end": 1440,
+        "score": -2.466504
+      },
+      {
+        "rank": 2,
+        "chunk_id": "faq/ticket_changes.md#0001",
+        "source": "faq/ticket_changes.md",
+        "start": 340,
+        "end": 760,
+        "score": -2.476501
+      },
+      {
+        "rank": 3,
+        "chunk_id": "regulations/passenger_transport_rules.md#0016",
+        "source": "regulations/passenger_transport_rules.md",
+        "start": 5440,
+        "end": 5860,
+        "score": -2.854968
+      },
+      {
+        "rank": 4,
+        "chunk_id": "notices/ticket_purchase_notice.md#0004",
+        "source": "notices/ticket_purchase_notice.md",
+        "start": 1360,
+        "end": 1780,
+        "score": -2.892575
+      },
+      {
+        "rank": 5,
+        "chunk_id": "faq/ticket_changes.md#0005",
+        "source": "faq/ticket_changes.md",
+        "start": 1700,
+        "end": 2120,
+        "score": -2.93626
+      },
+      {
+        "rank": 6,
+        "chunk_id": "regulations/passenger_transport_rules.md#0015",
+        "source": "regulations/passenger_transport_rules.md",
+        "start": 5100,
+        "end": 5520,
+        "score": -3.422318
+      },
+      {
+        "rank": 7,
+        "chunk_id": "notices/ticket_purchase_notice.md#0005",
+        "source": "notices/ticket_purchase_notice.md",
+        "start": 1700,
+        "end": 2120,
+        "score": -3.860332
+      },
+      {
+        "rank": 8,
+        "chunk_id": "faq/ticket_changes.md#0002",
+        "source": "faq/ticket_changes.md",
+        "start": 680,
+        "end": 1100,
+        "score": -4.112663
+      },
+      {
+        "rank": 9,
+        "chunk_id": "faq/ticket_changes.md#0000",
+        "source": "faq/ticket_changes.md",
+        "start": 0,
+        "end": 420,
+        "score": -4.854202
+      },
+      {
+        "rank": 10,
+        "chunk_id": "faq/online_booking.md#0000",
+        "source": "faq/online_booking.md",
+        "start": 0,
+        "end": 420,
+        "score": -5.403047
+      }
+    ],
+    "before_reranking_top10": [
+      {
+        "rank": 1,
+        "chunk_id": "faq/ticket_changes.md#0000",
+        "source": "faq/ticket_changes.md",
+        "start": 0,
+        "end": 420,
+        "score": 0.032522
+      },
+      {
+        "rank": 2,
+        "chunk_id": "notices/ticket_purchase_notice.md#0005",
+        "source": "notices/ticket_purchase_notice.md",
+        "start": 1700,
+        "end": 2120,
+        "score": 0.03055
+      },
+      {
+        "rank": 3,
+        "chunk_id": "regulations/passenger_transport_rules.md#0015",
+        "source": "regulations/passenger_transport_rules.md",
+        "start": 5100,
+        "end": 5520,
+        "score": 0.030536
+      },
+      {
+        "rank": 4,
+        "chunk_id": "faq/ticket_changes.md#0005",
+        "source": "faq/ticket_changes.md",
+        "start": 1700,
+        "end": 2120,
+        "score": 0.030366
+      },
+      {
+        "rank": 5,
+        "chunk_id": "faq/ticket_changes.md#0002",
+        "source": "faq/ticket_changes.md",
+        "start": 680,
+        "end": 1100,
+        "score": 0.029911
+      },
+      {
+        "rank": 6,
+        "chunk_id": "faq/ticket_changes.md#0001",
+        "source": "faq/ticket_changes.md",
+        "start": 340,
+        "end": 760,
+        "score": 0.029412
+      },
+      {
+        "rank": 7,
+        "chunk_id": "faq/ticket_changes.md#0003",
+        "source": "faq/ticket_changes.md",
+        "start": 1020,
+        "end": 1440,
+        "score": 0.016393
+      },
+      {
+        "rank": 8,
+        "chunk_id": "faq/online_booking.md#0000",
+        "source": "faq/online_booking.md",
+        "start": 0,
+        "end": 420,
+        "score": 0.016129
+      },
+      {
+        "rank": 9,
+        "chunk_id": "regulations/passenger_transport_rules.md#0016",
+        "source": "regulations/passenger_transport_rules.md",
+        "start": 5440,
+        "end": 5860,
+        "score": 0.015873
+      },
+      {
+        "rank": 10,
+        "chunk_id": "notices/ticket_purchase_notice.md#0004",
+        "source": "notices/ticket_purchase_notice.md",
+        "start": 1360,
+        "end": 1780,
+        "score": 0.015385
+      }
+    ]
+  }
+]

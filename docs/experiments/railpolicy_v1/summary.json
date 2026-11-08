@@ -1,0 +1,1570 @@
+{
+  "experiment": "RailPolicy-RAG V1",
+  "date_local": "2026-11-09",
+  "status": "completed",
+  "controls": {
+    "docs_path": "data/railway",
+    "eval_path": "data/railway/eval_dev.jsonl",
+    "documents": 9,
+    "chunks": 91,
+    "chunk_size": 420,
+    "chunk_overlap": 80,
+    "top_k": 3,
+    "answerable_cases": 8,
+    "unanswerable_cases": 2,
+    "parameters_tuned": false
+  },
+  "eval_sha256": "bcd318cec9e471eb0d1de103a555fb0fdcd9e39b3db6450dfed7ba70090a1964",
+  "corpus_sha256": {
+    "faq/children_tickets.md": "d4b990478ad032d97e2287216b49fe6d10eef6ca267180fe8651659793440603",
+    "faq/online_booking.md": "63e4615313f6f883f3a65d26b895b87d58f4b7567c0604ed248b06799fa4a1e0",
+    "faq/online_refunds.md": "86f95c1166eb0061e3b2f888d75acc7721d04dcbd50fb788b3e39328f591641f",
+    "faq/student_tickets.md": "3d5cfe07e47d14f528d423a2bf1c0330edd155a33e228f0c8f160b5bcb73d9c1",
+    "faq/ticket_changes.md": "16dfbddff656390562eb94a514a210c9a5bb144e32a8adf063d8934ba6c36c4e",
+    "faq/window_refunds.md": "cf98b662469d5330b1a9e1e9dbee59682ce14ccaf06631b4510e7ac680839f61",
+    "notices/ticket_purchase_notice.md": "710d106e22fcb98dacc2da5364529afc2ed8254e54085ca11473ebdfe736541e",
+    "notices/travel_notice.md": "604c00b14f6018fa7fb0569c1093569e74777349c15516df06393f43838e70af",
+    "regulations/passenger_transport_rules.md": "0538b30442156b2dd803ba9ba9c7b30f343e42aef697e6fa2c3cda819a58b214"
+  },
+  "code_sha256": {
+    "__init__.py": "31e14974e4a8184eae5f9aeadf0682a4c111dc8d0dbc938bae4619a754344651",
+    "agent.py": "51f39fd3221f4f67b04365cb36f381596d6caeb306b4e9c85e5dce83cb7a529d",
+    "answer_evaluation.py": "de9531746fce1e91c74fd9a50968b8acb78a3ffa53f152b62cbadf6cfff03316",
+    "bm25.py": "64c48757d37882e66895cdcc3130d1ad9a75749d6f0307c6714bb1968b84aa5b",
+    "chunking.py": "75e7f7c3bf4201ad6f7dbb9f0d7f21822a142bf5bf58823fa2dbd2b292f586ba",
+    "cli.py": "e0873fddf9f47029ccf3bc2cfefe731630c933336420ed07a5226438a18c056f",
+    "embedding.py": "64cc41248221154de8b6ee6ae44a26a97d1cfa9aa3722211aafc3ab4455b0956",
+    "evaluation.py": "dd531b51585d2b6b23f125d83092836e8c2dc05d234ed2afb2b1baea42fa9cc0",
+    "evidence.py": "5429cc88eb64f06b115936622dc83a3307dcc86304e33f69aa10585c7b7f0cef",
+    "failures.py": "e1cc4e8ce92661b78cd214f476d93e179e8c221d15367522861a6c85f4a9b67b",
+    "frozen.py": "33717d368bdf934ff5419a13dbf776b277207f97cad704d5a790984d48cbb5b6",
+    "generator.py": "d3a51e0c13ebd1f146b4b78e770133156573a5662cb471e3a7d32a68fcb813a6",
+    "holdout.py": "87a50a8b1a90e0c9ba45ce75ad9cd6a0af7bae24616af823a5d32420b80cbc0a",
+    "hybrid.py": "99b5c680c78464f2b494513a06a98304ad61990f0aff1627c9cd4d57d27f5053",
+    "io.py": "6d850e0ccf79225424777e7f70a165351cb51285803750ef61cf3b84bb9cdbd6",
+    "models.py": "3360d5f2ea9bcd7c926345640021cff8ef942c6c5444a793eba815329b930d42",
+    "reranker.py": "0e40863185bf46ec97083435a99909682a9dc55430bfbf3b991238ff4ab57cce",
+    "retriever.py": "0bd6e8c01dd470200d9194c03bfd112f1314eb3b90b712bd3adf894f24c8954f",
+    "text.py": "6491f7ac690267fd9f39e8ed931537ad263519f07c7b9d0a47f1562f2754bae4",
+    "tools.py": "2cfb798619934c243a605a86b254ce22e5e072a90448d5a56ff01611a4c02087"
+  },
+  "runner_sha256": "10d435451b45d0019113f27811fdc51a8728ee390998eefb0b8117c1c667769d",
+  "config_sha256": {
+    "A": "8b142faa32b1842dc7a9b0b9c0c0e1b89a4cfffa75a9294e89a5569029cf3603",
+    "B": "a46ebc97dcff93e4824e90401d70bbe77f9901b52d6d1672e61e158f7713a444",
+    "C": "1a35d7e4425d1de2d4fff5ae69933fb447660a3d2f885562393d7f637ab25bf5",
+    "D": "80cd702976a99a5e7bdc81f95c162d9a1887ee7c824130ebbabc41f6c7895b9d"
+  },
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Windows-10-10.0.19045-SP0",
+    "machine": "AMD64",
+    "processor": "Intel64 Family 6 Model 141 Stepping 1, GenuineIntel",
+    "device": "cpu",
+    "OMP_NUM_THREADS": "4",
+    "MKL_NUM_THREADS": "4",
+    "packages": {
+      "certifi": "2026.10.23",
+      "charset-normalizer": "3.5.2",
+      "cloudpickle": "3.1.2",
+      "colorama": "0.4.6",
+      "filelock": "4.2.4",
+      "flatbuffers": "25.12.19",
+      "fsspec": "2026.9.0",
+      "huggingface_hub": "0.36.2",
+      "idna": "3.20",
+      "Jinja2": "3.1.6",
+      "joblib": "1.6.0",
+      "MarkupSafe": "3.0.3",
+      "ml_dtypes": "0.6.0",
+      "mpmath": "1.3.0",
+      "narwhals": "2.28.0",
+      "networkx": "3.7",
+      "numpy": "2.5.4",
+      "onnx": "1.23.2",
+      "onnxruntime": "1.31.1",
+      "optimum": "2.1.0",
+      "optimum-onnx": "0.1.0",
+      "packaging": "26.3",
+      "protobuf": "7.36.2",
+      "PyYAML": "6.0.3",
+      "regex": "2026.11.7",
+      "requests": "2.34.2",
+      "safetensors": "0.8.0",
+      "scikit-learn": "1.9.1",
+      "scipy": "1.18.1",
+      "sentence-transformers": "5.7.0",
+      "setuptools": "78.1.0",
+      "sympy": "1.14.0",
+      "threadpoolctl": "3.8.0",
+      "tokenizers": "0.21.4",
+      "torch": "2.15.0+cpu",
+      "tqdm": "4.70.1",
+      "transformers": "4.54.1",
+      "typing_extensions": "4.16.0",
+      "urllib3": "2.8.0"
+    },
+    "network_during_evaluation": "HF metadata GET/HEAD only; all other sockets forbidden",
+    "preflight": {
+      "bge": {
+        "status": "passed",
+        "device": "cpu"
+      },
+      "reranker": {
+        "status": "passed",
+        "providers": [
+          "AzureExecutionProvider",
+          "CPUExecutionProvider"
+        ]
+      }
+    }
+  },
+  "models": "model_manifest.json",
+  "requirements": "requirements.lock.txt",
+  "groups": {
+    "A": {
+      "status": "completed",
+      "summary": {
+        "cases": 10,
+        "answerable_cases": 8,
+        "unanswerable_cases": 2,
+        "hit_rate@3": 0.875,
+        "recall@3": 0.875,
+        "mrr": 0.75,
+        "evidence_evaluated_cases": 8,
+        "evidence_hit@3": 0.75,
+        "evidence_recall@3": 0.6875,
+        "evidence_mrr": 0.5625,
+        "sufficient_evidence@3": 0.625
+      },
+      "config": "railway_dev_bm25.json",
+      "report_sha256": "750996811bb478018ca30260303aee41383adc73d8dafa0882534c662d15730e",
+      "benchmark_seconds": 0.099
+    },
+    "B": {
+      "status": "completed",
+      "summary": {
+        "cases": 10,
+        "answerable_cases": 8,
+        "unanswerable_cases": 2,
+        "hit_rate@3": 0.75,
+        "recall@3": 0.75,
+        "mrr": 0.625,
+        "evidence_evaluated_cases": 8,
+        "evidence_hit@3": 0.625,
+        "evidence_recall@3": 0.5625,
+        "evidence_mrr": 0.4375,
+        "sufficient_evidence@3": 0.5
+      },
+      "config": "railway_dev_embedding.json",
+      "report_sha256": "221dc37a8ebd0872e3ed64fea7a251e3ef6a07ef3b455e4d9e4360ced43510dd",
+      "benchmark_seconds": 14.649
+    },
+    "C": {
+      "status": "completed",
+      "summary": {
+        "cases": 10,
+        "answerable_cases": 8,
+        "unanswerable_cases": 2,
+        "hit_rate@3": 0.875,
+        "recall@3": 0.875,
+        "mrr": 0.7291666666666666,
+        "evidence_evaluated_cases": 8,
+        "evidence_hit@3": 0.75,
+        "evidence_recall@3": 0.6875,
+        "evidence_mrr": 0.5416666666666666,
+        "sufficient_evidence@3": 0.625
+      },
+      "config": "railway_dev_hybrid_rrf.json",
+      "report_sha256": "c4c1149519dae34a1164cbf399afe932d0169c0afdc181ff6ff3af8656d64e66",
+      "benchmark_seconds": 14.57
+    },
+    "D": {
+      "status": "completed",
+      "summary": {
+        "cases": 10,
+        "answerable_cases": 8,
+        "unanswerable_cases": 2,
+        "hit_rate@3": 0.625,
+        "recall@3": 0.625,
+        "mrr": 0.4791666666666667,
+        "evidence_evaluated_cases": 8,
+        "evidence_hit@3": 0.625,
+        "evidence_recall@3": 0.5208333333333334,
+        "evidence_mrr": 0.3541666666666667,
+        "sufficient_evidence@3": 0.375
+      },
+      "config": "railway_dev_hybrid_reranker.json",
+      "report_sha256": "8dff17f808728c6064515b3b36023cb836da858c43f7fd6850a20a876859ebed",
+      "benchmark_seconds": 34.375
+    }
+  },
+  "metric_columns": [
+    "source_hit@3",
+    "source_recall@3",
+    "source_mrr",
+    "evidence_hit@3",
+    "evidence_recall@3",
+    "evidence_mrr",
+    "sufficient_evidence@3"
+  ],
+  "cases": [
+    {
+      "id": "rail-dev-001",
+      "question_type": "direct",
+      "answerable": true,
+      "metrics": {
+        "A": [
+          true,
+          1.0,
+          1.0,
+          true,
+          1.0,
+          0.5,
+          true
+        ],
+        "B": [
+          true,
+          1.0,
+          1.0,
+          true,
+          1.0,
+          0.5,
+          true
+        ],
+        "C": [
+          true,
+          1.0,
+          1.0,
+          true,
+          1.0,
+          0.5,
+          true
+        ],
+        "D": [
+          true,
+          1.0,
+          1.0,
+          true,
+          1.0,
+          0.5,
+          true
+        ]
+      },
+      "evidence_first_covered_ranks": {
+        "A": [
+          2
+        ],
+        "B": [
+          2
+        ],
+        "C": [
+          2
+        ],
+        "D": [
+          2
+        ]
+      },
+      "top3": {
+        "A": [
+          [
+            "faq/online_booking.md#0000",
+            0,
+            420
+          ],
+          [
+            "faq/online_booking.md#0001",
+            340,
+            760
+          ],
+          [
+            "faq/online_booking.md#0003",
+            1020,
+            1440
+          ]
+        ],
+        "B": [
+          [
+            "faq/online_booking.md#0000",
+            0,
+            420
+          ],
+          [
+            "faq/online_booking.md#0001",
+            340,
+            760
+          ],
+          [
+            "faq/online_booking.md#0005",
+            1700,
+            2120
+          ]
+        ],
+        "C": [
+          [
+            "faq/online_booking.md#0000",
+            0,
+            420
+          ],
+          [
+            "faq/online_booking.md#0001",
+            340,
+            760
+          ],
+          [
+            "faq/online_booking.md#0003",
+            1020,
+            1440
+          ]
+        ],
+        "D": [
+          [
+            "faq/online_booking.md#0000",
+            0,
+            420
+          ],
+          [
+            "faq/online_booking.md#0001",
+            340,
+            760
+          ],
+          [
+            "faq/online_booking.md#0003",
+            1020,
+            1440
+          ]
+        ]
+      }
+    },
+    {
+      "id": "rail-dev-002",
+      "question_type": "direct",
+      "answerable": true,
+      "metrics": {
+        "A": [
+          true,
+          1.0,
+          0.5,
+          true,
+          1.0,
+          0.5,
+          true
+        ],
+        "B": [
+          false,
+          0.0,
+          0.0,
+          false,
+          0.0,
+          0.0,
+          false
+        ],
+        "C": [
+          false,
+          0.0,
+          0.0,
+          false,
+          0.0,
+          0.0,
+          false
+        ],
+        "D": [
+          false,
+          0.0,
+          0.0,
+          false,
+          0.0,
+          0.0,
+          false
+        ]
+      },
+      "evidence_first_covered_ranks": {
+        "A": [
+          2
+        ],
+        "B": [
+          null
+        ],
+        "C": [
+          null
+        ],
+        "D": [
+          null
+        ]
+      },
+      "top3": {
+        "A": [
+          [
+            "faq/online_booking.md#0003",
+            1020,
+            1440
+          ],
+          [
+            "faq/window_refunds.md#0001",
+            340,
+            760
+          ],
+          [
+            "faq/ticket_changes.md#0002",
+            680,
+            1100
+          ]
+        ],
+        "B": [
+          [
+            "regulations/passenger_transport_rules.md#0027",
+            9180,
+            9600
+          ],
+          [
+            "regulations/passenger_transport_rules.md#0023",
+            7820,
+            8240
+          ],
+          [
+            "faq/online_booking.md#0003",
+            1020,
+            1440
+          ]
+        ],
+        "C": [
+          [
+            "faq/online_booking.md#0003",
+            1020,
+            1440
+          ],
+          [
+            "faq/ticket_changes.md#0002",
+            680,
+            1100
+          ],
+          [
+            "regulations/passenger_transport_rules.md#0027",
+            9180,
+            9600
+          ]
+        ],
+        "D": [
+          [
+            "faq/online_refunds.md#0001",
+            340,
+            760
+          ],
+          [
+            "regulations/passenger_transport_rules.md#0023",
+            7820,
+            8240
+          ],
+          [
+            "faq/ticket_changes.md#0002",
+            680,
+            1100
+          ]
+        ]
+      }
+    },
+    {
+      "id": "rail-dev-003",
+      "question_type": "numeric_time",
+      "answerable": true,
+      "metrics": {
+        "A": [
+          true,
+          1.0,
+          0.5,
+          true,
+          0.5,
+          0.5,
+          false
+        ],
+        "B": [
+          true,
+          1.0,
+          1.0,
+          true,
+          0.5,
+          1.0,
+          false
+        ],
+        "C": [
+          true,
+          1.0,
+          1.0,
+          true,
+          0.5,
+          1.0,
+          false
+        ],
+        "D": [
+          true,
+          1.0,
+          0.5,
+          true,
+          0.5,
+          0.5,
+          false
+        ]
+      },
+      "evidence_first_covered_ranks": {
+        "A": [
+          2,
+          null
+        ],
+        "B": [
+          null,
+          1
+        ],
+        "C": [
+          null,
+          1
+        ],
+        "D": [
+          2,
+          null
+        ]
+      },
+      "top3": {
+        "A": [
+          [
+            "regulations/passenger_transport_rules.md#0009",
+            3060,
+            3480
+          ],
+          [
+            "faq/student_tickets.md#0001",
+            340,
+            760
+          ],
+          [
+            "notices/ticket_purchase_notice.md#0002",
+            680,
+            1100
+          ]
+        ],
+        "B": [
+          [
+            "faq/student_tickets.md#0003",
+            1020,
+            1440
+          ],
+          [
+            "regulations/passenger_transport_rules.md#0011",
+            3740,
+            4160
+          ],
+          [
+            "notices/ticket_purchase_notice.md#0003",
+            1020,
+            1440
+          ]
+        ],
+        "C": [
+          [
+            "faq/student_tickets.md#0003",
+            1020,
+            1440
+          ],
+          [
+            "notices/ticket_purchase_notice.md#0003",
+            1020,
+            1440
+          ],
+          [
+            "regulations/passenger_transport_rules.md#0009",
+            3060,
+            3480
+          ]
+        ],
+        "D": [
+          [
+            "regulations/passenger_transport_rules.md#0009",
+            3060,
+            3480
+          ],
+          [
+            "faq/student_tickets.md#0001",
+            340,
+            760
+          ],
+          [
+            "notices/ticket_purchase_notice.md#0003",
+            1020,
+            1440
+          ]
+        ]
+      }
+    },
+    {
+      "id": "rail-dev-004",
+      "question_type": "numeric_time",
+      "answerable": true,
+      "metrics": {
+        "A": [
+          true,
+          1.0,
+          1.0,
+          true,
+          1.0,
+          1.0,
+          true
+        ],
+        "B": [
+          true,
+          1.0,
+          0.5,
+          true,
+          1.0,
+          0.5,
+          true
+        ],
+        "C": [
+          true,
+          1.0,
+          1.0,
+          true,
+          1.0,
+          1.0,
+          true
+        ],
+        "D": [
+          false,
+          0.0,
+          0.0,
+          false,
+          0.0,
+          0.0,
+          false
+        ]
+      },
+      "evidence_first_covered_ranks": {
+        "A": [
+          1
+        ],
+        "B": [
+          2
+        ],
+        "C": [
+          1
+        ],
+        "D": [
+          null
+        ]
+      },
+      "top3": {
+        "A": [
+          [
+            "notices/ticket_purchase_notice.md#0005",
+            1700,
+            2120
+          ],
+          [
+            "faq/ticket_changes.md#0005",
+            1700,
+            2120
+          ],
+          [
+            "faq/window_refunds.md#0002",
+            680,
+            1029
+          ]
+        ],
+        "B": [
+          [
+            "faq/window_refunds.md#0002",
+            680,
+            1029
+          ],
+          [
+            "notices/ticket_purchase_notice.md#0005",
+            1700,
+            2120
+          ],
+          [
+            "faq/ticket_changes.md#0003",
+            1020,
+            1440
+          ]
+        ],
+        "C": [
+          [
+            "notices/ticket_purchase_notice.md#0005",
+            1700,
+            2120
+          ],
+          [
+            "faq/window_refunds.md#0002",
+            680,
+            1029
+          ],
+          [
+            "faq/window_refunds.md#0001",
+            340,
+            760
+          ]
+        ],
+        "D": [
+          [
+            "faq/ticket_changes.md#0005",
+            1700,
+            2120
+          ],
+          [
+            "regulations/passenger_transport_rules.md#0016",
+            5440,
+            5860
+          ],
+          [
+            "faq/window_refunds.md#0002",
+            680,
+            1029
+          ]
+        ]
+      }
+    },
+    {
+      "id": "rail-dev-005",
+      "question_type": "paraphrase",
+      "answerable": true,
+      "metrics": {
+        "A": [
+          true,
+          1.0,
+          1.0,
+          true,
+          1.0,
+          1.0,
+          true
+        ],
+        "B": [
+          true,
+          1.0,
+          0.5,
+          true,
+          1.0,
+          0.5,
+          true
+        ],
+        "C": [
+          true,
+          1.0,
+          1.0,
+          true,
+          1.0,
+          1.0,
+          true
+        ],
+        "D": [
+          true,
+          1.0,
+          1.0,
+          true,
+          1.0,
+          1.0,
+          true
+        ]
+      },
+      "evidence_first_covered_ranks": {
+        "A": [
+          1
+        ],
+        "B": [
+          2
+        ],
+        "C": [
+          1
+        ],
+        "D": [
+          1
+        ]
+      },
+      "top3": {
+        "A": [
+          [
+            "regulations/passenger_transport_rules.md#0024",
+            8160,
+            8580
+          ],
+          [
+            "regulations/passenger_transport_rules.md#0029",
+            9860,
+            10280
+          ],
+          [
+            "faq/student_tickets.md#0007",
+            2380,
+            2800
+          ]
+        ],
+        "B": [
+          [
+            "faq/ticket_changes.md#0003",
+            1020,
+            1440
+          ],
+          [
+            "regulations/passenger_transport_rules.md#0024",
+            8160,
+            8580
+          ],
+          [
+            "regulations/passenger_transport_rules.md#0016",
+            5440,
+            5860
+          ]
+        ],
+        "C": [
+          [
+            "regulations/passenger_transport_rules.md#0024",
+            8160,
+            8580
+          ],
+          [
+            "regulations/passenger_transport_rules.md#0020",
+            6800,
+            7220
+          ],
+          [
+            "faq/ticket_changes.md#0003",
+            1020,
+            1440
+          ]
+        ],
+        "D": [
+          [
+            "regulations/passenger_transport_rules.md#0024",
+            8160,
+            8580
+          ],
+          [
+            "regulations/passenger_transport_rules.md#0016",
+            5440,
+            5860
+          ],
+          [
+            "regulations/passenger_transport_rules.md#0020",
+            6800,
+            7220
+          ]
+        ]
+      }
+    },
+    {
+      "id": "rail-dev-006",
+      "question_type": "paraphrase",
+      "answerable": true,
+      "metrics": {
+        "A": [
+          true,
+          1.0,
+          1.0,
+          true,
+          1.0,
+          1.0,
+          true
+        ],
+        "B": [
+          false,
+          0.0,
+          0.0,
+          false,
+          0.0,
+          0.0,
+          false
+        ],
+        "C": [
+          true,
+          1.0,
+          0.3333333333333333,
+          true,
+          1.0,
+          0.3333333333333333,
+          true
+        ],
+        "D": [
+          false,
+          0.0,
+          0.0,
+          false,
+          0.0,
+          0.0,
+          false
+        ]
+      },
+      "evidence_first_covered_ranks": {
+        "A": [
+          1
+        ],
+        "B": [
+          null
+        ],
+        "C": [
+          3
+        ],
+        "D": [
+          null
+        ]
+      },
+      "top3": {
+        "A": [
+          [
+            "notices/travel_notice.md#0002",
+            680,
+            1100
+          ],
+          [
+            "regulations/passenger_transport_rules.md#0016",
+            5440,
+            5860
+          ],
+          [
+            "regulations/passenger_transport_rules.md#0017",
+            5780,
+            6200
+          ]
+        ],
+        "B": [
+          [
+            "regulations/passenger_transport_rules.md#0017",
+            5780,
+            6200
+          ],
+          [
+            "regulations/passenger_transport_rules.md#0020",
+            6800,
+            7220
+          ],
+          [
+            "regulations/passenger_transport_rules.md#0021",
+            7140,
+            7560
+          ]
+        ],
+        "C": [
+          [
+            "regulations/passenger_transport_rules.md#0017",
+            5780,
+            6200
+          ],
+          [
+            "regulations/passenger_transport_rules.md#0016",
+            5440,
+            5860
+          ],
+          [
+            "notices/travel_notice.md#0002",
+            680,
+            1100
+          ]
+        ],
+        "D": [
+          [
+            "regulations/passenger_transport_rules.md#0021",
+            7140,
+            7560
+          ],
+          [
+            "regulations/passenger_transport_rules.md#0017",
+            5780,
+            6200
+          ],
+          [
+            "regulations/passenger_transport_rules.md#0020",
+            6800,
+            7220
+          ]
+        ]
+      }
+    },
+    {
+      "id": "rail-dev-007",
+      "question_type": "multi_condition",
+      "answerable": true,
+      "metrics": {
+        "A": [
+          false,
+          0.0,
+          0.0,
+          false,
+          0.0,
+          0.0,
+          false
+        ],
+        "B": [
+          true,
+          1.0,
+          1.0,
+          true,
+          1.0,
+          1.0,
+          true
+        ],
+        "C": [
+          true,
+          1.0,
+          0.5,
+          true,
+          1.0,
+          0.5,
+          true
+        ],
+        "D": [
+          true,
+          1.0,
+          0.3333333333333333,
+          true,
+          1.0,
+          0.3333333333333333,
+          true
+        ]
+      },
+      "evidence_first_covered_ranks": {
+        "A": [
+          null,
+          null,
+          null
+        ],
+        "B": [
+          1,
+          1,
+          1
+        ],
+        "C": [
+          2,
+          2,
+          2
+        ],
+        "D": [
+          3,
+          3,
+          3
+        ]
+      },
+      "top3": {
+        "A": [
+          [
+            "faq/online_booking.md#0006",
+            2040,
+            2460
+          ],
+          [
+            "faq/online_booking.md#0007",
+            2380,
+            2491
+          ],
+          [
+            "notices/ticket_purchase_notice.md#0001",
+            340,
+            760
+          ]
+        ],
+        "B": [
+          [
+            "faq/children_tickets.md#0000",
+            0,
+            420
+          ],
+          [
+            "notices/ticket_purchase_notice.md#0001",
+            340,
+            760
+          ],
+          [
+            "regulations/passenger_transport_rules.md#0008",
+            2720,
+            3140
+          ]
+        ],
+        "C": [
+          [
+            "notices/ticket_purchase_notice.md#0001",
+            340,
+            760
+          ],
+          [
+            "faq/children_tickets.md#0000",
+            0,
+            420
+          ],
+          [
+            "regulations/passenger_transport_rules.md#0008",
+            2720,
+            3140
+          ]
+        ],
+        "D": [
+          [
+            "regulations/passenger_transport_rules.md#0008",
+            2720,
+            3140
+          ],
+          [
+            "notices/ticket_purchase_notice.md#0001",
+            340,
+            760
+          ],
+          [
+            "faq/children_tickets.md#0000",
+            0,
+            420
+          ]
+        ]
+      }
+    },
+    {
+      "id": "rail-dev-008",
+      "question_type": "multi_condition",
+      "answerable": true,
+      "metrics": {
+        "A": [
+          true,
+          1.0,
+          1.0,
+          false,
+          0.0,
+          0.0,
+          false
+        ],
+        "B": [
+          true,
+          1.0,
+          1.0,
+          false,
+          0.0,
+          0.0,
+          false
+        ],
+        "C": [
+          true,
+          1.0,
+          1.0,
+          false,
+          0.0,
+          0.0,
+          false
+        ],
+        "D": [
+          true,
+          1.0,
+          1.0,
+          true,
+          0.6666666666666666,
+          0.5,
+          false
+        ]
+      },
+      "evidence_first_covered_ranks": {
+        "A": [
+          null,
+          null,
+          null
+        ],
+        "B": [
+          null,
+          null,
+          null
+        ],
+        "C": [
+          null,
+          null,
+          null
+        ],
+        "D": [
+          2,
+          2,
+          null
+        ]
+      },
+      "top3": {
+        "A": [
+          [
+            "faq/ticket_changes.md#0000",
+            0,
+            420
+          ],
+          [
+            "faq/online_booking.md#0000",
+            0,
+            420
+          ],
+          [
+            "faq/ticket_changes.md#0005",
+            1700,
+            2120
+          ]
+        ],
+        "B": [
+          [
+            "faq/ticket_changes.md#0003",
+            1020,
+            1440
+          ],
+          [
+            "faq/ticket_changes.md#0000",
+            0,
+            420
+          ],
+          [
+            "regulations/passenger_transport_rules.md#0016",
+            5440,
+            5860
+          ]
+        ],
+        "C": [
+          [
+            "faq/ticket_changes.md#0000",
+            0,
+            420
+          ],
+          [
+            "notices/ticket_purchase_notice.md#0005",
+            1700,
+            2120
+          ],
+          [
+            "regulations/passenger_transport_rules.md#0015",
+            5100,
+            5520
+          ]
+        ],
+        "D": [
+          [
+            "faq/ticket_changes.md#0003",
+            1020,
+            1440
+          ],
+          [
+            "faq/ticket_changes.md#0001",
+            340,
+            760
+          ],
+          [
+            "regulations/passenger_transport_rules.md#0016",
+            5440,
+            5860
+          ]
+        ]
+      }
+    },
+    {
+      "id": "rail-dev-009",
+      "question_type": "unanswerable",
+      "answerable": false,
+      "metrics": {
+        "A": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "B": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "C": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "D": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "evidence_first_covered_ranks": {
+        "A": [],
+        "B": [],
+        "C": [],
+        "D": []
+      },
+      "top3": {
+        "A": [
+          [
+            "regulations/passenger_transport_rules.md#0018",
+            6120,
+            6540
+          ],
+          [
+            "regulations/passenger_transport_rules.md#0031",
+            10540,
+            10960
+          ],
+          [
+            "faq/online_booking.md#0005",
+            1700,
+            2120
+          ]
+        ],
+        "B": [
+          [
+            "notices/travel_notice.md#0003",
+            1020,
+            1394
+          ],
+          [
+            "regulations/passenger_transport_rules.md#0032",
+            10880,
+            11300
+          ],
+          [
+            "regulations/passenger_transport_rules.md#0028",
+            9520,
+            9940
+          ]
+        ],
+        "C": [
+          [
+            "regulations/passenger_transport_rules.md#0031",
+            10540,
+            10960
+          ],
+          [
+            "notices/travel_notice.md#0003",
+            1020,
+            1394
+          ],
+          [
+            "notices/travel_notice.md#0000",
+            0,
+            420
+          ]
+        ],
+        "D": [
+          [
+            "regulations/passenger_transport_rules.md#0028",
+            9520,
+            9940
+          ],
+          [
+            "regulations/passenger_transport_rules.md#0027",
+            9180,
+            9600
+          ],
+          [
+            "notices/travel_notice.md#0003",
+            1020,
+            1394
+          ]
+        ]
+      }
+    },
+    {
+      "id": "rail-dev-010",
+      "question_type": "unanswerable",
+      "answerable": false,
+      "metrics": {
+        "A": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "B": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "C": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "D": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "evidence_first_covered_ranks": {
+        "A": [],
+        "B": [],
+        "C": [],
+        "D": []
+      },
+      "top3": {
+        "A": [
+          [
+            "faq/online_booking.md#0006",
+            2040,
+            2460
+          ],
+          [
+            "notices/ticket_purchase_notice.md#0006",
+            2040,
+            2304
+          ],
+          [
+            "faq/window_refunds.md#0000",
+            0,
+            420
+          ]
+        ],
+        "B": [
+          [
+            "faq/online_booking.md#0006",
+            2040,
+            2460
+          ],
+          [
+            "faq/online_refunds.md#0000",
+            0,
+            420
+          ],
+          [
+            "faq/ticket_changes.md#0003",
+            1020,
+            1440
+          ]
+        ],
+        "C": [
+          [
+            "faq/online_booking.md#0006",
+            2040,
+            2460
+          ],
+          [
+            "notices/ticket_purchase_notice.md#0006",
+            2040,
+            2304
+          ],
+          [
+            "faq/ticket_changes.md#0003",
+            1020,
+            1440
+          ]
+        ],
+        "D": [
+          [
+            "notices/ticket_purchase_notice.md#0006",
+            2040,
+            2304
+          ],
+          [
+            "faq/online_refunds.md#0000",
+            0,
+            420
+          ],
+          [
+            "faq/window_refunds.md#0000",
+            0,
+            420
+          ]
+        ]
+      }
+    }
+  ],
+  "source_hit_evidence_miss_cases": {
+    "A": [
+      "rail-dev-008"
+    ],
+    "B": [
+      "rail-dev-008"
+    ],
+    "C": [
+      "rail-dev-008"
+    ],
+    "D": []
+  },
+  "semantic_paraphrase_subset": {
+    "A": {
+      "cases": 2,
+      "answerable_cases": 2,
+      "unanswerable_cases": 0,
+      "hit_rate@3": 1.0,
+      "recall@3": 1.0,
+      "mrr": 1.0,
+      "evidence_evaluated_cases": 2,
+      "evidence_hit@3": 1.0,
+      "evidence_recall@3": 1.0,
+      "evidence_mrr": 1.0,
+      "sufficient_evidence@3": 1.0
+    },
+    "B": {
+      "cases": 2,
+      "answerable_cases": 2,
+      "unanswerable_cases": 0,
+      "hit_rate@3": 0.5,
+      "recall@3": 0.5,
+      "mrr": 0.25,
+      "evidence_evaluated_cases": 2,
+      "evidence_hit@3": 0.5,
+      "evidence_recall@3": 0.5,
+      "evidence_mrr": 0.25,
+      "sufficient_evidence@3": 0.5
+    },
+    "C": {
+      "cases": 2,
+      "answerable_cases": 2,
+      "unanswerable_cases": 0,
+      "hit_rate@3": 1.0,
+      "recall@3": 1.0,
+      "mrr": 0.6666666666666666,
+      "evidence_evaluated_cases": 2,
+      "evidence_hit@3": 1.0,
+      "evidence_recall@3": 1.0,
+      "evidence_mrr": 0.6666666666666666,
+      "sufficient_evidence@3": 1.0
+    },
+    "D": {
+      "cases": 2,
+      "answerable_cases": 2,
+      "unanswerable_cases": 0,
+      "hit_rate@3": 0.5,
+      "recall@3": 0.5,
+      "mrr": 0.5,
+      "evidence_evaluated_cases": 2,
+      "evidence_hit@3": 0.5,
+      "evidence_recall@3": 0.5,
+      "evidence_mrr": 0.5,
+      "sufficient_evidence@3": 0.5
+    }
+  },
+  "validation": {
+    "regression_tests": 81,
+    "regression_tests_passed": 81,
+    "regression_network": "disabled",
+    "bm25_matches_existing_full_report": true,
+    "ABC_match_offline_reports": true,
+    "D_candidate_pool_matches_C_top10": true,
+    "shared_corpus_eval_code": true,
+    "metadata_reads_only_no_generation_or_judge": true
+  },
+  "local_raw_reports_directory": "results/railpolicy_v1/run_v3",
+  "limitations": [
+    "8 answerable Dev cases, not a held-out Test set",
+    "selected evidence labels do not exhaust semantic alternatives",
+    "no generated-answer or refusal evaluation",
+    "single fixed environment and parameters"
+  ]
+}

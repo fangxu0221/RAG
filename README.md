@@ -11,7 +11,7 @@
 ```text
 DomainRAG-Benchmark/
 ├── domainrag/        # 20个核心模块：检索、生成、Agent及确定性证据评测
-├── configs/          # 四个基础配置 + 独立铁路Dev BM25评测配置
+├── configs/          # 四个基础配置 + 四组独立铁路Dev评测配置
 ├── data/llm_notes/   # 暂留的11篇知识文档及配套旧题集
 ├── data/railway/     # 新采集的9份12306官方资料、原始响应与来源索引
 ├── scripts/          # 独立采集工具；不参与普通问答运行
@@ -63,7 +63,7 @@ python -m domainrag.cli answer --config configs/hybrid_reranker.json --question 
 python -m domainrag.agent --config configs/hybrid_reranker.json --question "为什么注意力分数要除以根号维度？"
 ```
 
-后两条命令使用 `DEEPSEEK_API_KEY` 调用真实模型，将问题、提示词和取得的证据发给供应商并产生用量。Agent在预算内可能调用多次。完整链路的可选依赖及权重尚未在当前验证环境准备，本次没有运行这些真实模型请求。
+后两条命令使用 `DEEPSEEK_API_KEY` 调用真实模型，将问题、提示词和取得的证据发给供应商并产生用量。Agent在预算内可能调用多次。`.venv-web/`仍用于轻量验证；独立的`.venv-railpolicy-v1/`已准备BGE与ONNX重排依赖及权重用于检索实验，没有运行生成或Judge请求。
 
 回归测试：
 
@@ -102,6 +102,23 @@ python -B -X utf8 -m domainrag.cli benchmark --config configs/railway_dev_bm25.j
 本轮81项测试通过，含禁用socket连接的复验；随后运行10题BM25（8道可回答参与均值、2道不可回答单列）：Source Hit/Recall@3=0.875、MRR=0.750；Evidence Hit@3=0.750、Recall@3=0.6875、MRR=0.5625、完整证据率@3=0.625。Dev-008命中文件但未覆盖任何标注引文；Dev-003只覆盖两条必要证据之一。旧40题与Git HEAD原评分函数的整份Source报告完全相同。再次复现与首轮报告逐字段一致。
 
 完整协议、10题对照及区间解释见 [确定性Evidence检索评测](docs/确定性Evidence检索评测.md)，本机运行产物在 `results/railway_dev_evidence_bm25_v1.json`（该目录按现有规则忽略）。此次只改评测与技术标注元数据，不调整题意、引文或检索参数，不请求模型/Judge API，也不提交或推送Git。
+
+## RailPolicy-RAG V1四组对照
+
+新增铁路Dev的[BGE](configs/railway_dev_embedding.json)、[RRF](configs/railway_dev_hybrid_rrf.json)、[Reranker](configs/railway_dev_hybrid_reranker.json)配置，复用已有铁路BM25配置；统一420/80/Top-3及原模型、原参数。没有改动算法、评分器、Judge、Agent或Ground Truth。
+
+| 组 | Source Hit/Recall@3 | Source MRR | Evidence Hit@3 | Evidence Recall@3 | Evidence MRR | 完整证据率@3 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| A BM25 | 0.8750 | 0.7500 | 0.7500 | 0.6875 | 0.5625 | 0.6250 |
+| B BGE | 0.7500 | 0.6250 | 0.6250 | 0.5625 | 0.4375 | 0.5000 |
+| C RRF | 0.8750 | 0.7292 | 0.7500 | 0.6875 | 0.5417 | 0.6250 |
+| D RRF+重排 | 0.6250 | 0.4792 | 0.6250 | 0.5208 | 0.3542 | 0.3750 |
+
+81项测试在原环境和独立CPU实验环境通过；A完整复现旧报告。BGE补回007但丢失002、006；RRF覆盖率未超过BM25；重排将008从0提升到2/3，却丢失其他标注证据，整体没有收益。007首位规程包含未标注的等价证据，已记录限制，没有修改标签。仅8道可回答Dev题参与均值，不能作为最终泛化结论。
+
+[实验脚本](scripts/run_railpolicy_v1.py)复用CLI保存正式Top-3与额外Top-10诊断。环境/权重在忽略目录，准备阶段使用官方CPU源、清华PyPI镜像及Hugging Face官方权重；正式运行只放行HF文件元数据GET/HEAD，其他连接禁止。四组原始JSON、候选和环境记录本地保存在`results/railpolicy_v1/run_v3/`；可追踪的[精简摘要](docs/experiments/railpolicy_v1/summary.json)、[模型版本与哈希](docs/experiments/railpolicy_v1/model_manifest.json)、[依赖锁](docs/experiments/railpolicy_v1/requirements.lock.txt)及[典型重排诊断](docs/experiments/railpolicy_v1/reranker_cases.json)另存于docs。
+
+运行命令、10题变化和证据区间分析见[实验文档](docs/RailPolicy-RAG_V1_检索对照实验.md)。无生成/Judge API调用，无参数调优，无Git提交或推送。
 
 ## 维护约定
 
