@@ -1,0 +1,13 @@
+{
+  "retriever": "bm25",
+  "docs_path": "data/railway",
+  "eval_path": "data/railway/eval_dev.jsonl",
+  "chunk_size": 420,
+  "chunk_overlap": 80,
+  "top_k": 3,
+  "bm25": {
+    "k1": 1.5,
+    "b": 0.75
+  },
+  "evidence_evaluation": true
+}

@@ -10,8 +10,8 @@
 
 ```text
 DomainRAG-Benchmark/
-├── domainrag/        # 19个核心模块：检索、生成、Agent及其依赖
-├── configs/          # BM25、BGE、RRF、Reranker四个基础配置
+├── domainrag/        # 20个核心模块：检索、生成、Agent及确定性证据评测
+├── configs/          # 四个基础配置 + 独立铁路Dev BM25评测配置
 ├── data/llm_notes/   # 暂留的11篇知识文档及配套旧题集
 ├── data/railway/     # 新采集的9份12306官方资料、原始响应与来源索引
 ├── scripts/          # 独立采集工具；不参与普通问答运行
@@ -71,15 +71,15 @@ python -m domainrag.agent --config configs/hybrid_reranker.json --question "为�
 python -B -X utf8 -m unittest discover -s tests -v
 ```
 
-当前62项测试通过，验证控制流、计算、证据与异常边界；另2项旧研究专项测试随脚本归档，没有作为当前套件跳过。
+当前81项测试通过（原62项 + 新增19项），验证控制流、计算、证据区间、AND/OR及异常边界；另2项旧研究专项测试随脚本归档，没有作为当前套件跳过。
 
 ## 后续替换知识库
 
-第一版12306铁路旅客资料已采集到 `data/railway/`：六个FAQ专题（62组问答）、两份须知（20项）、一份国铁集团客运规程（115条）。原始HTML/正文脚本与Markdown同时保留，来源和版本见 `sources.json`。当前配置仍使用旧学习资料，铁路 `eval.jsonl` 暂空。内容、校验和接入边界见 [铁路旅客知识库：第一版采集说明](docs/铁路旅客知识库_第一版.md)。
+第一版12306铁路旅客资料已采集到 `data/railway/`：六个FAQ专题（62组问答）、两份须知（20项）、一份国铁集团客运规程（115条）。原始HTML/正文脚本与Markdown同时保留，来源和版本见 `sources.json`。四个基础配置仍使用旧学习资料，铁路 `eval.jsonl` 暂空。内容、校验和接入边界见 [铁路旅客知识库：第一版采集说明](docs/铁路旅客知识库_第一版.md)。
 
 新增独立Dev题集 [data/railway/eval_dev.jsonl](data/railway/eval_dev.jsonl)：事实查询、数字/时间规则、语义改写、多条件判断、不可回答各2道，共10道。复用现有 `EvaluationCase` JSONL格式；8道可回答题在 `metadata.evidence` 中标注13段可精确匹配的Markdown原文，2道不可回答题来源及证据为空并说明全库缺失依据。静态校验通过，详见 [验证记录](data/railway/eval_dev.validation.json) 和 [题目清单](docs/铁路旅客知识库_第一版.md#6-dev评测题集)。
 
-该题集绑定现有9份铁路Markdown快照，标为 `split=dev`，用于后续确定性Evidence级检索评测的Ground Truth准备，不是未见Test集。当前标注选取充分证据，尚未穷尽其他条款中的等价表述，也未经过独立人工复核。此次仅生成题集并验证JSONL、加载器兼容、来源、证据、题型配比与去重；没有改检索算法、指标或Judge，没有运行检索评测或调用大模型API。原 `eval.jsonl`、来源快照与现有配置均未覆盖，当前评测代码也未新增Evidence级指标。
+该题集绑定现有9份铁路Markdown快照，标为 `split=dev`，不是未见Test集。标注选取充分证据，尚未穷尽其他条款中的等价表述，也未经过独立人工复核。现已接入确定性Evidence级检索评测：默认逐条必要（AND），可用相同 `group_id` 表达替代引文（OR）；重复原文默认报歧义，仅显式 `match_policy=any_occurrence` 时接受任一位置。Dev-003仅新增这一技术标记，题目、答案、来源、quote、unit_id均未改变，旧哈希保存在验证记录中。原 `eval.jsonl`、语料快照和四个基础配置未覆盖。
 
 1. 把新资料放在独立目录，例如 `data/knowledge/`；当前尚未创建或启用该目录。
 2. 现有读取器支持UTF-8 `.md` / `.txt`。PDF、Word等需先转换或增加解析能力。
@@ -88,6 +88,20 @@ python -B -X utf8 -m unittest discover -s tests -v
 5. 检索、回答和测试验证后，再归档旧 `data/llm_notes/`。
 
 当前知识库及其题集暂时保持原样，四个配置仍指向有效文件。项目根 `docs/` 是阅读文档，不会自动进入知识库。旧评测分数均属历史证据，不用于证明新知识库效果。
+
+## 铁路Dev：确定性Evidence检索评测
+
+独立配置 [railway_dev_bm25.json](configs/railway_dev_bm25.json) 复用原BM25参数（420字符、80重叠、Top-3、k1=1.5、b=0.75），开启 `evidence_evaluation`；四个基础配置保持原样。
+
+```powershell
+python -B -X utf8 -m domainrag.cli benchmark --config configs/railway_dev_bm25.json --output results/railway_dev_evidence_bm25_reproduce.json
+```
+
+[evidence.py](domainrag/evidence.py) 用规范化后的 `source + quote` 定位完整证据区间，合并相邻/重叠Chunk覆盖并去重；[evaluation.py](domainrag/evaluation.py) 保留Source指标，同时新增 `evidence_hit@k`、`evidence_recall@k`、`evidence_mrr`、`sufficient_evidence@k`。缺失或含糊标注报错，不可回答题指标为null并单独统计。旧评测不启用该功能时，调用及报告结构保持兼容。
+
+本轮81项测试通过，含禁用socket连接的复验；随后运行10题BM25（8道可回答参与均值、2道不可回答单列）：Source Hit/Recall@3=0.875、MRR=0.750；Evidence Hit@3=0.750、Recall@3=0.6875、MRR=0.5625、完整证据率@3=0.625。Dev-008命中文件但未覆盖任何标注引文；Dev-003只覆盖两条必要证据之一。旧40题与Git HEAD原评分函数的整份Source报告完全相同。再次复现与首轮报告逐字段一致。
+
+完整协议、10题对照及区间解释见 [确定性Evidence检索评测](docs/确定性Evidence检索评测.md)，本机运行产物在 `results/railway_dev_evidence_bm25_v1.json`（该目录按现有规则忽略）。此次只改评测与技术标注元数据，不调整题意、引文或检索参数，不请求模型/Judge API，也不提交或推送Git。
 
 ## 维护约定
 

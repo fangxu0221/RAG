@@ -27,7 +27,7 @@ from .reranker import (
     CrossEncoderReranker,
 )
 from .retriever import Retriever
-from .frozen import verify_frozen_dataset, runtime_fingerprint
+from .frozen import verify_frozen_dataset, runtime_fingerprint, text_sha256
 
 
 def project_path(config_path: Path, value: str) -> Path:
@@ -141,15 +141,28 @@ def run_benchmark(args: argparse.Namespace) -> None:
     """benchmark 子命令：只评检索，不调用生成模型。"""
 
     config_path = Path(args.config)
-    retriever, config = build_retriever(config_path)
+    config = load_config(config_path)
+    documents = None
+    if config.get("evidence_evaluation", False):
+        # 区间标签与检索器必须使用同一批 Document，不能在两次加载间混入变更。
+        verify_frozen_dataset(config_path)
+        documents = load_documents(project_path(config_path, str(config["docs_path"])))
+        retriever = build_retriever_from_documents(documents, config)
+    else:
+        retriever, config = build_retriever(config_path)
     cases = load_evaluation_cases(
         project_path(config_path, str(config["eval_path"]))
     )
     top_k = int(config.get("top_k", 3))
-    report = evaluate_retrieval(retriever, cases, top_k=top_k)
+    report = evaluate_retrieval(retriever, cases, top_k=top_k, documents=documents)
     report["config"] = config
     report["dataset"] = verify_frozen_dataset(config_path)
     report["runtime"] = runtime_fingerprint()
+    if documents is not None:
+        report["input_sha256"] = {
+            "config": text_sha256(config_path),
+            "eval": text_sha256(project_path(config_path, str(config["eval_path"]))),
+        }
     write_json(args.output, report)
     print(json.dumps(report["summary"], ensure_ascii=False, indent=2))
     print(f"完整结果已写入: {Path(args.output).resolve()}")
