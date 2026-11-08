@@ -77,6 +77,10 @@ python -B -X utf8 -m unittest discover -s tests -v
 
 第一版12306铁路旅客资料已采集到 `data/railway/`：六个FAQ专题（62组问答）、两份须知（20项）、一份国铁集团客运规程（115条）。原始HTML/正文脚本与Markdown同时保留，来源和版本见 `sources.json`。当前配置仍使用旧学习资料，铁路 `eval.jsonl` 暂空。内容、校验和接入边界见 [铁路旅客知识库：第一版采集说明](docs/铁路旅客知识库_第一版.md)。
 
+新增独立Dev题集 [data/railway/eval_dev.jsonl](data/railway/eval_dev.jsonl)：事实查询、数字/时间规则、语义改写、多条件判断、不可回答各2道，共10道。复用现有 `EvaluationCase` JSONL格式；8道可回答题在 `metadata.evidence` 中标注13段可精确匹配的Markdown原文，2道不可回答题来源及证据为空并说明全库缺失依据。静态校验通过，详见 [验证记录](data/railway/eval_dev.validation.json) 和 [题目清单](docs/铁路旅客知识库_第一版.md#6-dev评测题集)。
+
+该题集绑定现有9份铁路Markdown快照，标为 `split=dev`，用于后续确定性Evidence级检索评测的Ground Truth准备，不是未见Test集。当前标注选取充分证据，尚未穷尽其他条款中的等价表述，也未经过独立人工复核。此次仅生成题集并验证JSONL、加载器兼容、来源、证据、题型配比与去重；没有改检索算法、指标或Judge，没有运行检索评测或调用大模型API。原 `eval.jsonl`、来源快照与现有配置均未覆盖，当前评测代码也未新增Evidence级指标。
+
 1. 把新资料放在独立目录，例如 `data/knowledge/`；当前尚未创建或启用该目录。
 2. 现有读取器支持UTF-8 `.md` / `.txt`。PDF、Word等需先转换或增加解析能力。
 3. 在独立配置中验证新资料，再同步四个基础配置的 `docs_path`。配置文件继续放在 `configs/` 下。

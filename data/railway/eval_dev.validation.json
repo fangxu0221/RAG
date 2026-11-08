@@ -1,0 +1,424 @@
+{
+  "schema_version": 1,
+  "dataset_id": "railway_dev_v1",
+  "split": "dev",
+  "dataset_path": "data/railway/eval_dev.jsonl",
+  "dataset_sha256": "eb2870b23f4482f75e6187cbe2cb0f9ed72610b9ca8b3f8daf844a3c1042bae0",
+  "validated_at": "2026-11-07T11:11:09+00:00",
+  "corpus_root": "data/railway",
+  "corpus_snapshot_id": "20261107T095607Z",
+  "corpus_document_count": 9,
+  "corpus_sha256": {
+    "faq/children_tickets.md": "d4b990478ad032d97e2287216b49fe6d10eef6ca267180fe8651659793440603",
+    "faq/online_booking.md": "63e4615313f6f883f3a65d26b895b87d58f4b7567c0604ed248b06799fa4a1e0",
+    "faq/online_refunds.md": "86f95c1166eb0061e3b2f888d75acc7721d04dcbd50fb788b3e39328f591641f",
+    "faq/student_tickets.md": "3d5cfe07e47d14f528d423a2bf1c0330edd155a33e228f0c8f160b5bcb73d9c1",
+    "faq/ticket_changes.md": "16dfbddff656390562eb94a514a210c9a5bb144e32a8adf063d8934ba6c36c4e",
+    "faq/window_refunds.md": "cf98b662469d5330b1a9e1e9dbee59682ce14ccaf06631b4510e7ac680839f61",
+    "notices/ticket_purchase_notice.md": "710d106e22fcb98dacc2da5364529afc2ed8254e54085ca11473ebdfe736541e",
+    "notices/travel_notice.md": "604c00b14f6018fa7fb0569c1093569e74777349c15516df06393f43838e70af",
+    "regulations/passenger_transport_rules.md": "0538b30442156b2dd803ba9ba9c7b30f343e42aef697e6fa2c3cda819a58b214"
+  },
+  "case_count": 10,
+  "answerable_cases": 8,
+  "unanswerable_cases": 2,
+  "question_type_counts": {
+    "direct": 2,
+    "numeric_time": 2,
+    "paraphrase": 2,
+    "multi_condition": 2,
+    "unanswerable": 2
+  },
+  "evidence_count": 13,
+  "checks": {
+    "jsonl_parse": "passed",
+    "existing_loader_roundtrip": "passed",
+    "required_fields_and_types": "passed",
+    "category_distribution": "passed",
+    "source_exists": "passed",
+    "evidence_exact_raw_markdown_match": "passed",
+    "evidence_normalized_match": "passed",
+    "evidence_unit_membership": "passed",
+    "source_evidence_set_consistency": "passed",
+    "unique_ids_and_questions": "passed",
+    "not_exact_copies_of_faq_questions": "passed",
+    "protected_files_unchanged": "passed"
+  },
+  "evidence_semantics_review": "Authoring agent compared every selected quote with answer key points; not an independent human or model-Judge review.",
+  "ground_truth_scope": "Selected sufficient evidence spans; alternative wording in other clauses is not exhaustively labeled. unit_id is provenance; source+quote is the primary label, not a frozen chunk ID.",
+  "unanswerable_review": "Full nine-document reading plus keyword and related-section inspection; keyword absence alone is not proof of unanswerability.",
+  "unanswerable_keyword_occurrences": {
+    "rail-dev-009": {
+      "白酒": {
+        "faq/children_tickets.md": 0,
+        "faq/online_booking.md": 0,
+        "faq/online_refunds.md": 0,
+        "faq/student_tickets.md": 0,
+        "faq/ticket_changes.md": 0,
+        "faq/window_refunds.md": 0,
+        "notices/ticket_purchase_notice.md": 0,
+        "notices/travel_notice.md": 0,
+        "regulations/passenger_transport_rules.md": 0
+      },
+      "酒精度": {
+        "faq/children_tickets.md": 0,
+        "faq/online_booking.md": 0,
+        "faq/online_refunds.md": 0,
+        "faq/student_tickets.md": 0,
+        "faq/ticket_changes.md": 0,
+        "faq/window_refunds.md": 0,
+        "notices/ticket_purchase_notice.md": 0,
+        "notices/travel_notice.md": 0,
+        "regulations/passenger_transport_rules.md": 0
+      },
+      "乙醇": {
+        "faq/children_tickets.md": 0,
+        "faq/online_booking.md": 0,
+        "faq/online_refunds.md": 0,
+        "faq/student_tickets.md": 0,
+        "faq/ticket_changes.md": 0,
+        "faq/window_refunds.md": 0,
+        "notices/ticket_purchase_notice.md": 0,
+        "notices/travel_notice.md": 0,
+        "regulations/passenger_transport_rules.md": 0
+      },
+      "毫升": {
+        "faq/children_tickets.md": 0,
+        "faq/online_booking.md": 0,
+        "faq/online_refunds.md": 0,
+        "faq/student_tickets.md": 0,
+        "faq/ticket_changes.md": 0,
+        "faq/window_refunds.md": 0,
+        "notices/ticket_purchase_notice.md": 0,
+        "notices/travel_notice.md": 0,
+        "regulations/passenger_transport_rules.md": 0
+      },
+      "禁限": {
+        "faq/children_tickets.md": 0,
+        "faq/online_booking.md": 0,
+        "faq/online_refunds.md": 0,
+        "faq/student_tickets.md": 0,
+        "faq/ticket_changes.md": 0,
+        "faq/window_refunds.md": 0,
+        "notices/ticket_purchase_notice.md": 0,
+        "notices/travel_notice.md": 1,
+        "regulations/passenger_transport_rules.md": 3
+      },
+      "携带品": {
+        "faq/children_tickets.md": 0,
+        "faq/online_booking.md": 0,
+        "faq/online_refunds.md": 0,
+        "faq/student_tickets.md": 0,
+        "faq/ticket_changes.md": 0,
+        "faq/window_refunds.md": 0,
+        "notices/ticket_purchase_notice.md": 0,
+        "notices/travel_notice.md": 1,
+        "regulations/passenger_transport_rules.md": 11
+      }
+    },
+    "rail-dev-010": {
+      "微信": {
+        "faq/children_tickets.md": 0,
+        "faq/online_booking.md": 1,
+        "faq/online_refunds.md": 0,
+        "faq/student_tickets.md": 0,
+        "faq/ticket_changes.md": 0,
+        "faq/window_refunds.md": 0,
+        "notices/ticket_purchase_notice.md": 0,
+        "notices/travel_notice.md": 0,
+        "regulations/passenger_transport_rules.md": 0
+      },
+      "退款": {
+        "faq/children_tickets.md": 0,
+        "faq/online_booking.md": 0,
+        "faq/online_refunds.md": 2,
+        "faq/student_tickets.md": 0,
+        "faq/ticket_changes.md": 4,
+        "faq/window_refunds.md": 1,
+        "notices/ticket_purchase_notice.md": 1,
+        "notices/travel_notice.md": 0,
+        "regulations/passenger_transport_rules.md": 1
+      },
+      "到账": {
+        "faq/children_tickets.md": 0,
+        "faq/online_booking.md": 0,
+        "faq/online_refunds.md": 0,
+        "faq/student_tickets.md": 0,
+        "faq/ticket_changes.md": 2,
+        "faq/window_refunds.md": 0,
+        "notices/ticket_purchase_notice.md": 0,
+        "notices/travel_notice.md": 0,
+        "regulations/passenger_transport_rules.md": 0
+      },
+      "规定时间": {
+        "faq/children_tickets.md": 0,
+        "faq/online_booking.md": 0,
+        "faq/online_refunds.md": 1,
+        "faq/student_tickets.md": 0,
+        "faq/ticket_changes.md": 2,
+        "faq/window_refunds.md": 0,
+        "notices/ticket_purchase_notice.md": 0,
+        "notices/travel_notice.md": 0,
+        "regulations/passenger_transport_rules.md": 0
+      },
+      "在线支付工具": {
+        "faq/children_tickets.md": 0,
+        "faq/online_booking.md": 3,
+        "faq/online_refunds.md": 3,
+        "faq/student_tickets.md": 0,
+        "faq/ticket_changes.md": 4,
+        "faq/window_refunds.md": 0,
+        "notices/ticket_purchase_notice.md": 0,
+        "notices/travel_notice.md": 0,
+        "regulations/passenger_transport_rules.md": 0
+      },
+      "小时": {
+        "faq/children_tickets.md": 0,
+        "faq/online_booking.md": 0,
+        "faq/online_refunds.md": 0,
+        "faq/student_tickets.md": 0,
+        "faq/ticket_changes.md": 9,
+        "faq/window_refunds.md": 5,
+        "notices/ticket_purchase_notice.md": 10,
+        "notices/travel_notice.md": 0,
+        "regulations/passenger_transport_rules.md": 5
+      }
+    }
+  },
+  "protected_input_sha256": {
+    "data/railway/eval.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "data/llm_notes/eval.jsonl": "0fc24e7f00b1d077e6b57c4cb2c1aa5dbbc3402301629188f154c99fe7c77cc2",
+    "data/railway/sources.json": "b5f2d63d9fc309b7a18cd9ad9e62a9ad75e3d18076fc0238fe7565290249715e",
+    "data/railway/units.jsonl": "04ae6427ed7b904862cfbe586623014076d0cfa6d53f9323cf26c52c708ceac7",
+    "domainrag/agent.py": "85522aec1fae590ec7465f487b05158cd45d8b2d67356f874d9c7b7eb1cef1e6",
+    "domainrag/answer_evaluation.py": "3e07e581e728eb01dd8639555111c59ac628067f28c54a851770c72c0dc735ec",
+    "domainrag/bm25.py": "34ab729c3e4a8b19f3236e8cfbfd94817a88116e185aeeadedd86caf82ac997c",
+    "domainrag/chunking.py": "acca61c186204333f6501889ccfbed3474302c8a2d392e1d86c38813b931a6cb",
+    "domainrag/cli.py": "29adf9938d40e660dbdcce830e3d44f072383517c9e631c725df58bf5141951f",
+    "domainrag/embedding.py": "3d0ec59e6f73356f9ad545ad367262a50093b0c39395f6f04c2eef77b6afa51f",
+    "domainrag/evaluation.py": "21c760caadcd6fc5cbc2cdfb0bb4da4c3fa5bd4944a9bcbb86141f7c4f7b5032",
+    "domainrag/failures.py": "cce756010ba4629b85a6a1335ec05f000eaaab37a035905c586a47cedc672934",
+    "domainrag/frozen.py": "40fa2d4715d020c9f4f17f6f0b80ab991c8660a50e0a9b1927fcd636edee08d6",
+    "domainrag/generator.py": "4cecdf6225f9c4a9f5bb52c0c53b419748334700bfee73286542b015929d31b4",
+    "domainrag/holdout.py": "16c00f07fbee9a6d39fa195d4def8d92ad33503ebacf46ad8a7183b84f587560",
+    "domainrag/hybrid.py": "739a14e84fdbf1279e68a236c4763c79854964cae00a52af453e473987051477",
+    "domainrag/io.py": "d184ffab2e29681b649a3252a151ca3e85c73e6ac3223b09014f1562a070b306",
+    "domainrag/models.py": "897e813f0b7c1b8bc122ef8097a17fcd24467b6120fed134da309c459c613119",
+    "domainrag/reranker.py": "f7e0f9feffc718b371e6e8f2054b4f560b60a0d5f69df0cbcee4122b089d8eeb",
+    "domainrag/retriever.py": "5ac0d558f21ae26e5ac6850ddffded4011454813536a5a7a35b80853c400e9ac",
+    "domainrag/text.py": "e4472a4e6da7bbc68ca95c4ff6e169641f7ce0c10b90179beca0e34638c95c13",
+    "domainrag/tools.py": "66a702afc51c3e5bec71b8d5e51b1b6d818c3cb5269bdf91aa655790e0005bd2",
+    "domainrag/__init__.py": "92ca7381e9b9162072e93315e4f3d596699e58681aada99d4ef01a3b7c676ef0",
+    "configs/bm25_baseline.json": "83b7e8beefd4b2644bdacc315bac871fc1969be32962320ea93470df2df94907",
+    "configs/embedding_baseline.json": "7c7efd72d2755191e4dea57efc62eb3311149f997a1a3daf756c1eefd8f193a6",
+    "configs/hybrid_reranker.json": "299190b605bc1e035ae5ab39c3cc70a75d86f8d35784c0d2fd991070e7a1d76b",
+    "configs/hybrid_rrf.json": "ad0777ee2ac9af4b2804a298746c5a19bceece469f5740075a4b60acc2a844be"
+  },
+  "external_network_allowed_during_validation": false,
+  "model_api_calls": 0,
+  "retrieval_runs": 0,
+  "judge_calls": 0,
+  "cases": [
+    {
+      "id": "rail-dev-001",
+      "question_type": "direct",
+      "sources": [
+        "faq/online_booking.md"
+      ],
+      "evidence_locations": [
+        {
+          "source": "faq/online_booking.md",
+          "unit_id": "faq.online_booking.q003",
+          "markdown_start": 373,
+          "markdown_end": 457,
+          "quote_sha256": "eeb5fec92dcf0850b3c87d6831c6a243c1ba8f0e9f44dae0c26dbba51a27ba8b",
+          "quote_occurrences_in_source": 1,
+          "quote_characters": 84
+        }
+      ]
+    },
+    {
+      "id": "rail-dev-002",
+      "question_type": "direct",
+      "sources": [
+        "faq/window_refunds.md"
+      ],
+      "evidence_locations": [
+        {
+          "source": "faq/window_refunds.md",
+          "unit_id": "faq.window_refunds.q004",
+          "markdown_start": 574,
+          "markdown_end": 652,
+          "quote_sha256": "0cac9e9722f5b98c9f8454c1819e1c30a6b55426c877611a3669115013afa881",
+          "quote_occurrences_in_source": 1,
+          "quote_characters": 78
+        }
+      ]
+    },
+    {
+      "id": "rail-dev-003",
+      "question_type": "numeric_time",
+      "sources": [
+        "faq/student_tickets.md"
+      ],
+      "evidence_locations": [
+        {
+          "source": "faq/student_tickets.md",
+          "unit_id": "faq.student_tickets.q011",
+          "markdown_start": 2572,
+          "markdown_end": 2623,
+          "quote_sha256": "c7bc13b99ffe2b90200d9d52456975140e13002e4d5be15fcdfd1df9d6a46db4",
+          "quote_occurrences_in_source": 2,
+          "quote_characters": 51
+        },
+        {
+          "source": "faq/student_tickets.md",
+          "unit_id": "faq.student_tickets.q002",
+          "markdown_start": 1178,
+          "markdown_end": 1223,
+          "quote_sha256": "8b3ad17bad08c7b05ab79f2b52838fee85dff1ae914b144bbc5c4d049b60f411",
+          "quote_occurrences_in_source": 1,
+          "quote_characters": 45
+        }
+      ]
+    },
+    {
+      "id": "rail-dev-004",
+      "question_type": "numeric_time",
+      "sources": [
+        "notices/ticket_purchase_notice.md"
+      ],
+      "evidence_locations": [
+        {
+          "source": "notices/ticket_purchase_notice.md",
+          "unit_id": "notice.ticket_purchase_notice.item007",
+          "markdown_start": 1909,
+          "markdown_end": 2018,
+          "quote_sha256": "077ef43b481f70c29a9ff7252189212c7cda8707859d012069f832af381915a4",
+          "quote_occurrences_in_source": 1,
+          "quote_characters": 109
+        }
+      ]
+    },
+    {
+      "id": "rail-dev-005",
+      "question_type": "paraphrase",
+      "sources": [
+        "regulations/passenger_transport_rules.md"
+      ],
+      "evidence_locations": [
+        {
+          "source": "regulations/passenger_transport_rules.md",
+          "unit_id": "regulation.cr_passenger_transport_rules.article051",
+          "markdown_start": 8589,
+          "markdown_end": 8634,
+          "quote_sha256": "a879c64b2c6a4b3d717452c3fcdc2015f2a3936fb452fdeac7d69f25b1709137",
+          "quote_occurrences_in_source": 1,
+          "quote_characters": 45
+        }
+      ]
+    },
+    {
+      "id": "rail-dev-006",
+      "question_type": "paraphrase",
+      "sources": [
+        "notices/travel_notice.md"
+      ],
+      "evidence_locations": [
+        {
+          "source": "notices/travel_notice.md",
+          "unit_id": "notice.travel_notice.item008",
+          "markdown_start": 919,
+          "markdown_end": 1002,
+          "quote_sha256": "d26e1b3a2057d108f2171a99644a4ccd12e98c31ac8d68a8fe12bde453ca3467",
+          "quote_occurrences_in_source": 1,
+          "quote_characters": 83
+        }
+      ]
+    },
+    {
+      "id": "rail-dev-007",
+      "question_type": "multi_condition",
+      "sources": [
+        "faq/children_tickets.md"
+      ],
+      "evidence_locations": [
+        {
+          "source": "faq/children_tickets.md",
+          "unit_id": "faq.children_tickets.q002",
+          "markdown_start": 237,
+          "markdown_end": 293,
+          "quote_sha256": "b667d66c077d806384309b96dfa200b1ba4f70095af9f84ba848b693b21c9616",
+          "quote_occurrences_in_source": 1,
+          "quote_characters": 56
+        },
+        {
+          "source": "faq/children_tickets.md",
+          "unit_id": "faq.children_tickets.q002",
+          "markdown_start": 368,
+          "markdown_end": 393,
+          "quote_sha256": "46a8412dea9ac26b29716658a50be51d1a9c57ff478395e92cad9cd952c8dda3",
+          "quote_occurrences_in_source": 1,
+          "quote_characters": 25
+        },
+        {
+          "source": "faq/children_tickets.md",
+          "unit_id": "faq.children_tickets.q002",
+          "markdown_start": 307,
+          "markdown_end": 366,
+          "quote_sha256": "f9d47b2717ad2a48f0f3c56c64fc7f16251998c67f7fe0b5f7507b16c4871f0e",
+          "quote_occurrences_in_source": 1,
+          "quote_characters": 59
+        }
+      ]
+    },
+    {
+      "id": "rail-dev-008",
+      "question_type": "multi_condition",
+      "sources": [
+        "faq/ticket_changes.md"
+      ],
+      "evidence_locations": [
+        {
+          "source": "faq/ticket_changes.md",
+          "unit_id": "faq.ticket_changes.q003",
+          "markdown_start": 483,
+          "markdown_end": 518,
+          "quote_sha256": "a4e4186409e6c5a379b2f7c84ced096ba3791914443c17f690774188544d3584",
+          "quote_occurrences_in_source": 1,
+          "quote_characters": 35
+        },
+        {
+          "source": "faq/ticket_changes.md",
+          "unit_id": "faq.ticket_changes.q003",
+          "markdown_start": 625,
+          "markdown_end": 653,
+          "quote_sha256": "06c8d4f283aed847742291e167f351a209cea0a54923cc983bd7361d26d1080e",
+          "quote_occurrences_in_source": 1,
+          "quote_characters": 28
+        },
+        {
+          "source": "faq/ticket_changes.md",
+          "unit_id": "faq.ticket_changes.q005",
+          "markdown_start": 932,
+          "markdown_end": 981,
+          "quote_sha256": "e82bbba1f20a6845c21ed86d26e6ad17681285666db5e955542c0f75a6560d6c",
+          "quote_occurrences_in_source": 1,
+          "quote_characters": 49
+        }
+      ]
+    },
+    {
+      "id": "rail-dev-009",
+      "question_type": "unanswerable",
+      "sources": [],
+      "evidence_locations": []
+    },
+    {
+      "id": "rail-dev-010",
+      "question_type": "unanswerable",
+      "sources": [],
+      "evidence_locations": []
+    }
+  ]
+}
