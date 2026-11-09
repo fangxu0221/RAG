@@ -1,0 +1,2295 @@
+{
+  "protocol": "railpolicy_dev_v2_auto_1",
+  "grade": "AI-assisted Silver Ground Truth",
+  "answerable_cases": 8,
+  "unanswerable_cases": 2,
+  "candidate_counts": {
+    "accepted": 19,
+    "rejected": 5,
+    "uncertain": 2
+  },
+  "source_protocol": "Macro-average over necessary evidence groups; any source in a group is enough.",
+  "rankings": "Saved V1 Top-3, verified by complete V1 row replay",
+  "groups": {
+    "A": {
+      "v1_report_sha256": "750996811bb478018ca30260303aee41383adc73d8dafa0882534c662d15730e",
+      "v1_summary": {
+        "cases": 10,
+        "answerable_cases": 8,
+        "unanswerable_cases": 2,
+        "hit_rate@3": 0.875,
+        "recall@3": 0.875,
+        "mrr": 0.75,
+        "evidence_evaluated_cases": 8,
+        "evidence_hit@3": 0.75,
+        "evidence_recall@3": 0.6875,
+        "evidence_mrr": 0.5625,
+        "sufficient_evidence@3": 0.625
+      },
+      "v2_summary": {
+        "evidence_hit@3": 1.0,
+        "evidence_recall@3": 0.8541666666666666,
+        "evidence_mrr": 0.7916666666666666,
+        "sufficient_evidence@3": 0.625,
+        "source_group_hit@3": 1.0,
+        "source_group_recall@3": 0.9583333333333334,
+        "source_group_mrr": 0.8541666666666666,
+        "source_group_sufficient@3": 0.875
+      },
+      "cases": [
+        {
+          "id": "rail-dev-001",
+          "answerable": true,
+          "retrieved": [
+            {
+              "rank": 1,
+              "chunk_id": "faq/online_booking.md#0000",
+              "source": "faq/online_booking.md",
+              "score": 49.207439,
+              "start": 0,
+              "end": 420
+            },
+            {
+              "rank": 2,
+              "chunk_id": "faq/online_booking.md#0001",
+              "source": "faq/online_booking.md",
+              "score": 38.809309,
+              "start": 340,
+              "end": 760
+            },
+            {
+              "rank": 3,
+              "chunk_id": "faq/online_booking.md#0003",
+              "source": "faq/online_booking.md",
+              "score": 24.916667,
+              "start": 1020,
+              "end": 1440
+            }
+          ],
+          "v1": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 1.0,
+            "evidence_mrr": 0.5,
+            "sufficient_evidence@3": true
+          },
+          "v2": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 1.0,
+            "evidence_mrr": 0.5,
+            "sufficient_evidence@3": true
+          },
+          "v1_first_ranks": [
+            2
+          ],
+          "v2_first_ranks": [
+            2
+          ],
+          "v2_source": {
+            "source_group_hit@3": true,
+            "source_group_recall@3": 1.0,
+            "source_group_mrr": 1.0,
+            "source_group_sufficient@3": true
+          }
+        },
+        {
+          "id": "rail-dev-002",
+          "answerable": true,
+          "retrieved": [
+            {
+              "rank": 1,
+              "chunk_id": "faq/online_booking.md#0003",
+              "source": "faq/online_booking.md",
+              "score": 18.031506,
+              "start": 1020,
+              "end": 1440
+            },
+            {
+              "rank": 2,
+              "chunk_id": "faq/window_refunds.md#0001",
+              "source": "faq/window_refunds.md",
+              "score": 17.106339,
+              "start": 340,
+              "end": 760
+            },
+            {
+              "rank": 3,
+              "chunk_id": "faq/ticket_changes.md#0002",
+              "source": "faq/ticket_changes.md",
+              "score": 16.411711,
+              "start": 680,
+              "end": 1100
+            }
+          ],
+          "v1": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 1.0,
+            "evidence_mrr": 0.5,
+            "sufficient_evidence@3": true
+          },
+          "v2": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 1.0,
+            "evidence_mrr": 0.5,
+            "sufficient_evidence@3": true
+          },
+          "v1_first_ranks": [
+            2
+          ],
+          "v2_first_ranks": [
+            2
+          ],
+          "v2_source": {
+            "source_group_hit@3": true,
+            "source_group_recall@3": 1.0,
+            "source_group_mrr": 0.5,
+            "source_group_sufficient@3": true
+          }
+        },
+        {
+          "id": "rail-dev-003",
+          "answerable": true,
+          "retrieved": [
+            {
+              "rank": 1,
+              "chunk_id": "regulations/passenger_transport_rules.md#0009",
+              "source": "regulations/passenger_transport_rules.md",
+              "score": 49.412724,
+              "start": 3060,
+              "end": 3480
+            },
+            {
+              "rank": 2,
+              "chunk_id": "faq/student_tickets.md#0001",
+              "source": "faq/student_tickets.md",
+              "score": 47.777708,
+              "start": 340,
+              "end": 760
+            },
+            {
+              "rank": 3,
+              "chunk_id": "notices/ticket_purchase_notice.md#0002",
+              "source": "notices/ticket_purchase_notice.md",
+              "score": 44.208804,
+              "start": 680,
+              "end": 1100
+            }
+          ],
+          "v1": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 0.5,
+            "evidence_mrr": 0.5,
+            "sufficient_evidence@3": false
+          },
+          "v2": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 0.5,
+            "evidence_mrr": 1.0,
+            "sufficient_evidence@3": false
+          },
+          "v1_first_ranks": [
+            2,
+            null
+          ],
+          "v2_first_ranks": [
+            1,
+            null
+          ],
+          "v2_source": {
+            "source_group_hit@3": true,
+            "source_group_recall@3": 1.0,
+            "source_group_mrr": 1.0,
+            "source_group_sufficient@3": true
+          }
+        },
+        {
+          "id": "rail-dev-004",
+          "answerable": true,
+          "retrieved": [
+            {
+              "rank": 1,
+              "chunk_id": "notices/ticket_purchase_notice.md#0005",
+              "source": "notices/ticket_purchase_notice.md",
+              "score": 53.869805,
+              "start": 1700,
+              "end": 2120
+            },
+            {
+              "rank": 2,
+              "chunk_id": "faq/ticket_changes.md#0005",
+              "source": "faq/ticket_changes.md",
+              "score": 46.228677,
+              "start": 1700,
+              "end": 2120
+            },
+            {
+              "rank": 3,
+              "chunk_id": "faq/window_refunds.md#0002",
+              "source": "faq/window_refunds.md",
+              "score": 40.807544,
+              "start": 680,
+              "end": 1029
+            }
+          ],
+          "v1": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 1.0,
+            "evidence_mrr": 1.0,
+            "sufficient_evidence@3": true
+          },
+          "v2": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 1.0,
+            "evidence_mrr": 1.0,
+            "sufficient_evidence@3": true
+          },
+          "v1_first_ranks": [
+            1
+          ],
+          "v2_first_ranks": [
+            1
+          ],
+          "v2_source": {
+            "source_group_hit@3": true,
+            "source_group_recall@3": 1.0,
+            "source_group_mrr": 1.0,
+            "source_group_sufficient@3": true
+          }
+        },
+        {
+          "id": "rail-dev-005",
+          "answerable": true,
+          "retrieved": [
+            {
+              "rank": 1,
+              "chunk_id": "regulations/passenger_transport_rules.md#0024",
+              "source": "regulations/passenger_transport_rules.md",
+              "score": 18.945373,
+              "start": 8160,
+              "end": 8580
+            },
+            {
+              "rank": 2,
+              "chunk_id": "regulations/passenger_transport_rules.md#0029",
+              "source": "regulations/passenger_transport_rules.md",
+              "score": 11.896297,
+              "start": 9860,
+              "end": 10280
+            },
+            {
+              "rank": 3,
+              "chunk_id": "faq/student_tickets.md#0007",
+              "source": "faq/student_tickets.md",
+              "score": 11.346793,
+              "start": 2380,
+              "end": 2800
+            }
+          ],
+          "v1": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 1.0,
+            "evidence_mrr": 1.0,
+            "sufficient_evidence@3": true
+          },
+          "v2": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 1.0,
+            "evidence_mrr": 1.0,
+            "sufficient_evidence@3": true
+          },
+          "v1_first_ranks": [
+            1
+          ],
+          "v2_first_ranks": [
+            1
+          ],
+          "v2_source": {
+            "source_group_hit@3": true,
+            "source_group_recall@3": 1.0,
+            "source_group_mrr": 1.0,
+            "source_group_sufficient@3": true
+          }
+        },
+        {
+          "id": "rail-dev-006",
+          "answerable": true,
+          "retrieved": [
+            {
+              "rank": 1,
+              "chunk_id": "notices/travel_notice.md#0002",
+              "source": "notices/travel_notice.md",
+              "score": 19.580333,
+              "start": 680,
+              "end": 1100
+            },
+            {
+              "rank": 2,
+              "chunk_id": "regulations/passenger_transport_rules.md#0016",
+              "source": "regulations/passenger_transport_rules.md",
+              "score": 17.735211,
+              "start": 5440,
+              "end": 5860
+            },
+            {
+              "rank": 3,
+              "chunk_id": "regulations/passenger_transport_rules.md#0017",
+              "source": "regulations/passenger_transport_rules.md",
+              "score": 14.800756,
+              "start": 5780,
+              "end": 6200
+            }
+          ],
+          "v1": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 1.0,
+            "evidence_mrr": 1.0,
+            "sufficient_evidence@3": true
+          },
+          "v2": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 1.0,
+            "evidence_mrr": 1.0,
+            "sufficient_evidence@3": true
+          },
+          "v1_first_ranks": [
+            1
+          ],
+          "v2_first_ranks": [
+            1
+          ],
+          "v2_source": {
+            "source_group_hit@3": true,
+            "source_group_recall@3": 1.0,
+            "source_group_mrr": 1.0,
+            "source_group_sufficient@3": true
+          }
+        },
+        {
+          "id": "rail-dev-007",
+          "answerable": true,
+          "retrieved": [
+            {
+              "rank": 1,
+              "chunk_id": "faq/online_booking.md#0006",
+              "source": "faq/online_booking.md",
+              "score": 16.982503,
+              "start": 2040,
+              "end": 2460
+            },
+            {
+              "rank": 2,
+              "chunk_id": "faq/online_booking.md#0007",
+              "source": "faq/online_booking.md",
+              "score": 14.653957,
+              "start": 2380,
+              "end": 2491
+            },
+            {
+              "rank": 3,
+              "chunk_id": "notices/ticket_purchase_notice.md#0001",
+              "source": "notices/ticket_purchase_notice.md",
+              "score": 13.753194,
+              "start": 340,
+              "end": 760
+            }
+          ],
+          "v1": {
+            "evidence_hit@3": false,
+            "evidence_recall@3": 0.0,
+            "evidence_mrr": 0.0,
+            "sufficient_evidence@3": false
+          },
+          "v2": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 0.6666666666666666,
+            "evidence_mrr": 0.3333333333333333,
+            "sufficient_evidence@3": false
+          },
+          "v1_first_ranks": [
+            null,
+            null,
+            null
+          ],
+          "v2_first_ranks": [
+            3,
+            3,
+            null
+          ],
+          "v2_source": {
+            "source_group_hit@3": true,
+            "source_group_recall@3": 0.6666666666666666,
+            "source_group_mrr": 0.3333333333333333,
+            "source_group_sufficient@3": false
+          }
+        },
+        {
+          "id": "rail-dev-008",
+          "answerable": true,
+          "retrieved": [
+            {
+              "rank": 1,
+              "chunk_id": "faq/ticket_changes.md#0000",
+              "source": "faq/ticket_changes.md",
+              "score": 29.521076,
+              "start": 0,
+              "end": 420
+            },
+            {
+              "rank": 2,
+              "chunk_id": "faq/online_booking.md#0000",
+              "source": "faq/online_booking.md",
+              "score": 26.584245,
+              "start": 0,
+              "end": 420
+            },
+            {
+              "rank": 3,
+              "chunk_id": "faq/ticket_changes.md#0005",
+              "source": "faq/ticket_changes.md",
+              "score": 21.339782,
+              "start": 1700,
+              "end": 2120
+            }
+          ],
+          "v1": {
+            "evidence_hit@3": false,
+            "evidence_recall@3": 0.0,
+            "evidence_mrr": 0.0,
+            "sufficient_evidence@3": false
+          },
+          "v2": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 0.6666666666666666,
+            "evidence_mrr": 1.0,
+            "sufficient_evidence@3": false
+          },
+          "v1_first_ranks": [
+            null,
+            null,
+            null
+          ],
+          "v2_first_ranks": [
+            1,
+            3,
+            null
+          ],
+          "v2_source": {
+            "source_group_hit@3": true,
+            "source_group_recall@3": 1.0,
+            "source_group_mrr": 1.0,
+            "source_group_sufficient@3": true
+          }
+        },
+        {
+          "id": "rail-dev-009",
+          "answerable": false,
+          "retrieved": [
+            {
+              "rank": 1,
+              "chunk_id": "regulations/passenger_transport_rules.md#0018",
+              "source": "regulations/passenger_transport_rules.md",
+              "score": 6.420674,
+              "start": 6120,
+              "end": 6540
+            },
+            {
+              "rank": 2,
+              "chunk_id": "regulations/passenger_transport_rules.md#0031",
+              "source": "regulations/passenger_transport_rules.md",
+              "score": 4.258271,
+              "start": 10540,
+              "end": 10960
+            },
+            {
+              "rank": 3,
+              "chunk_id": "faq/online_booking.md#0005",
+              "source": "faq/online_booking.md",
+              "score": 4.220502,
+              "start": 1700,
+              "end": 2120
+            }
+          ],
+          "v1": {
+            "evidence_hit@3": null,
+            "evidence_recall@3": null,
+            "evidence_mrr": null,
+            "sufficient_evidence@3": null
+          },
+          "v2": {
+            "evidence_hit@3": null,
+            "evidence_recall@3": null,
+            "evidence_mrr": null,
+            "sufficient_evidence@3": null
+          },
+          "v1_first_ranks": [],
+          "v2_first_ranks": [],
+          "v2_source": {
+            "source_group_hit@3": null,
+            "source_group_recall@3": null,
+            "source_group_mrr": null,
+            "source_group_sufficient@3": null
+          }
+        },
+        {
+          "id": "rail-dev-010",
+          "answerable": false,
+          "retrieved": [
+            {
+              "rank": 1,
+              "chunk_id": "faq/online_booking.md#0006",
+              "source": "faq/online_booking.md",
+              "score": 21.272177,
+              "start": 2040,
+              "end": 2460
+            },
+            {
+              "rank": 2,
+              "chunk_id": "notices/ticket_purchase_notice.md#0006",
+              "source": "notices/ticket_purchase_notice.md",
+              "score": 20.63755,
+              "start": 2040,
+              "end": 2304
+            },
+            {
+              "rank": 3,
+              "chunk_id": "faq/window_refunds.md#0000",
+              "source": "faq/window_refunds.md",
+              "score": 19.996211,
+              "start": 0,
+              "end": 420
+            }
+          ],
+          "v1": {
+            "evidence_hit@3": null,
+            "evidence_recall@3": null,
+            "evidence_mrr": null,
+            "sufficient_evidence@3": null
+          },
+          "v2": {
+            "evidence_hit@3": null,
+            "evidence_recall@3": null,
+            "evidence_mrr": null,
+            "sufficient_evidence@3": null
+          },
+          "v1_first_ranks": [],
+          "v2_first_ranks": [],
+          "v2_source": {
+            "source_group_hit@3": null,
+            "source_group_recall@3": null,
+            "source_group_mrr": null,
+            "source_group_sufficient@3": null
+          }
+        }
+      ]
+    },
+    "B": {
+      "v1_report_sha256": "221dc37a8ebd0872e3ed64fea7a251e3ef6a07ef3b455e4d9e4360ced43510dd",
+      "v1_summary": {
+        "cases": 10,
+        "answerable_cases": 8,
+        "unanswerable_cases": 2,
+        "hit_rate@3": 0.75,
+        "recall@3": 0.75,
+        "mrr": 0.625,
+        "evidence_evaluated_cases": 8,
+        "evidence_hit@3": 0.625,
+        "evidence_recall@3": 0.5625,
+        "evidence_mrr": 0.4375,
+        "sufficient_evidence@3": 0.5
+      },
+      "v2_summary": {
+        "evidence_hit@3": 0.875,
+        "evidence_recall@3": 0.7916666666666666,
+        "evidence_mrr": 0.5625,
+        "sufficient_evidence@3": 0.75,
+        "source_group_hit@3": 1.0,
+        "source_group_recall@3": 1.0,
+        "source_group_mrr": 0.9375,
+        "source_group_sufficient@3": 1.0
+      },
+      "cases": [
+        {
+          "id": "rail-dev-001",
+          "answerable": true,
+          "retrieved": [
+            {
+              "rank": 1,
+              "chunk_id": "faq/online_booking.md#0000",
+              "source": "faq/online_booking.md",
+              "score": 0.732488,
+              "start": 0,
+              "end": 420
+            },
+            {
+              "rank": 2,
+              "chunk_id": "faq/online_booking.md#0001",
+              "source": "faq/online_booking.md",
+              "score": 0.693076,
+              "start": 340,
+              "end": 760
+            },
+            {
+              "rank": 3,
+              "chunk_id": "faq/online_booking.md#0005",
+              "source": "faq/online_booking.md",
+              "score": 0.669253,
+              "start": 1700,
+              "end": 2120
+            }
+          ],
+          "v1": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 1.0,
+            "evidence_mrr": 0.5,
+            "sufficient_evidence@3": true
+          },
+          "v2": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 1.0,
+            "evidence_mrr": 0.5,
+            "sufficient_evidence@3": true
+          },
+          "v1_first_ranks": [
+            2
+          ],
+          "v2_first_ranks": [
+            2
+          ],
+          "v2_source": {
+            "source_group_hit@3": true,
+            "source_group_recall@3": 1.0,
+            "source_group_mrr": 1.0,
+            "source_group_sufficient@3": true
+          }
+        },
+        {
+          "id": "rail-dev-002",
+          "answerable": true,
+          "retrieved": [
+            {
+              "rank": 1,
+              "chunk_id": "regulations/passenger_transport_rules.md#0027",
+              "source": "regulations/passenger_transport_rules.md",
+              "score": 0.620636,
+              "start": 9180,
+              "end": 9600
+            },
+            {
+              "rank": 2,
+              "chunk_id": "regulations/passenger_transport_rules.md#0023",
+              "source": "regulations/passenger_transport_rules.md",
+              "score": 0.601584,
+              "start": 7820,
+              "end": 8240
+            },
+            {
+              "rank": 3,
+              "chunk_id": "faq/online_booking.md#0003",
+              "source": "faq/online_booking.md",
+              "score": 0.599834,
+              "start": 1020,
+              "end": 1440
+            }
+          ],
+          "v1": {
+            "evidence_hit@3": false,
+            "evidence_recall@3": 0.0,
+            "evidence_mrr": 0.0,
+            "sufficient_evidence@3": false
+          },
+          "v2": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 1.0,
+            "evidence_mrr": 0.5,
+            "sufficient_evidence@3": true
+          },
+          "v1_first_ranks": [
+            null
+          ],
+          "v2_first_ranks": [
+            2
+          ],
+          "v2_source": {
+            "source_group_hit@3": true,
+            "source_group_recall@3": 1.0,
+            "source_group_mrr": 1.0,
+            "source_group_sufficient@3": true
+          }
+        },
+        {
+          "id": "rail-dev-003",
+          "answerable": true,
+          "retrieved": [
+            {
+              "rank": 1,
+              "chunk_id": "faq/student_tickets.md#0003",
+              "source": "faq/student_tickets.md",
+              "score": 0.660508,
+              "start": 1020,
+              "end": 1440
+            },
+            {
+              "rank": 2,
+              "chunk_id": "regulations/passenger_transport_rules.md#0011",
+              "source": "regulations/passenger_transport_rules.md",
+              "score": 0.64808,
+              "start": 3740,
+              "end": 4160
+            },
+            {
+              "rank": 3,
+              "chunk_id": "notices/ticket_purchase_notice.md#0003",
+              "source": "notices/ticket_purchase_notice.md",
+              "score": 0.647141,
+              "start": 1020,
+              "end": 1440
+            }
+          ],
+          "v1": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 0.5,
+            "evidence_mrr": 1.0,
+            "sufficient_evidence@3": false
+          },
+          "v2": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 1.0,
+            "evidence_mrr": 1.0,
+            "sufficient_evidence@3": true
+          },
+          "v1_first_ranks": [
+            null,
+            1
+          ],
+          "v2_first_ranks": [
+            3,
+            1
+          ],
+          "v2_source": {
+            "source_group_hit@3": true,
+            "source_group_recall@3": 1.0,
+            "source_group_mrr": 1.0,
+            "source_group_sufficient@3": true
+          }
+        },
+        {
+          "id": "rail-dev-004",
+          "answerable": true,
+          "retrieved": [
+            {
+              "rank": 1,
+              "chunk_id": "faq/window_refunds.md#0002",
+              "source": "faq/window_refunds.md",
+              "score": 0.730612,
+              "start": 680,
+              "end": 1029
+            },
+            {
+              "rank": 2,
+              "chunk_id": "notices/ticket_purchase_notice.md#0005",
+              "source": "notices/ticket_purchase_notice.md",
+              "score": 0.725229,
+              "start": 1700,
+              "end": 2120
+            },
+            {
+              "rank": 3,
+              "chunk_id": "faq/ticket_changes.md#0003",
+              "source": "faq/ticket_changes.md",
+              "score": 0.710831,
+              "start": 1020,
+              "end": 1440
+            }
+          ],
+          "v1": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 1.0,
+            "evidence_mrr": 0.5,
+            "sufficient_evidence@3": true
+          },
+          "v2": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 1.0,
+            "evidence_mrr": 0.5,
+            "sufficient_evidence@3": true
+          },
+          "v1_first_ranks": [
+            2
+          ],
+          "v2_first_ranks": [
+            2
+          ],
+          "v2_source": {
+            "source_group_hit@3": true,
+            "source_group_recall@3": 1.0,
+            "source_group_mrr": 1.0,
+            "source_group_sufficient@3": true
+          }
+        },
+        {
+          "id": "rail-dev-005",
+          "answerable": true,
+          "retrieved": [
+            {
+              "rank": 1,
+              "chunk_id": "faq/ticket_changes.md#0003",
+              "source": "faq/ticket_changes.md",
+              "score": 0.695164,
+              "start": 1020,
+              "end": 1440
+            },
+            {
+              "rank": 2,
+              "chunk_id": "regulations/passenger_transport_rules.md#0024",
+              "source": "regulations/passenger_transport_rules.md",
+              "score": 0.657372,
+              "start": 8160,
+              "end": 8580
+            },
+            {
+              "rank": 3,
+              "chunk_id": "regulations/passenger_transport_rules.md#0016",
+              "source": "regulations/passenger_transport_rules.md",
+              "score": 0.650742,
+              "start": 5440,
+              "end": 5860
+            }
+          ],
+          "v1": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 1.0,
+            "evidence_mrr": 0.5,
+            "sufficient_evidence@3": true
+          },
+          "v2": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 1.0,
+            "evidence_mrr": 0.5,
+            "sufficient_evidence@3": true
+          },
+          "v1_first_ranks": [
+            2
+          ],
+          "v2_first_ranks": [
+            2
+          ],
+          "v2_source": {
+            "source_group_hit@3": true,
+            "source_group_recall@3": 1.0,
+            "source_group_mrr": 0.5,
+            "source_group_sufficient@3": true
+          }
+        },
+        {
+          "id": "rail-dev-006",
+          "answerable": true,
+          "retrieved": [
+            {
+              "rank": 1,
+              "chunk_id": "regulations/passenger_transport_rules.md#0017",
+              "source": "regulations/passenger_transport_rules.md",
+              "score": 0.650356,
+              "start": 5780,
+              "end": 6200
+            },
+            {
+              "rank": 2,
+              "chunk_id": "regulations/passenger_transport_rules.md#0020",
+              "source": "regulations/passenger_transport_rules.md",
+              "score": 0.638669,
+              "start": 6800,
+              "end": 7220
+            },
+            {
+              "rank": 3,
+              "chunk_id": "regulations/passenger_transport_rules.md#0021",
+              "source": "regulations/passenger_transport_rules.md",
+              "score": 0.635197,
+              "start": 7140,
+              "end": 7560
+            }
+          ],
+          "v1": {
+            "evidence_hit@3": false,
+            "evidence_recall@3": 0.0,
+            "evidence_mrr": 0.0,
+            "sufficient_evidence@3": false
+          },
+          "v2": {
+            "evidence_hit@3": false,
+            "evidence_recall@3": 0.0,
+            "evidence_mrr": 0.0,
+            "sufficient_evidence@3": false
+          },
+          "v1_first_ranks": [
+            null
+          ],
+          "v2_first_ranks": [
+            null
+          ],
+          "v2_source": {
+            "source_group_hit@3": true,
+            "source_group_recall@3": 1.0,
+            "source_group_mrr": 1.0,
+            "source_group_sufficient@3": true
+          }
+        },
+        {
+          "id": "rail-dev-007",
+          "answerable": true,
+          "retrieved": [
+            {
+              "rank": 1,
+              "chunk_id": "faq/children_tickets.md#0000",
+              "source": "faq/children_tickets.md",
+              "score": 0.713315,
+              "start": 0,
+              "end": 420
+            },
+            {
+              "rank": 2,
+              "chunk_id": "notices/ticket_purchase_notice.md#0001",
+              "source": "notices/ticket_purchase_notice.md",
+              "score": 0.671833,
+              "start": 340,
+              "end": 760
+            },
+            {
+              "rank": 3,
+              "chunk_id": "regulations/passenger_transport_rules.md#0008",
+              "source": "regulations/passenger_transport_rules.md",
+              "score": 0.661747,
+              "start": 2720,
+              "end": 3140
+            }
+          ],
+          "v1": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 1.0,
+            "evidence_mrr": 1.0,
+            "sufficient_evidence@3": true
+          },
+          "v2": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 1.0,
+            "evidence_mrr": 1.0,
+            "sufficient_evidence@3": true
+          },
+          "v1_first_ranks": [
+            1,
+            1,
+            1
+          ],
+          "v2_first_ranks": [
+            1,
+            1,
+            1
+          ],
+          "v2_source": {
+            "source_group_hit@3": true,
+            "source_group_recall@3": 1.0,
+            "source_group_mrr": 1.0,
+            "source_group_sufficient@3": true
+          }
+        },
+        {
+          "id": "rail-dev-008",
+          "answerable": true,
+          "retrieved": [
+            {
+              "rank": 1,
+              "chunk_id": "faq/ticket_changes.md#0003",
+              "source": "faq/ticket_changes.md",
+              "score": 0.725124,
+              "start": 1020,
+              "end": 1440
+            },
+            {
+              "rank": 2,
+              "chunk_id": "faq/ticket_changes.md#0000",
+              "source": "faq/ticket_changes.md",
+              "score": 0.724108,
+              "start": 0,
+              "end": 420
+            },
+            {
+              "rank": 3,
+              "chunk_id": "regulations/passenger_transport_rules.md#0016",
+              "source": "regulations/passenger_transport_rules.md",
+              "score": 0.722438,
+              "start": 5440,
+              "end": 5860
+            }
+          ],
+          "v1": {
+            "evidence_hit@3": false,
+            "evidence_recall@3": 0.0,
+            "evidence_mrr": 0.0,
+            "sufficient_evidence@3": false
+          },
+          "v2": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 0.3333333333333333,
+            "evidence_mrr": 0.5,
+            "sufficient_evidence@3": false
+          },
+          "v1_first_ranks": [
+            null,
+            null,
+            null
+          ],
+          "v2_first_ranks": [
+            2,
+            null,
+            null
+          ],
+          "v2_source": {
+            "source_group_hit@3": true,
+            "source_group_recall@3": 1.0,
+            "source_group_mrr": 1.0,
+            "source_group_sufficient@3": true
+          }
+        },
+        {
+          "id": "rail-dev-009",
+          "answerable": false,
+          "retrieved": [
+            {
+              "rank": 1,
+              "chunk_id": "notices/travel_notice.md#0003",
+              "source": "notices/travel_notice.md",
+              "score": 0.513059,
+              "start": 1020,
+              "end": 1394
+            },
+            {
+              "rank": 2,
+              "chunk_id": "regulations/passenger_transport_rules.md#0032",
+              "source": "regulations/passenger_transport_rules.md",
+              "score": 0.501698,
+              "start": 10880,
+              "end": 11300
+            },
+            {
+              "rank": 3,
+              "chunk_id": "regulations/passenger_transport_rules.md#0028",
+              "source": "regulations/passenger_transport_rules.md",
+              "score": 0.496225,
+              "start": 9520,
+              "end": 9940
+            }
+          ],
+          "v1": {
+            "evidence_hit@3": null,
+            "evidence_recall@3": null,
+            "evidence_mrr": null,
+            "sufficient_evidence@3": null
+          },
+          "v2": {
+            "evidence_hit@3": null,
+            "evidence_recall@3": null,
+            "evidence_mrr": null,
+            "sufficient_evidence@3": null
+          },
+          "v1_first_ranks": [],
+          "v2_first_ranks": [],
+          "v2_source": {
+            "source_group_hit@3": null,
+            "source_group_recall@3": null,
+            "source_group_mrr": null,
+            "source_group_sufficient@3": null
+          }
+        },
+        {
+          "id": "rail-dev-010",
+          "answerable": false,
+          "retrieved": [
+            {
+              "rank": 1,
+              "chunk_id": "faq/online_booking.md#0006",
+              "source": "faq/online_booking.md",
+              "score": 0.704277,
+              "start": 2040,
+              "end": 2460
+            },
+            {
+              "rank": 2,
+              "chunk_id": "faq/online_refunds.md#0000",
+              "source": "faq/online_refunds.md",
+              "score": 0.685542,
+              "start": 0,
+              "end": 420
+            },
+            {
+              "rank": 3,
+              "chunk_id": "faq/ticket_changes.md#0003",
+              "source": "faq/ticket_changes.md",
+              "score": 0.679423,
+              "start": 1020,
+              "end": 1440
+            }
+          ],
+          "v1": {
+            "evidence_hit@3": null,
+            "evidence_recall@3": null,
+            "evidence_mrr": null,
+            "sufficient_evidence@3": null
+          },
+          "v2": {
+            "evidence_hit@3": null,
+            "evidence_recall@3": null,
+            "evidence_mrr": null,
+            "sufficient_evidence@3": null
+          },
+          "v1_first_ranks": [],
+          "v2_first_ranks": [],
+          "v2_source": {
+            "source_group_hit@3": null,
+            "source_group_recall@3": null,
+            "source_group_mrr": null,
+            "source_group_sufficient@3": null
+          }
+        }
+      ]
+    },
+    "C": {
+      "v1_report_sha256": "c4c1149519dae34a1164cbf399afe932d0169c0afdc181ff6ff3af8656d64e66",
+      "v1_summary": {
+        "cases": 10,
+        "answerable_cases": 8,
+        "unanswerable_cases": 2,
+        "hit_rate@3": 0.875,
+        "recall@3": 0.875,
+        "mrr": 0.7291666666666666,
+        "evidence_evaluated_cases": 8,
+        "evidence_hit@3": 0.75,
+        "evidence_recall@3": 0.6875,
+        "evidence_mrr": 0.5416666666666666,
+        "sufficient_evidence@3": 0.625
+      },
+      "v2_summary": {
+        "evidence_hit@3": 0.875,
+        "evidence_recall@3": 0.7916666666666666,
+        "evidence_mrr": 0.75,
+        "sufficient_evidence@3": 0.75,
+        "source_group_hit@3": 1.0,
+        "source_group_recall@3": 1.0,
+        "source_group_mrr": 0.9166666666666666,
+        "source_group_sufficient@3": 1.0
+      },
+      "cases": [
+        {
+          "id": "rail-dev-001",
+          "answerable": true,
+          "retrieved": [
+            {
+              "rank": 1,
+              "chunk_id": "faq/online_booking.md#0000",
+              "source": "faq/online_booking.md",
+              "score": 0.032787,
+              "start": 0,
+              "end": 420
+            },
+            {
+              "rank": 2,
+              "chunk_id": "faq/online_booking.md#0001",
+              "source": "faq/online_booking.md",
+              "score": 0.032258,
+              "start": 340,
+              "end": 760
+            },
+            {
+              "rank": 3,
+              "chunk_id": "faq/online_booking.md#0003",
+              "source": "faq/online_booking.md",
+              "score": 0.030798,
+              "start": 1020,
+              "end": 1440
+            }
+          ],
+          "v1": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 1.0,
+            "evidence_mrr": 0.5,
+            "sufficient_evidence@3": true
+          },
+          "v2": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 1.0,
+            "evidence_mrr": 0.5,
+            "sufficient_evidence@3": true
+          },
+          "v1_first_ranks": [
+            2
+          ],
+          "v2_first_ranks": [
+            2
+          ],
+          "v2_source": {
+            "source_group_hit@3": true,
+            "source_group_recall@3": 1.0,
+            "source_group_mrr": 1.0,
+            "source_group_sufficient@3": true
+          }
+        },
+        {
+          "id": "rail-dev-002",
+          "answerable": true,
+          "retrieved": [
+            {
+              "rank": 1,
+              "chunk_id": "faq/online_booking.md#0003",
+              "source": "faq/online_booking.md",
+              "score": 0.032266,
+              "start": 1020,
+              "end": 1440
+            },
+            {
+              "rank": 2,
+              "chunk_id": "faq/ticket_changes.md#0002",
+              "source": "faq/ticket_changes.md",
+              "score": 0.030366,
+              "start": 680,
+              "end": 1100
+            },
+            {
+              "rank": 3,
+              "chunk_id": "regulations/passenger_transport_rules.md#0027",
+              "source": "regulations/passenger_transport_rules.md",
+              "score": 0.016393,
+              "start": 9180,
+              "end": 9600
+            }
+          ],
+          "v1": {
+            "evidence_hit@3": false,
+            "evidence_recall@3": 0.0,
+            "evidence_mrr": 0.0,
+            "sufficient_evidence@3": false
+          },
+          "v2": {
+            "evidence_hit@3": false,
+            "evidence_recall@3": 0.0,
+            "evidence_mrr": 0.0,
+            "sufficient_evidence@3": false
+          },
+          "v1_first_ranks": [
+            null
+          ],
+          "v2_first_ranks": [
+            null
+          ],
+          "v2_source": {
+            "source_group_hit@3": true,
+            "source_group_recall@3": 1.0,
+            "source_group_mrr": 0.3333333333333333,
+            "source_group_sufficient@3": true
+          }
+        },
+        {
+          "id": "rail-dev-003",
+          "answerable": true,
+          "retrieved": [
+            {
+              "rank": 1,
+              "chunk_id": "faq/student_tickets.md#0003",
+              "source": "faq/student_tickets.md",
+              "score": 0.031545,
+              "start": 1020,
+              "end": 1440
+            },
+            {
+              "rank": 2,
+              "chunk_id": "notices/ticket_purchase_notice.md#0003",
+              "source": "notices/ticket_purchase_notice.md",
+              "score": 0.031498,
+              "start": 1020,
+              "end": 1440
+            },
+            {
+              "rank": 3,
+              "chunk_id": "regulations/passenger_transport_rules.md#0009",
+              "source": "regulations/passenger_transport_rules.md",
+              "score": 0.031319,
+              "start": 3060,
+              "end": 3480
+            }
+          ],
+          "v1": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 0.5,
+            "evidence_mrr": 1.0,
+            "sufficient_evidence@3": false
+          },
+          "v2": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 1.0,
+            "evidence_mrr": 1.0,
+            "sufficient_evidence@3": true
+          },
+          "v1_first_ranks": [
+            null,
+            1
+          ],
+          "v2_first_ranks": [
+            2,
+            1
+          ],
+          "v2_source": {
+            "source_group_hit@3": true,
+            "source_group_recall@3": 1.0,
+            "source_group_mrr": 1.0,
+            "source_group_sufficient@3": true
+          }
+        },
+        {
+          "id": "rail-dev-004",
+          "answerable": true,
+          "retrieved": [
+            {
+              "rank": 1,
+              "chunk_id": "notices/ticket_purchase_notice.md#0005",
+              "source": "notices/ticket_purchase_notice.md",
+              "score": 0.032522,
+              "start": 1700,
+              "end": 2120
+            },
+            {
+              "rank": 2,
+              "chunk_id": "faq/window_refunds.md#0002",
+              "source": "faq/window_refunds.md",
+              "score": 0.032266,
+              "start": 680,
+              "end": 1029
+            },
+            {
+              "rank": 3,
+              "chunk_id": "faq/window_refunds.md#0001",
+              "source": "faq/window_refunds.md",
+              "score": 0.030769,
+              "start": 340,
+              "end": 760
+            }
+          ],
+          "v1": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 1.0,
+            "evidence_mrr": 1.0,
+            "sufficient_evidence@3": true
+          },
+          "v2": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 1.0,
+            "evidence_mrr": 1.0,
+            "sufficient_evidence@3": true
+          },
+          "v1_first_ranks": [
+            1
+          ],
+          "v2_first_ranks": [
+            1
+          ],
+          "v2_source": {
+            "source_group_hit@3": true,
+            "source_group_recall@3": 1.0,
+            "source_group_mrr": 1.0,
+            "source_group_sufficient@3": true
+          }
+        },
+        {
+          "id": "rail-dev-005",
+          "answerable": true,
+          "retrieved": [
+            {
+              "rank": 1,
+              "chunk_id": "regulations/passenger_transport_rules.md#0024",
+              "source": "regulations/passenger_transport_rules.md",
+              "score": 0.032522,
+              "start": 8160,
+              "end": 8580
+            },
+            {
+              "rank": 2,
+              "chunk_id": "regulations/passenger_transport_rules.md#0020",
+              "source": "regulations/passenger_transport_rules.md",
+              "score": 0.03101,
+              "start": 6800,
+              "end": 7220
+            },
+            {
+              "rank": 3,
+              "chunk_id": "faq/ticket_changes.md#0003",
+              "source": "faq/ticket_changes.md",
+              "score": 0.016393,
+              "start": 1020,
+              "end": 1440
+            }
+          ],
+          "v1": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 1.0,
+            "evidence_mrr": 1.0,
+            "sufficient_evidence@3": true
+          },
+          "v2": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 1.0,
+            "evidence_mrr": 1.0,
+            "sufficient_evidence@3": true
+          },
+          "v1_first_ranks": [
+            1
+          ],
+          "v2_first_ranks": [
+            1
+          ],
+          "v2_source": {
+            "source_group_hit@3": true,
+            "source_group_recall@3": 1.0,
+            "source_group_mrr": 1.0,
+            "source_group_sufficient@3": true
+          }
+        },
+        {
+          "id": "rail-dev-006",
+          "answerable": true,
+          "retrieved": [
+            {
+              "rank": 1,
+              "chunk_id": "regulations/passenger_transport_rules.md#0017",
+              "source": "regulations/passenger_transport_rules.md",
+              "score": 0.032266,
+              "start": 5780,
+              "end": 6200
+            },
+            {
+              "rank": 2,
+              "chunk_id": "regulations/passenger_transport_rules.md#0016",
+              "source": "regulations/passenger_transport_rules.md",
+              "score": 0.031754,
+              "start": 5440,
+              "end": 5860
+            },
+            {
+              "rank": 3,
+              "chunk_id": "notices/travel_notice.md#0002",
+              "source": "notices/travel_notice.md",
+              "score": 0.031099,
+              "start": 680,
+              "end": 1100
+            }
+          ],
+          "v1": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 1.0,
+            "evidence_mrr": 0.3333333333333333,
+            "sufficient_evidence@3": true
+          },
+          "v2": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 1.0,
+            "evidence_mrr": 0.5,
+            "sufficient_evidence@3": true
+          },
+          "v1_first_ranks": [
+            3
+          ],
+          "v2_first_ranks": [
+            2
+          ],
+          "v2_source": {
+            "source_group_hit@3": true,
+            "source_group_recall@3": 1.0,
+            "source_group_mrr": 1.0,
+            "source_group_sufficient@3": true
+          }
+        },
+        {
+          "id": "rail-dev-007",
+          "answerable": true,
+          "retrieved": [
+            {
+              "rank": 1,
+              "chunk_id": "notices/ticket_purchase_notice.md#0001",
+              "source": "notices/ticket_purchase_notice.md",
+              "score": 0.032002,
+              "start": 340,
+              "end": 760
+            },
+            {
+              "rank": 2,
+              "chunk_id": "faq/children_tickets.md#0000",
+              "source": "faq/children_tickets.md",
+              "score": 0.031778,
+              "start": 0,
+              "end": 420
+            },
+            {
+              "rank": 3,
+              "chunk_id": "regulations/passenger_transport_rules.md#0008",
+              "source": "regulations/passenger_transport_rules.md",
+              "score": 0.031498,
+              "start": 2720,
+              "end": 3140
+            }
+          ],
+          "v1": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 1.0,
+            "evidence_mrr": 0.5,
+            "sufficient_evidence@3": true
+          },
+          "v2": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 1.0,
+            "evidence_mrr": 1.0,
+            "sufficient_evidence@3": true
+          },
+          "v1_first_ranks": [
+            2,
+            2,
+            2
+          ],
+          "v2_first_ranks": [
+            1,
+            1,
+            2
+          ],
+          "v2_source": {
+            "source_group_hit@3": true,
+            "source_group_recall@3": 1.0,
+            "source_group_mrr": 1.0,
+            "source_group_sufficient@3": true
+          }
+        },
+        {
+          "id": "rail-dev-008",
+          "answerable": true,
+          "retrieved": [
+            {
+              "rank": 1,
+              "chunk_id": "faq/ticket_changes.md#0000",
+              "source": "faq/ticket_changes.md",
+              "score": 0.032522,
+              "start": 0,
+              "end": 420
+            },
+            {
+              "rank": 2,
+              "chunk_id": "notices/ticket_purchase_notice.md#0005",
+              "source": "notices/ticket_purchase_notice.md",
+              "score": 0.03055,
+              "start": 1700,
+              "end": 2120
+            },
+            {
+              "rank": 3,
+              "chunk_id": "regulations/passenger_transport_rules.md#0015",
+              "source": "regulations/passenger_transport_rules.md",
+              "score": 0.030536,
+              "start": 5100,
+              "end": 5520
+            }
+          ],
+          "v1": {
+            "evidence_hit@3": false,
+            "evidence_recall@3": 0.0,
+            "evidence_mrr": 0.0,
+            "sufficient_evidence@3": false
+          },
+          "v2": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 0.3333333333333333,
+            "evidence_mrr": 1.0,
+            "sufficient_evidence@3": false
+          },
+          "v1_first_ranks": [
+            null,
+            null,
+            null
+          ],
+          "v2_first_ranks": [
+            1,
+            null,
+            null
+          ],
+          "v2_source": {
+            "source_group_hit@3": true,
+            "source_group_recall@3": 1.0,
+            "source_group_mrr": 1.0,
+            "source_group_sufficient@3": true
+          }
+        },
+        {
+          "id": "rail-dev-009",
+          "answerable": false,
+          "retrieved": [
+            {
+              "rank": 1,
+              "chunk_id": "regulations/passenger_transport_rules.md#0031",
+              "source": "regulations/passenger_transport_rules.md",
+              "score": 0.031281,
+              "start": 10540,
+              "end": 10960
+            },
+            {
+              "rank": 2,
+              "chunk_id": "notices/travel_notice.md#0003",
+              "source": "notices/travel_notice.md",
+              "score": 0.030679,
+              "start": 1020,
+              "end": 1394
+            },
+            {
+              "rank": 3,
+              "chunk_id": "notices/travel_notice.md#0000",
+              "source": "notices/travel_notice.md",
+              "score": 0.030118,
+              "start": 0,
+              "end": 420
+            }
+          ],
+          "v1": {
+            "evidence_hit@3": null,
+            "evidence_recall@3": null,
+            "evidence_mrr": null,
+            "sufficient_evidence@3": null
+          },
+          "v2": {
+            "evidence_hit@3": null,
+            "evidence_recall@3": null,
+            "evidence_mrr": null,
+            "sufficient_evidence@3": null
+          },
+          "v1_first_ranks": [],
+          "v2_first_ranks": [],
+          "v2_source": {
+            "source_group_hit@3": null,
+            "source_group_recall@3": null,
+            "source_group_mrr": null,
+            "source_group_sufficient@3": null
+          }
+        },
+        {
+          "id": "rail-dev-010",
+          "answerable": false,
+          "retrieved": [
+            {
+              "rank": 1,
+              "chunk_id": "faq/online_booking.md#0006",
+              "source": "faq/online_booking.md",
+              "score": 0.032787,
+              "start": 2040,
+              "end": 2460
+            },
+            {
+              "rank": 2,
+              "chunk_id": "notices/ticket_purchase_notice.md#0006",
+              "source": "notices/ticket_purchase_notice.md",
+              "score": 0.031754,
+              "start": 2040,
+              "end": 2304
+            },
+            {
+              "rank": 3,
+              "chunk_id": "faq/ticket_changes.md#0003",
+              "source": "faq/ticket_changes.md",
+              "score": 0.031025,
+              "start": 1020,
+              "end": 1440
+            }
+          ],
+          "v1": {
+            "evidence_hit@3": null,
+            "evidence_recall@3": null,
+            "evidence_mrr": null,
+            "sufficient_evidence@3": null
+          },
+          "v2": {
+            "evidence_hit@3": null,
+            "evidence_recall@3": null,
+            "evidence_mrr": null,
+            "sufficient_evidence@3": null
+          },
+          "v1_first_ranks": [],
+          "v2_first_ranks": [],
+          "v2_source": {
+            "source_group_hit@3": null,
+            "source_group_recall@3": null,
+            "source_group_mrr": null,
+            "source_group_sufficient@3": null
+          }
+        }
+      ]
+    },
+    "D": {
+      "v1_report_sha256": "8dff17f808728c6064515b3b36023cb836da858c43f7fd6850a20a876859ebed",
+      "v1_summary": {
+        "cases": 10,
+        "answerable_cases": 8,
+        "unanswerable_cases": 2,
+        "hit_rate@3": 0.625,
+        "recall@3": 0.625,
+        "mrr": 0.4791666666666667,
+        "evidence_evaluated_cases": 8,
+        "evidence_hit@3": 0.625,
+        "evidence_recall@3": 0.5208333333333334,
+        "evidence_mrr": 0.3541666666666667,
+        "sufficient_evidence@3": 0.375
+      },
+      "v2_summary": {
+        "evidence_hit@3": 0.75,
+        "evidence_recall@3": 0.6458333333333334,
+        "evidence_mrr": 0.5625,
+        "sufficient_evidence@3": 0.5,
+        "source_group_hit@3": 1.0,
+        "source_group_recall@3": 1.0,
+        "source_group_mrr": 0.8541666666666666,
+        "source_group_sufficient@3": 1.0
+      },
+      "cases": [
+        {
+          "id": "rail-dev-001",
+          "answerable": true,
+          "retrieved": [
+            {
+              "rank": 1,
+              "chunk_id": "faq/online_booking.md#0000",
+              "source": "faq/online_booking.md",
+              "score": 7.335904,
+              "start": 0,
+              "end": 420
+            },
+            {
+              "rank": 2,
+              "chunk_id": "faq/online_booking.md#0001",
+              "source": "faq/online_booking.md",
+              "score": 5.415176,
+              "start": 340,
+              "end": 760
+            },
+            {
+              "rank": 3,
+              "chunk_id": "faq/online_booking.md#0003",
+              "source": "faq/online_booking.md",
+              "score": 2.66132,
+              "start": 1020,
+              "end": 1440
+            }
+          ],
+          "v1": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 1.0,
+            "evidence_mrr": 0.5,
+            "sufficient_evidence@3": true
+          },
+          "v2": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 1.0,
+            "evidence_mrr": 0.5,
+            "sufficient_evidence@3": true
+          },
+          "v1_first_ranks": [
+            2
+          ],
+          "v2_first_ranks": [
+            2
+          ],
+          "v2_source": {
+            "source_group_hit@3": true,
+            "source_group_recall@3": 1.0,
+            "source_group_mrr": 1.0,
+            "source_group_sufficient@3": true
+          }
+        },
+        {
+          "id": "rail-dev-002",
+          "answerable": true,
+          "retrieved": [
+            {
+              "rank": 1,
+              "chunk_id": "faq/online_refunds.md#0001",
+              "source": "faq/online_refunds.md",
+              "score": 2.060984,
+              "start": 340,
+              "end": 760
+            },
+            {
+              "rank": 2,
+              "chunk_id": "regulations/passenger_transport_rules.md#0023",
+              "source": "regulations/passenger_transport_rules.md",
+              "score": 1.688268,
+              "start": 7820,
+              "end": 8240
+            },
+            {
+              "rank": 3,
+              "chunk_id": "faq/ticket_changes.md#0002",
+              "source": "faq/ticket_changes.md",
+              "score": 1.180284,
+              "start": 680,
+              "end": 1100
+            }
+          ],
+          "v1": {
+            "evidence_hit@3": false,
+            "evidence_recall@3": 0.0,
+            "evidence_mrr": 0.0,
+            "sufficient_evidence@3": false
+          },
+          "v2": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 1.0,
+            "evidence_mrr": 0.5,
+            "sufficient_evidence@3": true
+          },
+          "v1_first_ranks": [
+            null
+          ],
+          "v2_first_ranks": [
+            2
+          ],
+          "v2_source": {
+            "source_group_hit@3": true,
+            "source_group_recall@3": 1.0,
+            "source_group_mrr": 0.5,
+            "source_group_sufficient@3": true
+          }
+        },
+        {
+          "id": "rail-dev-003",
+          "answerable": true,
+          "retrieved": [
+            {
+              "rank": 1,
+              "chunk_id": "regulations/passenger_transport_rules.md#0009",
+              "source": "regulations/passenger_transport_rules.md",
+              "score": 1.316182,
+              "start": 3060,
+              "end": 3480
+            },
+            {
+              "rank": 2,
+              "chunk_id": "faq/student_tickets.md#0001",
+              "source": "faq/student_tickets.md",
+              "score": 1.054467,
+              "start": 340,
+              "end": 760
+            },
+            {
+              "rank": 3,
+              "chunk_id": "notices/ticket_purchase_notice.md#0003",
+              "source": "notices/ticket_purchase_notice.md",
+              "score": 0.329814,
+              "start": 1020,
+              "end": 1440
+            }
+          ],
+          "v1": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 0.5,
+            "evidence_mrr": 0.5,
+            "sufficient_evidence@3": false
+          },
+          "v2": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 0.5,
+            "evidence_mrr": 1.0,
+            "sufficient_evidence@3": false
+          },
+          "v1_first_ranks": [
+            2,
+            null
+          ],
+          "v2_first_ranks": [
+            1,
+            null
+          ],
+          "v2_source": {
+            "source_group_hit@3": true,
+            "source_group_recall@3": 1.0,
+            "source_group_mrr": 1.0,
+            "source_group_sufficient@3": true
+          }
+        },
+        {
+          "id": "rail-dev-004",
+          "answerable": true,
+          "retrieved": [
+            {
+              "rank": 1,
+              "chunk_id": "faq/ticket_changes.md#0005",
+              "source": "faq/ticket_changes.md",
+              "score": -1.351196,
+              "start": 1700,
+              "end": 2120
+            },
+            {
+              "rank": 2,
+              "chunk_id": "regulations/passenger_transport_rules.md#0016",
+              "source": "regulations/passenger_transport_rules.md",
+              "score": -1.767055,
+              "start": 5440,
+              "end": 5860
+            },
+            {
+              "rank": 3,
+              "chunk_id": "faq/window_refunds.md#0002",
+              "source": "faq/window_refunds.md",
+              "score": -1.807018,
+              "start": 680,
+              "end": 1029
+            }
+          ],
+          "v1": {
+            "evidence_hit@3": false,
+            "evidence_recall@3": 0.0,
+            "evidence_mrr": 0.0,
+            "sufficient_evidence@3": false
+          },
+          "v2": {
+            "evidence_hit@3": false,
+            "evidence_recall@3": 0.0,
+            "evidence_mrr": 0.0,
+            "sufficient_evidence@3": false
+          },
+          "v1_first_ranks": [
+            null
+          ],
+          "v2_first_ranks": [
+            null
+          ],
+          "v2_source": {
+            "source_group_hit@3": true,
+            "source_group_recall@3": 1.0,
+            "source_group_mrr": 0.3333333333333333,
+            "source_group_sufficient@3": true
+          }
+        },
+        {
+          "id": "rail-dev-005",
+          "answerable": true,
+          "retrieved": [
+            {
+              "rank": 1,
+              "chunk_id": "regulations/passenger_transport_rules.md#0024",
+              "source": "regulations/passenger_transport_rules.md",
+              "score": 1.431005,
+              "start": 8160,
+              "end": 8580
+            },
+            {
+              "rank": 2,
+              "chunk_id": "regulations/passenger_transport_rules.md#0016",
+              "source": "regulations/passenger_transport_rules.md",
+              "score": -1.109424,
+              "start": 5440,
+              "end": 5860
+            },
+            {
+              "rank": 3,
+              "chunk_id": "regulations/passenger_transport_rules.md#0020",
+              "source": "regulations/passenger_transport_rules.md",
+              "score": -1.718758,
+              "start": 6800,
+              "end": 7220
+            }
+          ],
+          "v1": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 1.0,
+            "evidence_mrr": 1.0,
+            "sufficient_evidence@3": true
+          },
+          "v2": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 1.0,
+            "evidence_mrr": 1.0,
+            "sufficient_evidence@3": true
+          },
+          "v1_first_ranks": [
+            1
+          ],
+          "v2_first_ranks": [
+            1
+          ],
+          "v2_source": {
+            "source_group_hit@3": true,
+            "source_group_recall@3": 1.0,
+            "source_group_mrr": 1.0,
+            "source_group_sufficient@3": true
+          }
+        },
+        {
+          "id": "rail-dev-006",
+          "answerable": true,
+          "retrieved": [
+            {
+              "rank": 1,
+              "chunk_id": "regulations/passenger_transport_rules.md#0021",
+              "source": "regulations/passenger_transport_rules.md",
+              "score": -0.906743,
+              "start": 7140,
+              "end": 7560
+            },
+            {
+              "rank": 2,
+              "chunk_id": "regulations/passenger_transport_rules.md#0017",
+              "source": "regulations/passenger_transport_rules.md",
+              "score": -1.759372,
+              "start": 5780,
+              "end": 6200
+            },
+            {
+              "rank": 3,
+              "chunk_id": "regulations/passenger_transport_rules.md#0020",
+              "source": "regulations/passenger_transport_rules.md",
+              "score": -2.135413,
+              "start": 6800,
+              "end": 7220
+            }
+          ],
+          "v1": {
+            "evidence_hit@3": false,
+            "evidence_recall@3": 0.0,
+            "evidence_mrr": 0.0,
+            "sufficient_evidence@3": false
+          },
+          "v2": {
+            "evidence_hit@3": false,
+            "evidence_recall@3": 0.0,
+            "evidence_mrr": 0.0,
+            "sufficient_evidence@3": false
+          },
+          "v1_first_ranks": [
+            null
+          ],
+          "v2_first_ranks": [
+            null
+          ],
+          "v2_source": {
+            "source_group_hit@3": true,
+            "source_group_recall@3": 1.0,
+            "source_group_mrr": 1.0,
+            "source_group_sufficient@3": true
+          }
+        },
+        {
+          "id": "rail-dev-007",
+          "answerable": true,
+          "retrieved": [
+            {
+              "rank": 1,
+              "chunk_id": "regulations/passenger_transport_rules.md#0008",
+              "source": "regulations/passenger_transport_rules.md",
+              "score": 0.051227,
+              "start": 2720,
+              "end": 3140
+            },
+            {
+              "rank": 2,
+              "chunk_id": "notices/ticket_purchase_notice.md#0001",
+              "source": "notices/ticket_purchase_notice.md",
+              "score": -0.08448,
+              "start": 340,
+              "end": 760
+            },
+            {
+              "rank": 3,
+              "chunk_id": "faq/children_tickets.md#0000",
+              "source": "faq/children_tickets.md",
+              "score": -0.496901,
+              "start": 0,
+              "end": 420
+            }
+          ],
+          "v1": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 1.0,
+            "evidence_mrr": 0.3333333333333333,
+            "sufficient_evidence@3": true
+          },
+          "v2": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 1.0,
+            "evidence_mrr": 1.0,
+            "sufficient_evidence@3": true
+          },
+          "v1_first_ranks": [
+            3,
+            3,
+            3
+          ],
+          "v2_first_ranks": [
+            1,
+            1,
+            1
+          ],
+          "v2_source": {
+            "source_group_hit@3": true,
+            "source_group_recall@3": 1.0,
+            "source_group_mrr": 1.0,
+            "source_group_sufficient@3": true
+          }
+        },
+        {
+          "id": "rail-dev-008",
+          "answerable": true,
+          "retrieved": [
+            {
+              "rank": 1,
+              "chunk_id": "faq/ticket_changes.md#0003",
+              "source": "faq/ticket_changes.md",
+              "score": -2.466504,
+              "start": 1020,
+              "end": 1440
+            },
+            {
+              "rank": 2,
+              "chunk_id": "faq/ticket_changes.md#0001",
+              "source": "faq/ticket_changes.md",
+              "score": -2.476501,
+              "start": 340,
+              "end": 760
+            },
+            {
+              "rank": 3,
+              "chunk_id": "regulations/passenger_transport_rules.md#0016",
+              "source": "regulations/passenger_transport_rules.md",
+              "score": -2.854968,
+              "start": 5440,
+              "end": 5860
+            }
+          ],
+          "v1": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 0.6666666666666666,
+            "evidence_mrr": 0.5,
+            "sufficient_evidence@3": false
+          },
+          "v2": {
+            "evidence_hit@3": true,
+            "evidence_recall@3": 0.6666666666666666,
+            "evidence_mrr": 0.5,
+            "sufficient_evidence@3": false
+          },
+          "v1_first_ranks": [
+            2,
+            2,
+            null
+          ],
+          "v2_first_ranks": [
+            2,
+            2,
+            null
+          ],
+          "v2_source": {
+            "source_group_hit@3": true,
+            "source_group_recall@3": 1.0,
+            "source_group_mrr": 1.0,
+            "source_group_sufficient@3": true
+          }
+        },
+        {
+          "id": "rail-dev-009",
+          "answerable": false,
+          "retrieved": [
+            {
+              "rank": 1,
+              "chunk_id": "regulations/passenger_transport_rules.md#0028",
+              "source": "regulations/passenger_transport_rules.md",
+              "score": -4.044865,
+              "start": 9520,
+              "end": 9940
+            },
+            {
+              "rank": 2,
+              "chunk_id": "regulations/passenger_transport_rules.md#0027",
+              "source": "regulations/passenger_transport_rules.md",
+              "score": -4.108105,
+              "start": 9180,
+              "end": 9600
+            },
+            {
+              "rank": 3,
+              "chunk_id": "notices/travel_notice.md#0003",
+              "source": "notices/travel_notice.md",
+              "score": -4.590562,
+              "start": 1020,
+              "end": 1394
+            }
+          ],
+          "v1": {
+            "evidence_hit@3": null,
+            "evidence_recall@3": null,
+            "evidence_mrr": null,
+            "sufficient_evidence@3": null
+          },
+          "v2": {
+            "evidence_hit@3": null,
+            "evidence_recall@3": null,
+            "evidence_mrr": null,
+            "sufficient_evidence@3": null
+          },
+          "v1_first_ranks": [],
+          "v2_first_ranks": [],
+          "v2_source": {
+            "source_group_hit@3": null,
+            "source_group_recall@3": null,
+            "source_group_mrr": null,
+            "source_group_sufficient@3": null
+          }
+        },
+        {
+          "id": "rail-dev-010",
+          "answerable": false,
+          "retrieved": [
+            {
+              "rank": 1,
+              "chunk_id": "notices/ticket_purchase_notice.md#0006",
+              "source": "notices/ticket_purchase_notice.md",
+              "score": 2.50399,
+              "start": 2040,
+              "end": 2304
+            },
+            {
+              "rank": 2,
+              "chunk_id": "faq/online_refunds.md#0000",
+              "source": "faq/online_refunds.md",
+              "score": 1.967565,
+              "start": 0,
+              "end": 420
+            },
+            {
+              "rank": 3,
+              "chunk_id": "faq/window_refunds.md#0000",
+              "source": "faq/window_refunds.md",
+              "score": 1.781191,
+              "start": 0,
+              "end": 420
+            }
+          ],
+          "v1": {
+            "evidence_hit@3": null,
+            "evidence_recall@3": null,
+            "evidence_mrr": null,
+            "sufficient_evidence@3": null
+          },
+          "v2": {
+            "evidence_hit@3": null,
+            "evidence_recall@3": null,
+            "evidence_mrr": null,
+            "sufficient_evidence@3": null
+          },
+          "v1_first_ranks": [],
+          "v2_first_ranks": [],
+          "v2_source": {
+            "source_group_hit@3": null,
+            "source_group_recall@3": null,
+            "source_group_mrr": null,
+            "source_group_sufficient@3": null
+          }
+        }
+      ]
+    }
+  }
+}

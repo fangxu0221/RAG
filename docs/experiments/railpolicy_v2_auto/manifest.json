@@ -1,0 +1,40 @@
+{
+  "protocol": "railpolicy_dev_v2_auto_1",
+  "grade": "AI-assisted Silver Ground Truth",
+  "frozen_at": "2026-11-09T07:35:02.844844+00:00",
+  "inputs": {
+    "v1_eval_sha256": "bcd318cec9e471eb0d1de103a555fb0fdcd9e39b3db6450dfed7ba70090a1964",
+    "units_sha256": "04ae6427ed7b904862cfbe586623014076d0cfa6d53f9323cf26c52c708ceac7",
+    "corpus_sha256": {
+      "faq/children_tickets.md": "d4b990478ad032d97e2287216b49fe6d10eef6ca267180fe8651659793440603",
+      "faq/online_booking.md": "63e4615313f6f883f3a65d26b895b87d58f4b7567c0604ed248b06799fa4a1e0",
+      "faq/online_refunds.md": "86f95c1166eb0061e3b2f888d75acc7721d04dcbd50fb788b3e39328f591641f",
+      "faq/student_tickets.md": "3d5cfe07e47d14f528d423a2bf1c0330edd155a33e228f0c8f160b5bcb73d9c1",
+      "faq/ticket_changes.md": "16dfbddff656390562eb94a514a210c9a5bb144e32a8adf063d8934ba6c36c4e",
+      "faq/window_refunds.md": "cf98b662469d5330b1a9e1e9dbee59682ce14ccaf06631b4510e7ac680839f61",
+      "notices/ticket_purchase_notice.md": "710d106e22fcb98dacc2da5364529afc2ed8254e54085ca11473ebdfe736541e",
+      "notices/travel_notice.md": "604c00b14f6018fa7fb0569c1093569e74777349c15516df06393f43838e70af",
+      "regulations/passenger_transport_rules.md": "0538b30442156b2dd803ba9ba9c7b30f343e42aef697e6fa2c3cda819a58b214"
+    },
+    "script_sha256": "23bf46bb2f92c94ba35c59401c4a28d2052f6d24efb4f4fcef6fb0051bfaed1f",
+    "review_prompt_sha256": "6149f2426168b72b5c2a11b8562f7cbbfb2f7bdb810ad6189cd95f2b69bdad9f"
+  },
+  "audit_model_status": [
+    "completed",
+    "completed"
+  ],
+  "files": {
+    "data/railway/eval_dev_v2_auto.jsonl": "2113692fa9cf768068c8df42f86ea54f5d4e86c1283421f48e54dc962abba91b",
+    "data/railway/eval_dev_v2_auto.audit.json": "c34a958d684d89cc646b387b354d0669d201c63bc50b30d0414f4286918bc65b",
+    "docs/experiments/railpolicy_v2_auto/summary.json": "6ca1fa638fe55dde6208694a2819240c9e3ac116a77a6d221250eb7de611ba17"
+  },
+  "scoring_code_sha256": {
+    "evidence.py": "5429cc88eb64f06b115936622dc83a3307dcc86304e33f69aa10585c7b7f0cef",
+    "evaluation.py": "dd531b51585d2b6b23f125d83092836e8c2dc05d234ed2afb2b1baea42fa9cc0",
+    "models.py": "3360d5f2ea9bcd7c926345640021cff8ef942c6c5444a793eba815329b930d42",
+    "chunking.py": "75e7f7c3bf4201ad6f7dbb9f0d7f21822a142bf5bf58823fa2dbd2b292f586ba",
+    "text.py": "6491f7ac690267fd9f39e8ed931537ad263519f07c7b9d0a47f1562f2754bae4",
+    "io.py": "6d850e0ccf79225424777e7f70a165351cb51285803750ef61cf3b84bb9cdbd6",
+    "failures.py": "e1cc4e8ce92661b78cd214f476d93e179e8c221d15367522861a6c85f4a9b67b"
+  }
+}

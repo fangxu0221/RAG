@@ -120,6 +120,18 @@ python -B -X utf8 -m domainrag.cli benchmark --config configs/railway_dev_bm25.j
 
 运行命令、10题变化和证据区间分析见[实验文档](docs/RailPolicy-RAG_V1_检索对照实验.md)。无生成/Judge API调用，无参数调优，无Git提交或推送。
 
+## RailPolicy-RAG Ground Truth V2-auto
+
+[独立 V2-auto 题集](data/railway/eval_dev_v2_auto.jsonl)已按 **AI-assisted Silver Ground Truth** 冻结。沿用 10 题、原标准答案及证据组数。全库扫描并校验 26 个候选，经 DeepSeek Flash 和 Pro 分别盲审后采纳 19 条，拒绝 5 条，隔离 2 条分歧项。V1 原题集与报告保留。
+
+[离线重评分](docs/RailPolicy-RAG_V2-auto_离线重评分.md)复用四组历史 Top-3 和原 Evidence 评分器。A/B/C/D 的完整证据率从 0.6250/0.5000/0.6250/0.3750 变为 0.6250/0.7500/0.7500/0.5000，变化来自标签补全。新增 Source Group 指标按必要组计分，同组替代来源满足其一即可。
+
+```powershell
+.\.venv-web\Scripts\python.exe -B -X utf8 scripts/railpolicy_v2_auto.py replay
+```
+
+完整 86 项测试通过。[审计记录](data/railway/eval_dev_v2_auto.audit.json)、[冻结清单](docs/experiments/railpolicy_v2_auto/manifest.json)和[指标摘要](docs/experiments/railpolicy_v2_auto/summary.json)可查。复现所需的 A–D 原始报告保存在本机 V1 运行目录。
+
 ## 维护约定
 
 每次新增、修改、移动、归档或删除项目文件时，同步更新本 README 中受影响的说明；没有使用层变化时，补充简短变更记录。专题文档仍按需同步维护，验证结果只记录实际执行的检查。此约定已写入 `AGENTS.md`。

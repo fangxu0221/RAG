@@ -1,0 +1,1042 @@
+{
+  "protocol": "railpolicy_dev_v2_auto_1",
+  "grade": "AI-assisted Silver Ground Truth",
+  "created_at": "2026-11-09T07:33:57.077401+00:00",
+  "inputs": {
+    "v1_eval_sha256": "bcd318cec9e471eb0d1de103a555fb0fdcd9e39b3db6450dfed7ba70090a1964",
+    "units_sha256": "04ae6427ed7b904862cfbe586623014076d0cfa6d53f9323cf26c52c708ceac7",
+    "corpus_sha256": {
+      "faq/children_tickets.md": "d4b990478ad032d97e2287216b49fe6d10eef6ca267180fe8651659793440603",
+      "faq/online_booking.md": "63e4615313f6f883f3a65d26b895b87d58f4b7567c0604ed248b06799fa4a1e0",
+      "faq/online_refunds.md": "86f95c1166eb0061e3b2f888d75acc7721d04dcbd50fb788b3e39328f591641f",
+      "faq/student_tickets.md": "3d5cfe07e47d14f528d423a2bf1c0330edd155a33e228f0c8f160b5bcb73d9c1",
+      "faq/ticket_changes.md": "16dfbddff656390562eb94a514a210c9a5bb144e32a8adf063d8934ba6c36c4e",
+      "faq/window_refunds.md": "cf98b662469d5330b1a9e1e9dbee59682ce14ccaf06631b4510e7ac680839f61",
+      "notices/ticket_purchase_notice.md": "710d106e22fcb98dacc2da5364529afc2ed8254e54085ca11473ebdfe736541e",
+      "notices/travel_notice.md": "604c00b14f6018fa7fb0569c1093569e74777349c15516df06393f43838e70af",
+      "regulations/passenger_transport_rules.md": "0538b30442156b2dd803ba9ba9c7b30f343e42aef697e6fa2c3cda819a58b214"
+    },
+    "script_sha256": "23bf46bb2f92c94ba35c59401c4a28d2052f6d24efb4f4fcef6fb0051bfaed1f",
+    "review_prompt_sha256": "6149f2426168b72b5c2a11b8562f7cbbfb2f7bdb810ad6189cd95f2b69bdad9f"
+  },
+  "unit_count": 197,
+  "document_count": 9,
+  "review_input_sha256": "6ec8ec5f2d331482876f78850753032e0bce4d3b0d36529731b9232d0a393909",
+  "candidates": [
+    {
+      "id": "ce5581584ed126d8",
+      "case_id": "rail-dev-002",
+      "group_id": "evidence-1",
+      "source": "regulations/passenger_transport_rules.md",
+      "unit_id": "regulation.cr_passenger_transport_rules.article048",
+      "quote": "在车站售票窗口办理退票时，旅客本人办理的，需出具购票时所使用的有效身份证件；代旅客办理的，需出具代办人的有效身份证件和旅客购票时所使用的有效身份证件。",
+      "required_points": [
+        0,
+        1
+      ],
+      "normalized_spans": [
+        [
+          8075,
+          8150
+        ]
+      ],
+      "covering_chunks": [
+        "regulations/passenger_transport_rules.md#0023"
+      ],
+      "location_valid": true
+    },
+    {
+      "id": "68253f918f6cb116",
+      "case_id": "rail-dev-002",
+      "group_id": "evidence-1",
+      "source": "regulations/passenger_transport_rules.md",
+      "unit_id": "regulation.cr_passenger_transport_rules.article030",
+      "quote": "在车站售票窗口办理改签时，旅客须出具购票时使用有效身份证件；他人代办时应出具代办人有效身份证件及旅客购票时使用的有效身份证件。",
+      "required_points": [
+        0,
+        1
+      ],
+      "normalized_spans": [
+        [
+          5355,
+          5418
+        ]
+      ],
+      "covering_chunks": [
+        "regulations/passenger_transport_rules.md#0015"
+      ],
+      "location_valid": true
+    },
+    {
+      "id": "2ce88115e78d9c61",
+      "case_id": "rail-dev-002",
+      "group_id": "evidence-1",
+      "source": "faq/online_refunds.md",
+      "unit_id": "faq.online_refunds.q006",
+      "quote": "可以，需持代办人本人有效身份证件原件、乘车人购票时使用的乘车人身份证件原件和报销凭证前往车站窗口办理。",
+      "required_points": [
+        0,
+        1
+      ],
+      "normalized_spans": [
+        [
+          636,
+          687
+        ]
+      ],
+      "covering_chunks": [
+        "faq/online_refunds.md#0001"
+      ],
+      "location_valid": true
+    },
+    {
+      "id": "c8d68382c5c00483",
+      "case_id": "rail-dev-004",
+      "group_id": "evidence-1",
+      "source": "faq/window_refunds.md",
+      "unit_id": "faq.window_refunds.q005",
+      "quote": "票面乘车站开车时间前48小时以上的按票价5%计，24小时以上、不足48小时的按票价10%计",
+      "required_points": [
+        0,
+        1,
+        2
+      ],
+      "normalized_spans": [
+        [
+          673,
+          718
+        ]
+      ],
+      "covering_chunks": [
+        "faq/window_refunds.md#0001"
+      ],
+      "location_valid": true
+    },
+    {
+      "id": "7b58ecf7a0cc8592",
+      "case_id": "rail-dev-004",
+      "group_id": "evidence-1",
+      "source": "faq/window_refunds.md",
+      "unit_id": "faq.window_refunds.q005",
+      "quote": "48小时以上的按票价5%计，24小时以上、不足48小时的按票价10%计",
+      "required_points": [
+        0,
+        1,
+        2
+      ],
+      "normalized_spans": [
+        [
+          683,
+          718
+        ]
+      ],
+      "covering_chunks": [
+        "faq/window_refunds.md#0001",
+        "faq/window_refunds.md#0002"
+      ],
+      "location_valid": true
+    },
+    {
+      "id": "3794f1ebbefd11ae",
+      "case_id": "rail-dev-006",
+      "group_id": "evidence-1",
+      "source": "regulations/passenger_transport_rules.md",
+      "unit_id": "regulation.cr_passenger_transport_rules.article034",
+      "quote": "旅客要求越过车票到站继续乘车时，须在原车票到站前提出，在有运输能力的情况下列车可予以办理，核收越站区间的票款；无运输能力时，列车有权拒绝旅客补票和继续乘车。",
+      "required_points": [
+        0,
+        1,
+        2
+      ],
+      "normalized_spans": [
+        [
+          5750,
+          5828
+        ]
+      ],
+      "covering_chunks": [
+        "regulations/passenger_transport_rules.md#0016"
+      ],
+      "location_valid": true
+    },
+    {
+      "id": "614add977266a4ad",
+      "case_id": "rail-dev-006",
+      "group_id": "evidence-1",
+      "source": "regulations/passenger_transport_rules.md",
+      "unit_id": "regulation.cr_passenger_transport_rules.article034",
+      "quote": "无运输能力时，列车有权拒绝旅客补票和继续乘车。",
+      "required_points": [
+        0,
+        1,
+        2
+      ],
+      "normalized_spans": [
+        [
+          5805,
+          5828
+        ]
+      ],
+      "covering_chunks": [
+        "regulations/passenger_transport_rules.md#0016",
+        "regulations/passenger_transport_rules.md#0017"
+      ],
+      "location_valid": true
+    },
+    {
+      "id": "e36f51a375eff5e0",
+      "case_id": "rail-dev-007",
+      "group_id": "evidence-1",
+      "source": "notices/ticket_purchase_notice.md",
+      "unit_id": "notice.ticket_purchase_notice.item002",
+      "quote": "每1名持票成年人旅客可免费携带1名未满6周岁且不单独占用席位的儿童乘车，超过1名时，超过人数应购买儿童优惠票。",
+      "required_points": [
+        0
+      ],
+      "normalized_spans": [
+        [
+          468,
+          523
+        ]
+      ],
+      "covering_chunks": [
+        "notices/ticket_purchase_notice.md#0001"
+      ],
+      "location_valid": true
+    },
+    {
+      "id": "d2490be6a06b1c00",
+      "case_id": "rail-dev-007",
+      "group_id": "evidence-1",
+      "source": "regulations/passenger_transport_rules.md",
+      "unit_id": "regulation.cr_passenger_transport_rules.article015",
+      "quote": "每1名持票成年人旅客可免费携带1名未满6周岁且不单独占用席位的儿童乘车，超过1名时，超过人数应购买儿童优惠票。",
+      "required_points": [
+        0
+      ],
+      "normalized_spans": [
+        [
+          2810,
+          2865
+        ]
+      ],
+      "covering_chunks": [
+        "regulations/passenger_transport_rules.md#0008"
+      ],
+      "location_valid": true
+    },
+    {
+      "id": "47d95defbe659e4b",
+      "case_id": "rail-dev-007",
+      "group_id": "evidence-2",
+      "source": "notices/ticket_purchase_notice.md",
+      "unit_id": "notice.ticket_purchase_notice.item002",
+      "quote": "免费乘车的儿童单独使用席位时应购买儿童优惠票。",
+      "required_points": [
+        1
+      ],
+      "normalized_spans": [
+        [
+          535,
+          558
+        ]
+      ],
+      "covering_chunks": [
+        "notices/ticket_purchase_notice.md#0001"
+      ],
+      "location_valid": true
+    },
+    {
+      "id": "e51a004db32da5a2",
+      "case_id": "rail-dev-007",
+      "group_id": "evidence-2",
+      "source": "regulations/passenger_transport_rules.md",
+      "unit_id": "regulation.cr_passenger_transport_rules.article015",
+      "quote": "免费乘车的儿童单独使用席位时应购买儿童优惠票。",
+      "required_points": [
+        1
+      ],
+      "normalized_spans": [
+        [
+          2941,
+          2964
+        ]
+      ],
+      "covering_chunks": [
+        "regulations/passenger_transport_rules.md#0008"
+      ],
+      "location_valid": true
+    },
+    {
+      "id": "3137dca4e7e5b4cb",
+      "case_id": "rail-dev-007",
+      "group_id": "evidence-3",
+      "source": "regulations/passenger_transport_rules.md",
+      "unit_id": "regulation.cr_passenger_transport_rules.article015",
+      "quote": "旅客携带免费乘车儿童时，应在购票时向铁路运输企业提前申明，购票申明时使用的免费乘车儿童有效身份证件为其乘车凭证。",
+      "required_points": [
+        2
+      ],
+      "normalized_spans": [
+        [
+          2881,
+          2937
+        ]
+      ],
+      "covering_chunks": [
+        "regulations/passenger_transport_rules.md#0008"
+      ],
+      "location_valid": true
+    },
+    {
+      "id": "26498623125d8230",
+      "case_id": "rail-dev-007",
+      "group_id": "evidence-3",
+      "source": "notices/ticket_purchase_notice.md",
+      "unit_id": "notice.ticket_purchase_notice.item001",
+      "quote": "携带免费乘车儿童时，应在购票时向铁路运输企业提前申明。",
+      "required_points": [
+        2
+      ],
+      "normalized_spans": [
+        [
+          255,
+          282
+        ]
+      ],
+      "covering_chunks": [
+        "notices/ticket_purchase_notice.md#0000"
+      ],
+      "location_valid": true
+    },
+    {
+      "id": "b9991609e5033039",
+      "case_id": "rail-dev-007",
+      "group_id": "evidence-3",
+      "source": "regulations/passenger_transport_rules.md",
+      "unit_id": "regulation.cr_passenger_transport_rules.article024",
+      "quote": "随行免费乘车儿童的乘车凭证是其购票申明时所使用的儿童有效身份证件。",
+      "required_points": [
+        2
+      ],
+      "normalized_spans": [
+        [
+          4555,
+          4588
+        ]
+      ],
+      "covering_chunks": [
+        "regulations/passenger_transport_rules.md#0013"
+      ],
+      "location_valid": true
+    },
+    {
+      "id": "5e044898c4c1a8fd",
+      "case_id": "rail-dev-008",
+      "group_id": "evidence-1",
+      "source": "faq/ticket_changes.md",
+      "unit_id": "faq.ticket_changes.q001",
+      "quote": "改签以铁路有运输能力（即可售车票）为前提，旅客可办理一次改签。",
+      "required_points": [
+        0
+      ],
+      "normalized_spans": [
+        [
+          153,
+          184
+        ]
+      ],
+      "covering_chunks": [
+        "faq/ticket_changes.md#0000"
+      ],
+      "location_valid": true
+    },
+    {
+      "id": "10fc58e418ccee36",
+      "case_id": "rail-dev-008",
+      "group_id": "evidence-1",
+      "source": "notices/ticket_purchase_notice.md",
+      "unit_id": "notice.ticket_purchase_notice.item006",
+      "quote": "在铁路有运输能力的前提下，可办理1次改签手续",
+      "required_points": [
+        0
+      ],
+      "normalized_spans": [
+        [
+          1572,
+          1594
+        ]
+      ],
+      "covering_chunks": [
+        "notices/ticket_purchase_notice.md#0004"
+      ],
+      "location_valid": true
+    },
+    {
+      "id": "6b14d861a8cd8282",
+      "case_id": "rail-dev-008",
+      "group_id": "evidence-1",
+      "source": "regulations/passenger_transport_rules.md",
+      "unit_id": "regulation.cr_passenger_transport_rules.article028",
+      "quote": "旅客可办理1次改签，在铁路运输企业有运输能力的前提下，按下列规定办理：",
+      "required_points": [
+        0
+      ],
+      "normalized_spans": [
+        [
+          4848,
+          4883
+        ]
+      ],
+      "covering_chunks": [
+        "regulations/passenger_transport_rules.md#0014"
+      ],
+      "location_valid": true
+    },
+    {
+      "id": "6b3ccc392422580a",
+      "case_id": "rail-dev-008",
+      "group_id": "evidence-2",
+      "source": "faq/ticket_changes.md",
+      "unit_id": "faq.ticket_changes.q009",
+      "quote": "开车后在当日24时之前改签当日其他列车时，均不收改签费",
+      "required_points": [
+        1
+      ],
+      "normalized_spans": [
+        [
+          1840,
+          1867
+        ]
+      ],
+      "covering_chunks": [
+        "faq/ticket_changes.md#0005"
+      ],
+      "location_valid": true
+    },
+    {
+      "id": "d55cfa247699e376",
+      "case_id": "rail-dev-008",
+      "group_id": "evidence-2",
+      "source": "notices/ticket_purchase_notice.md",
+      "unit_id": "notice.ticket_purchase_notice.item006",
+      "quote": "开车后在当日24时之前改签当日其他列车时，均不收改签费",
+      "required_points": [
+        1
+      ],
+      "normalized_spans": [
+        [
+          1667,
+          1694
+        ]
+      ],
+      "covering_chunks": [
+        "notices/ticket_purchase_notice.md#0004"
+      ],
+      "location_valid": true
+    },
+    {
+      "id": "a06e4e7678d78dcc",
+      "case_id": "rail-dev-008",
+      "group_id": "evidence-2",
+      "source": "regulations/passenger_transport_rules.md",
+      "unit_id": "regulation.cr_passenger_transport_rules.article028",
+      "quote": "（四）开车后，在当日24时之前，可免费改签当日其他列车。",
+      "required_points": [
+        1
+      ],
+      "normalized_spans": [
+        [
+          4986,
+          5014
+        ]
+      ],
+      "covering_chunks": [
+        "regulations/passenger_transport_rules.md#0014"
+      ],
+      "location_valid": true
+    },
+    {
+      "id": "12c8c5ec79956b00",
+      "case_id": "rail-dev-008",
+      "group_id": "evidence-3",
+      "source": "regulations/passenger_transport_rules.md",
+      "unit_id": "regulation.cr_passenger_transport_rules.article046",
+      "quote": "下列情况不办理退票。\n\n（一）车票发站开车后；\n\n（二）开车后改签的车票；",
+      "required_points": [
+        2
+      ],
+      "normalized_spans": [
+        [
+          7745,
+          7780
+        ]
+      ],
+      "covering_chunks": [
+        "regulations/passenger_transport_rules.md#0022"
+      ],
+      "location_valid": true
+    },
+    {
+      "id": "83101421d10c631b",
+      "case_id": "rail-dev-008",
+      "group_id": "evidence-3",
+      "source": "faq/window_refunds.md",
+      "unit_id": "faq.window_refunds.q003",
+      "quote": "## 3. 哪些情况不办理退票？\n\n1.车票发站开车后；\n\n2.开车后改签的车票；",
+      "required_points": [
+        2
+      ],
+      "normalized_spans": [
+        [
+          435,
+          474
+        ]
+      ],
+      "covering_chunks": [
+        "faq/window_refunds.md#0001"
+      ],
+      "location_valid": true
+    },
+    {
+      "id": "0a89918e9f45a3d1",
+      "case_id": "rail-dev-008",
+      "group_id": "evidence-3",
+      "source": "regulations/passenger_transport_rules.md",
+      "unit_id": "regulation.cr_passenger_transport_rules.article046",
+      "quote": "（二）开车后改签的车票；",
+      "required_points": [
+        2
+      ],
+      "normalized_spans": [
+        [
+          7768,
+          7780
+        ]
+      ],
+      "covering_chunks": [
+        "regulations/passenger_transport_rules.md#0022"
+      ],
+      "location_valid": true
+    },
+    {
+      "id": "e741900823d4932e",
+      "case_id": "rail-dev-003",
+      "group_id": "evidence-1",
+      "source": "notices/ticket_purchase_notice.md",
+      "unit_id": "notice.ticket_purchase_notice.item003",
+      "quote": "每学年（10月1日至次年9月30日）可购买家庭居住地至院校（实习地点）所在地之间四次单程的学生优惠票。",
+      "required_points": [
+        0,
+        1
+      ],
+      "normalized_spans": [
+        [
+          1054,
+          1105
+        ]
+      ],
+      "covering_chunks": [
+        "notices/ticket_purchase_notice.md#0003"
+      ],
+      "location_valid": true
+    },
+    {
+      "id": "2785a86e325c10c1",
+      "case_id": "rail-dev-003",
+      "group_id": "evidence-1",
+      "source": "regulations/passenger_transport_rules.md",
+      "unit_id": "regulation.cr_passenger_transport_rules.article016",
+      "quote": "每学年（10月1日至次年9月30日）可购买家庭居住地至院校（实习地点）所在地之间四次单程的学生优惠票。",
+      "required_points": [
+        0,
+        1
+      ],
+      "normalized_spans": [
+        [
+          3245,
+          3296
+        ]
+      ],
+      "covering_chunks": [
+        "regulations/passenger_transport_rules.md#0009"
+      ],
+      "location_valid": true
+    },
+    {
+      "id": "e0f7d3ec3da0491b",
+      "case_id": "rail-dev-003",
+      "group_id": "evidence-2",
+      "source": "regulations/passenger_transport_rules.md",
+      "unit_id": "regulation.cr_passenger_transport_rules.article016",
+      "quote": "优惠乘车次数按学年使用有效，当学年不能使用下学年的次数，当学年未使用的不能留作下学年使用。",
+      "required_points": [
+        2
+      ],
+      "normalized_spans": [
+        [
+          3907,
+          3952
+        ]
+      ],
+      "covering_chunks": [
+        "regulations/passenger_transport_rules.md#0011"
+      ],
+      "location_valid": true
+    }
+  ],
+  "runs": [
+    {
+      "requested_model": "deepseek-flash",
+      "request_sha256": "283ce5517949cc508113fd51470c2558a77ea57295cf067720dd6f4c49fa073c",
+      "status": "completed",
+      "decisions": {
+        "ce5581584ed126d8": {
+          "id": "ce5581584ed126d8",
+          "status": "accepted",
+          "supported_points": [
+            0,
+            1
+          ],
+          "reason": "引文明确代旅客办理退票需代办人有效身份证件和旅客购票时使用的有效身份证件，覆盖两个要点。"
+        },
+        "68253f918f6cb116": {
+          "id": "68253f918f6cb116",
+          "status": "rejected",
+          "supported_points": [],
+          "reason": "引文针对车站窗口办理改签，不是退票，业务场景不符。"
+        },
+        "2ce88115e78d9c61": {
+          "id": "2ce88115e78d9c61",
+          "status": "rejected",
+          "supported_points": [],
+          "reason": "引文场景为先退票后领款代领票款，不是代办退票，不能支持退票所需证件。"
+        },
+        "c8d68382c5c00483": {
+          "id": "c8d68382c5c00483",
+          "status": "accepted",
+          "supported_points": [
+            0,
+            1,
+            2
+          ],
+          "reason": "引文保留开车时点锚点并给出48小时以上5%、24小时以上不足48小时10%，结合题设“以上”含端点可支持两个费率及边界。"
+        },
+        "7b58ecf7a0cc8592": {
+          "id": "7b58ecf7a0cc8592",
+          "status": "rejected",
+          "supported_points": [],
+          "reason": "引文截断为“48小时以上”“24小时以上”，缺少“票面乘车站开车时间前”的开车时点锚点，不能完整支持费率规则。"
+        },
+        "3794f1ebbefd11ae": {
+          "id": "3794f1ebbefd11ae",
+          "status": "accepted",
+          "supported_points": [
+            0,
+            1,
+            2
+          ],
+          "reason": "引文明确须在原车票到站前提出、有运输能力可办理并核收越站区间票款、无运输能力可拒绝补票和继续乘车。"
+        },
+        "614add977266a4ad": {
+          "id": "614add977266a4ad",
+          "status": "rejected",
+          "supported_points": [
+            2
+          ],
+          "reason": "仅覆盖无运输能力可拒绝补票和继续乘车，缺失到站前提出及有运输能力可办理两个要点。"
+        },
+        "e36f51a375eff5e0": {
+          "id": "e36f51a375eff5e0",
+          "status": "accepted",
+          "supported_points": [
+            0
+          ],
+          "reason": "引文明确每名持票成年人可免费携带一名未满6周岁且不单独占用席位的儿童，超过一名应购儿童优惠票。"
+        },
+        "d2490be6a06b1c00": {
+          "id": "d2490be6a06b1c00",
+          "status": "accepted",
+          "supported_points": [
+            0
+          ],
+          "reason": "引文与要点一致，明确一名持票成年人最多免费携带一名未满6周岁且不占席位的儿童。"
+        },
+        "47d95defbe659e4b": {
+          "id": "47d95defbe659e4b",
+          "status": "accepted",
+          "supported_points": [
+            1
+          ],
+          "reason": "引文明确免费乘车儿童单独使用席位时应购买儿童优惠票，支持该要点。"
+        },
+        "e51a004db32da5a2": {
+          "id": "e51a004db32da5a2",
+          "status": "accepted",
+          "supported_points": [
+            1
+          ],
+          "reason": "引文明确免费乘车儿童单独使用席位时应购买儿童优惠票，支持该要点。"
+        },
+        "3137dca4e7e5b4cb": {
+          "id": "3137dca4e7e5b4cb",
+          "status": "accepted",
+          "supported_points": [
+            2
+          ],
+          "reason": "引文明确携带免费乘车儿童应购票时提前申明，申明所用儿童有效身份证件为乘车凭证。"
+        },
+        "26498623125d8230": {
+          "id": "26498623125d8230",
+          "status": "rejected",
+          "supported_points": [],
+          "reason": "仅说明应提前申明，缺少申明所用儿童有效身份证件为乘车凭证这一必要内容。"
+        },
+        "b9991609e5033039": {
+          "id": "b9991609e5033039",
+          "status": "rejected",
+          "supported_points": [],
+          "reason": "仅说明乘车凭证是申明所用儿童身份证件，缺少购票时提前申明的要求。"
+        },
+        "5e044898c4c1a8fd": {
+          "id": "5e044898c4c1a8fd",
+          "status": "accepted",
+          "supported_points": [
+            0
+          ],
+          "reason": "引文明确改签以铁路有运输能力为前提且可办理一次改签，支持未用次数且有运输能力这一要点。"
+        },
+        "10fc58e418ccee36": {
+          "id": "10fc58e418ccee36",
+          "status": "accepted",
+          "supported_points": [
+            0
+          ],
+          "reason": "引文明确在有运输能力前提下可办理1次改签手续，支持该要点。"
+        },
+        "6b14d861a8cd8282": {
+          "id": "6b14d861a8cd8282",
+          "status": "accepted",
+          "supported_points": [
+            0
+          ],
+          "reason": "引文明确旅客可办理1次改签且以铁路运输企业有运输能力为前提，支持该要点。"
+        },
+        "6b3ccc392422580a": {
+          "id": "6b3ccc392422580a",
+          "status": "accepted",
+          "supported_points": [
+            1
+          ],
+          "reason": "引文明确开车后在当日24时之前改签当日其他列车不收改签费，支持该要点。"
+        },
+        "d55cfa247699e376": {
+          "id": "d55cfa247699e376",
+          "status": "accepted",
+          "supported_points": [
+            1
+          ],
+          "reason": "引文明确开车后在当日24时之前改签当日其他列车不收改签费，支持该要点。"
+        },
+        "a06e4e7678d78dcc": {
+          "id": "a06e4e7678d78dcc",
+          "status": "accepted",
+          "supported_points": [
+            1
+          ],
+          "reason": "引文明确开车后在当日24时之前可免费改签当日其他列车，支持该要点。"
+        },
+        "12c8c5ec79956b00": {
+          "id": "12c8c5ec79956b00",
+          "status": "accepted",
+          "supported_points": [
+            2
+          ],
+          "reason": "引文明确开车后改签的车票不办理退票，支持该要点。"
+        },
+        "83101421d10c631b": {
+          "id": "83101421d10c631b",
+          "status": "accepted",
+          "supported_points": [
+            2
+          ],
+          "reason": "引文明确开车后改签的车票不办理退票，支持该要点。"
+        },
+        "0a89918e9f45a3d1": {
+          "id": "0a89918e9f45a3d1",
+          "status": "rejected",
+          "supported_points": [],
+          "reason": "引文仅为“开车后改签的车票”片段，脱离“不办理退票”的上下文，不能独立支持该否定规则。"
+        },
+        "e741900823d4932e": {
+          "id": "e741900823d4932e",
+          "status": "accepted",
+          "supported_points": [
+            0,
+            1
+          ],
+          "reason": "引文明确学年为10月1日至次年9月30日，且每学年可购买四次单程学生优惠票。"
+        },
+        "2785a86e325c10c1": {
+          "id": "2785a86e325c10c1",
+          "status": "accepted",
+          "supported_points": [
+            0,
+            1
+          ],
+          "reason": "引文明确学年区间及每学年四次单程学生优惠票，支持两个要点。"
+        },
+        "e0f7d3ec3da0491b": {
+          "id": "e0f7d3ec3da0491b",
+          "status": "accepted",
+          "supported_points": [
+            2
+          ],
+          "reason": "引文明确当学年未使用次数不能留作下学年使用，支持不能跨学年结转累计为五次。"
+        }
+      },
+      "response_id": "94251497-9d40-4846-9e95-351d5192a1b4",
+      "reported_model": "deepseek-flash",
+      "system_fingerprint": "bc19ba97cbe016479903222bb1578db6",
+      "usage": {
+        "prompt_tokens": 10987,
+        "completion_tokens": 1332,
+        "total_tokens": 12319,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 10987
+      },
+      "finish_reason": "stop"
+    },
+    {
+      "requested_model": "deepseek-v4-pro",
+      "request_sha256": "6259f7905a059a5f2c70aee015c56b24217ba3efb00c17d0faadcc28677092e8",
+      "status": "completed",
+      "decisions": {
+        "ce5581584ed126d8": {
+          "id": "ce5581584ed126d8",
+          "status": "accepted",
+          "supported_points": [
+            0,
+            1
+          ],
+          "reason": "引用明确说明代办退票需代办人有效身份证件和旅客购票时使用的有效身份证件，覆盖两个要点。"
+        },
+        "68253f918f6cb116": {
+          "id": "68253f918f6cb116",
+          "status": "rejected",
+          "supported_points": [],
+          "reason": "引用内容是关于改签的证件要求，不是退票，业务场景不符。"
+        },
+        "2ce88115e78d9c61": {
+          "id": "2ce88115e78d9c61",
+          "status": "rejected",
+          "supported_points": [],
+          "reason": "引用内容是关于先退票后领款代领票款的要求，不是代办退票，业务场景不符。"
+        },
+        "c8d68382c5c00483": {
+          "id": "c8d68382c5c00483",
+          "status": "accepted",
+          "supported_points": [
+            0,
+            1,
+            2
+          ],
+          "reason": "引用明确给出48小时以上按5%、24小时以上不足48小时按10%，且结合题设“以上”包含本数，覆盖全部要点。"
+        },
+        "7b58ecf7a0cc8592": {
+          "id": "7b58ecf7a0cc8592",
+          "status": "rejected",
+          "supported_points": [],
+          "reason": "引用缺少开车时点锚点，仅截取小时和比例，无法确定完整规则，不能支持要点。"
+        },
+        "3794f1ebbefd11ae": {
+          "id": "3794f1ebbefd11ae",
+          "status": "accepted",
+          "supported_points": [
+            0,
+            1,
+            2
+          ],
+          "reason": "引用完整覆盖越站乘车三个要点：到站前提出、有运输能力可办理并核收票款、无运输能力可拒绝。"
+        },
+        "614add977266a4ad": {
+          "id": "614add977266a4ad",
+          "status": "rejected",
+          "supported_points": [
+            2
+          ],
+          "reason": "引用仅覆盖无运输能力可拒绝补票和继续乘车，缺少到站前提出和有运输能力可办理两个要点。"
+        },
+        "e36f51a375eff5e0": {
+          "id": "e36f51a375eff5e0",
+          "status": "accepted",
+          "supported_points": [
+            0
+          ],
+          "reason": "引用明确说明每名持票成年人可免费携带1名未满6周岁且不单独占用席位的儿童，覆盖要点0。"
+        },
+        "d2490be6a06b1c00": {
+          "id": "d2490be6a06b1c00",
+          "status": "accepted",
+          "supported_points": [
+            0
+          ],
+          "reason": "引用明确说明每名持票成年人可免费携带1名未满6周岁且不单独占用席位的儿童，覆盖要点0。"
+        },
+        "47d95defbe659e4b": {
+          "id": "47d95defbe659e4b",
+          "status": "accepted",
+          "supported_points": [
+            1
+          ],
+          "reason": "引用明确说明免费乘车儿童单独使用席位时应购买儿童优惠票，覆盖要点1。"
+        },
+        "e51a004db32da5a2": {
+          "id": "e51a004db32da5a2",
+          "status": "accepted",
+          "supported_points": [
+            1
+          ],
+          "reason": "引用明确说明免费乘车儿童单独使用席位时应购买儿童优惠票，覆盖要点1。"
+        },
+        "3137dca4e7e5b4cb": {
+          "id": "3137dca4e7e5b4cb",
+          "status": "accepted",
+          "supported_points": [
+            2
+          ],
+          "reason": "引用明确说明携带免费乘车儿童应提前申明，申明所用儿童有效身份证件为其乘车凭证，覆盖要点2。"
+        },
+        "26498623125d8230": {
+          "id": "26498623125d8230",
+          "status": "rejected",
+          "supported_points": [],
+          "reason": "引用仅说明应提前申明，未提及申明所用儿童有效身份证件为其乘车凭证，不能完整覆盖要点2。"
+        },
+        "b9991609e5033039": {
+          "id": "b9991609e5033039",
+          "status": "accepted",
+          "supported_points": [
+            2
+          ],
+          "reason": "引用明确说明随行免费乘车儿童的乘车凭证是其购票申明时所使用的儿童有效身份证件，覆盖要点2。"
+        },
+        "5e044898c4c1a8fd": {
+          "id": "5e044898c4c1a8fd",
+          "status": "accepted",
+          "supported_points": [
+            0
+          ],
+          "reason": "引用明确说明改签以铁路有运输能力为前提，旅客可办理一次改签，覆盖要点0。"
+        },
+        "10fc58e418ccee36": {
+          "id": "10fc58e418ccee36",
+          "status": "accepted",
+          "supported_points": [
+            0
+          ],
+          "reason": "引用明确说明在铁路有运输能力的前提下可办理1次改签手续，覆盖要点0。"
+        },
+        "6b14d861a8cd8282": {
+          "id": "6b14d861a8cd8282",
+          "status": "accepted",
+          "supported_points": [
+            0
+          ],
+          "reason": "引用明确说明旅客可办理1次改签，在铁路运输企业有运输能力的前提下，覆盖要点0。"
+        },
+        "6b3ccc392422580a": {
+          "id": "6b3ccc392422580a",
+          "status": "accepted",
+          "supported_points": [
+            1
+          ],
+          "reason": "引用明确说明开车后在当日24时之前改签当日其他列车时不收改签费，覆盖要点1。"
+        },
+        "d55cfa247699e376": {
+          "id": "d55cfa247699e376",
+          "status": "accepted",
+          "supported_points": [
+            1
+          ],
+          "reason": "引用明确说明开车后在当日24时之前改签当日其他列车时不收改签费，覆盖要点1。"
+        },
+        "a06e4e7678d78dcc": {
+          "id": "a06e4e7678d78dcc",
+          "status": "accepted",
+          "supported_points": [
+            1
+          ],
+          "reason": "引用明确说明开车后在当日24时之前可免费改签当日其他列车，覆盖要点1。"
+        },
+        "12c8c5ec79956b00": {
+          "id": "12c8c5ec79956b00",
+          "status": "accepted",
+          "supported_points": [
+            2
+          ],
+          "reason": "引用明确列出开车后改签的车票不办理退票，覆盖要点2。"
+        },
+        "83101421d10c631b": {
+          "id": "83101421d10c631b",
+          "status": "accepted",
+          "supported_points": [
+            2
+          ],
+          "reason": "引用明确列出开车后改签的车票不办理退票，覆盖要点2。"
+        },
+        "0a89918e9f45a3d1": {
+          "id": "0a89918e9f45a3d1",
+          "status": "accepted",
+          "supported_points": [
+            2
+          ],
+          "reason": "引用明确列出开车后改签的车票不办理退票，覆盖要点2。"
+        },
+        "e741900823d4932e": {
+          "id": "e741900823d4932e",
+          "status": "accepted",
+          "supported_points": [
+            0,
+            1
+          ],
+          "reason": "引用明确说明每学年为10月1日至次年9月30日，可购买四次单程学生优惠票，覆盖要点0和1。"
+        },
+        "2785a86e325c10c1": {
+          "id": "2785a86e325c10c1",
+          "status": "accepted",
+          "supported_points": [
+            0,
+            1
+          ],
+          "reason": "引用明确说明每学年为10月1日至次年9月30日，可购买四次单程学生优惠票，覆盖要点0和1。"
+        },
+        "e0f7d3ec3da0491b": {
+          "id": "e0f7d3ec3da0491b",
+          "status": "accepted",
+          "supported_points": [
+            2
+          ],
+          "reason": "引用明确说明优惠乘车次数按学年使用有效，当学年未使用的不能留作下学年使用，覆盖要点2。"
+        }
+      },
+      "response_id": "297c0d4c-0b15-4a22-a069-0d726eb1688e",
+      "reported_model": "deepseek-v4-pro",
+      "system_fingerprint": "a307abda487cd1b463329ccb945ce396",
+      "usage": {
+        "prompt_tokens": 10984,
+        "completion_tokens": 1739,
+        "total_tokens": 12723,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 10984
+      },
+      "finish_reason": "stop"
+    }
+  ]
+}
