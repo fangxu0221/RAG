@@ -8,7 +8,7 @@ import platform
 from pathlib import Path
 
 from .io import load_documents, load_evaluation_cases
-from .generator import SYSTEM_PROMPT, USER_PROMPT_TEMPLATE
+from .infrastructure.llm.generator import SYSTEM_PROMPT, USER_PROMPT_TEMPLATE
 
 
 def text_sha256(path: Path) -> str:
@@ -92,5 +92,8 @@ def runtime_fingerprint() -> dict[str, object]:
     return {
         "python": platform.python_version(),
         "platform": platform.platform(),
-        "code_sha256": {path.name: text_sha256(path) for path in sorted(package.glob("*.py"))},
+        "code_sha256": {
+            path.relative_to(package).as_posix(): text_sha256(path)
+            for path in sorted(package.rglob("*.py"))
+        },
     }

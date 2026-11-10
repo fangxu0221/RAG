@@ -9,11 +9,11 @@ from datetime import datetime, timezone
 from pathlib import Path
 from time import perf_counter
 
-from .answer_evaluation import DeepSeekAnswerJudge, evaluate_answers, summarize_answers
-from .cli import build_retriever, project_path
-from .evaluation import evaluate_retrieval
+from .infrastructure.llm.answer_judge import DeepSeekAnswerJudge
+from .application.evaluation_service import evaluate_retrieval, evaluate_answers, summarize_answers
+from .bootstrap import build_retriever, project_path
 from .frozen import runtime_fingerprint, verify_frozen_dataset
-from .generator import DeepSeekGenerator
+from .infrastructure.llm.generator import DeepSeekGenerator
 from .io import load_evaluation_cases, write_json
 
 

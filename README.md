@@ -10,7 +10,13 @@
 
 ```text
 DomainRAG-Benchmark/
-├── domainrag/        # 20个核心模块：检索、生成、Agent及确定性证据评测
+├── domainrag/
+│   ├── domain/          # 数据契约、协议、工具 Schema
+│   ├── application/     # 知识工具、请求会话、答案评测
+│   ├── infrastructure/  # retrievers/、llm/、storage/
+│   ├── workflows/       # native_agent.py
+│   ├── bootstrap.py     # 配置、冻结校验、文档快照及检索器装配
+│   └── ...              # CLI、旧路径兼容导出、按原路径校验的冻结源码
 ├── configs/          # 四个基础配置 + 四组独立铁路Dev评测配置
 ├── data/llm_notes/   # 暂留的11篇知识文档及配套旧题集
 ├── data/railway/     # 新采集的9份12306官方资料、原始响应与来源索引
@@ -26,6 +32,8 @@ DomainRAG-Benchmark/
 ```
 
 历史结果、审核、研究脚本和专项测试、冻结评测套件及辅助文档已移到项目外的本地归档。原README和完整复习笔记也保存在归档中。归档位置与恢复方法见 [数据流复习文档](docs/项目数据流与面试复习.md#5-归档和恢复)。
+
+CLI 和知识工具使用同一个 [bootstrap](domainrag/bootstrap.py)，顺序为读取配置、校验冻结数据、加载文档快照、切块并创建检索链。Evidence 评测与检索索引使用同一个快照。原生 Agent 通过 `run_agent(question, tools, model, trace_dir, limits)` 接收已装配的知识服务和 `ChatModel`，具体 DeepSeek 传输位于基础设施层。未来的 LangGraph 编排可在 `workflows/` 单独实现，复用这些接口。[分层与兼容边界](docs/代码分层与阅读导航.md#1-目录与依赖)
 
 ## 环境与运行
 
@@ -71,7 +79,13 @@ python -m domainrag.agent --config configs/hybrid_reranker.json --question "为�
 python -B -X utf8 -m unittest discover -s tests -v
 ```
 
-当前81项测试通过（原62项 + 新增19项），验证控制流、计算、证据区间、AND/OR及异常边界；另2项旧研究专项测试随脚本归档，没有作为当前套件跳过。
+独立知识工具示例：
+
+```powershell
+python -m domainrag.tools --config configs/railway_dev_bm25.json search_knowledge --query "学生票优惠次数可以结转吗？"
+```
+
+架构重构验证为基线 86 项、bootstrap 阶段 91 项、分层后 94 项，均通过。已验证旧 CLI、真实 BM25 和四组 V2 冻结报告重放。BGE、重排和远程模型调用使用离线替身验证，实际模型推理留作独立验证。
 
 ## 后续替换知识库
 

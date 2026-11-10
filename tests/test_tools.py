@@ -113,10 +113,13 @@ class KnowledgeToolTests(unittest.TestCase):
 
     def test_factory_checks_frozen_data_before_building(self):
         config = Path(__file__).resolve().parents[1] / "configs/bm25_baseline.json"
-        with patch("domainrag.tools.verify_frozen_dataset", side_effect=ValueError("tampered")), \
-                patch("domainrag.tools.build_retriever_from_documents") as build:
-            with self.assertRaises(ValueError):
+        with patch("domainrag.bootstrap.verify_frozen_dataset", side_effect=ValueError("tampered")) as verify, \
+                patch("domainrag.bootstrap.load_documents") as load, \
+                patch("domainrag.bootstrap.build_retriever_from_documents") as build:
+            with self.assertRaisesRegex(ValueError, "tampered"):
                 KnowledgeTools.from_config(config)
+            verify.assert_called_once_with(config)
+            load.assert_not_called()
             build.assert_not_called()
 
 

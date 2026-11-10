@@ -130,7 +130,7 @@ class AgentTests(unittest.TestCase):
         self.assertEqual(result["stop_reason"], "duplicate_call_id")
 
     def test_transport_payload(self):
-        with patch("domainrag.agent.urlopen") as open_url:
+        with patch("domainrag.infrastructure.llm.tool_model.urlopen") as open_url:
             open_url.return_value.__enter__.return_value.read.return_value = json.dumps(reply("ok")).encode()
             model = DeepSeekToolModel(api_key="test-key")
             model.complete([{"role": "user", "content": "test"}], allow_tools=False, timeout=2)

@@ -108,7 +108,7 @@ class RefusalTests(unittest.TestCase):
                 return json.dumps({"choices": [{"message": {"content": json.dumps({
                     "correctness": 2, "faithfulness": 2, "abstained": "true",
                     "citation_assessments": []})}}]}).encode()
-        with patch("domainrag.answer_evaluation.urlopen", return_value=Response()):
+        with patch("domainrag.infrastructure.llm.answer_judge.urlopen", return_value=Response()):
             with self.assertRaisesRegex(ValueError, "abstained"):
                 DeepSeekAnswerJudge(api_key="fake").judge(self.unknown, "无法确定但猜测X", [])
 
@@ -186,7 +186,7 @@ class FrozenTests(unittest.TestCase):
         from domainrag.cli import build_retriever
         with (self.root/"data/unit_fixture/eval.jsonl").open("a", encoding="utf-8") as f:
             f.write("\n")
-        with patch("domainrag.cli.build_bm25") as build:
+        with patch("domainrag.bootstrap.build_bm25") as build:
             with self.assertRaises(ValueError): build_retriever(self.config)
             build.assert_not_called()
 

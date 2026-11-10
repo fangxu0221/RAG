@@ -451,7 +451,7 @@ class AnswerEvaluationTests(unittest.TestCase):
         self.assertEqual(generator.calls, [])
         self.assertEqual(retriever.requested_top_k, [])
 
-    @patch("domainrag.answer_evaluation.urlopen")
+    @patch("domainrag.infrastructure.llm.answer_judge.urlopen")
     def test_deepseek_judge_requests_and_parses_json(self, mocked_urlopen) -> None:
         mocked_urlopen.return_value = _FakeResponse(
             {
@@ -538,7 +538,7 @@ class DeepSeekGeneratorTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "DEEPSEEK_API_KEY"):
                 DeepSeekGenerator()
 
-    @patch("domainrag.generator.urlopen")
+    @patch("domainrag.infrastructure.llm.generator.urlopen")
     def test_generate_uses_chat_completions(self, mocked_urlopen) -> None:
         mocked_urlopen.return_value = _FakeResponse(
             {
