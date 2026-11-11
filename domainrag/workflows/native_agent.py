@@ -80,32 +80,144 @@ def _message(payload: dict) -> tuple[dict, str]:
     return clean, choice.get("finish_reason", "")
 
 
+def _initial_messages(question: str) -> list[dict]:
+    if not isinstance(question, str) or not question.strip() or len(question) > 2000:
+        raise ValueError("question must contain 1 to 2000 characters")
+    return [{"role": "system", "content": AGENT_PROMPT},
+            {"role": "user", "content": question.strip()}]
+
+
+def _record_agent_start(session: ToolSession, model: ChatModel, question: str,
+                        limits: AgentLimits) -> None:
+    session.record({"event": "agent_started", "model": model.model,
+                    "question": question, "limits": asdict(limits), "prompt": AGENT_PROMPT})
+
+
+def _call_model(session: ToolSession, model: ChatModel, messages: list[dict],
+                model_calls: int, allow_tools: bool, remaining: float,
+                usage_total: dict[str, int], usage_complete: bool
+                ) -> tuple[dict | None, str | None, dict[str, int], bool]:
+    session.record({"event": "model_started", "model_call": model_calls,
+                    "allow_tools": allow_tools, "messages": deepcopy(messages)})
+    api_started = perf_counter()
+    try:
+        payload = model.complete(messages, allow_tools=allow_tools, timeout=min(remaining, 60))
+        usage = _usage(payload)
+        if usage is None:
+            usage_complete = False
+        else:
+            usage_total = {key: total + usage[key] for key, total in usage_total.items()}
+        message, reason = _message(payload)
+    except Exception as exc:
+        session.record({"event": "model_failed", "model_call": model_calls,
+                        "error_type": type(exc).__name__,
+                        "elapsed_ms": (perf_counter() - api_started) * 1000})
+        return None, None, usage_total, False
+    session.record({"event": "model_finished", "model_call": model_calls,
+                    "message": message, "finish_reason": reason, "usage": usage,
+                    "elapsed_ms": (perf_counter() - api_started) * 1000})
+    return message, reason, usage_total, usage_complete
+
+
+def _tool_batch_error(calls: list[dict], reason: str, remaining_attempts: int,
+                      ids_seen: set[str] | list[str]) -> dict:
+    if reason != "tool_calls":
+        return {"stop_reason": "invalid_model_response", "status": "failed"}
+    if len(calls) > remaining_attempts:
+        return {"stop_reason": "tool_budget", "status": "stopped"}
+    if any(call["id"] in ids_seen for call in calls):
+        return {"stop_reason": "duplicate_call_id", "status": "failed"}
+    return {}
+
+
+def _tool_message(call: dict, session: ToolSession, calls_seen: set[str],
+                  evidence: list[dict], evidence_keys: dict[str, int]) -> dict:
+    """执行一个调用，并在调用方提供的工作副本中登记证据。"""
+    function = call["function"]
+    name = function["name"]
+    try:
+        args = json.loads(function["arguments"])
+        if not isinstance(args, dict):
+            raise ValueError("not an object")
+        canonical = dict(args)
+        if name == "search_knowledge":
+            canonical.setdefault("top_k", 3)
+            if isinstance(canonical.get("query"), str):
+                canonical["query"] = canonical["query"].strip()
+        elif name == "read_document":
+            canonical.setdefault("start", 0)
+            canonical.setdefault("max_chars", 2000)
+        key = name + json.dumps(canonical, sort_keys=True, allow_nan=False)
+        if key in calls_seen:
+            observation = {"ok": False, "error": {"code": "duplicate_call"}}
+        else:
+            calls_seen.add(key)
+            observation = session.call(name, args)
+    except (ValueError, TypeError):
+        observation = {"ok": False, "error": {"code": "invalid_arguments"}}
+    if observation["ok"]:
+        result = observation["result"]
+        items = result.get("results", []) if name == "search_knowledge" else [result]
+        for item in items:
+            if not item.get("text"):
+                continue
+            evidence_key = _json([item["source"], item["start"], item["end"], item["text"]])
+            if evidence_key not in evidence_keys:
+                evidence_keys[evidence_key] = len(evidence) + 1
+                evidence.append({"citation_id": len(evidence) + 1, **deepcopy(item)})
+            item["citation_id"] = evidence_keys[evidence_key]
+    session.record({"event": "tool_observation", "provider_call_id": call["id"],
+                    "tool": name, "observation": observation})
+    return {"role": "tool", "tool_call_id": call["id"], "content": _json(observation)}
+
+
+def _answer_outcome(message: dict, reason: str, evidence: list[dict]) -> dict:
+    if reason != "stop" or not (message.get("content") or "").strip():
+        return {"stop_reason": "invalid_model_response", "status": "failed"}
+    answer = message["content"].strip()
+    refs = sorted(set(int(x) for x in re.findall(r"\[(\d+)\]", answer)))
+    if any(ref < 1 or ref > len(evidence) for ref in refs):
+        return {"stop_reason": "invalid_citations", "status": "failed"}
+    citations = [evidence[i - 1] for i in refs]
+    if answer.startswith("根据当前资料无法确定"):
+        return {"stop_reason": "model_abstained", "status": "abstained",
+                "answer": answer, "citations": citations}
+    if not evidence or not refs:
+        return {"stop_reason": "missing_citations", "status": "failed"}
+    return {"stop_reason": "model_answered", "status": "completed",
+            "answer": answer, "citations": citations}
+
+
+def _finish(session: ToolSession, evidence: list[dict], model_calls: int, tool_attempts: int,
+            usage_total: dict[str, int], usage_complete: bool, *, stop_reason: str,
+            status: str = "stopped", answer: str | None = None,
+            citations: list[dict] | None = None) -> dict:
+    result = {"request_id": session.request_id, "trace_path": str(session.path),
+              "status": status, "stop_reason": stop_reason, "answer": answer,
+              "citations": citations or [], "evidence": evidence,
+              "model_calls": model_calls, "tool_attempts": tool_attempts,
+              "token_usage": usage_total if usage_complete and model_calls else None,
+              "known_token_usage": usage_total, "usage_complete": usage_complete}
+    session.record({"event": "agent_finished", **result})
+    session.set_outcome(result)
+    return result
+
+
 def run_agent(question: str, tools: KnowledgeTools, model: ChatModel,
               trace_dir: Path, limits: AgentLimits | None = None) -> dict:
     limits = limits or AgentLimits()
-    if not isinstance(question, str) or not question.strip() or len(question) > 2000:
-        raise ValueError("question must contain 1 to 2000 characters")
-    messages = [{"role": "system", "content": AGENT_PROMPT},
-                {"role": "user", "content": question.strip()}]
+    messages = _initial_messages(question)
     evidence, evidence_keys, calls_seen, ids_seen = [], {}, set(), set()
     attempted = model_calls = 0
     usage_total = {"prompt_tokens": 0, "completion_tokens": 0, "total_tokens": 0}
     usage_complete = True
     started = perf_counter()
     with ToolSession(tools, trace_dir) as session:
-        session.record({"event": "agent_started", "model": model.model,
-                        "question": question, "limits": asdict(limits), "prompt": AGENT_PROMPT})
+        _record_agent_start(session, model, question, limits)
 
-        def finish(reason, status="stopped", answer=None, citations=None):
-            result = {"request_id": session.request_id, "trace_path": str(session.path),
-                      "status": status, "stop_reason": reason, "answer": answer,
-                      "citations": citations or [], "evidence": evidence,
-                      "model_calls": model_calls, "tool_attempts": attempted,
-                      "token_usage": usage_total if usage_complete and model_calls else None,
-                      "known_token_usage": usage_total, "usage_complete": usage_complete}
-            session.record({"event": "agent_finished", **result})
-            session.set_outcome(result)
-            return result
+        def finish(stop_reason, status="stopped", answer=None, citations=None):
+            return _finish(session, evidence, model_calls, attempted, usage_total, usage_complete,
+                           stop_reason=stop_reason, status=status, answer=answer, citations=citations)
 
         while model_calls < limits.max_model_calls:
             remaining = limits.max_seconds - (perf_counter() - started)
@@ -115,91 +227,23 @@ def run_agent(question: str, tools: KnowledgeTools, model: ChatModel,
                 return finish("context_budget")
             allow_tools = attempted < limits.max_tool_calls
             model_calls += 1
-            session.record({"event": "model_started", "model_call": model_calls,
-                            "allow_tools": allow_tools, "messages": deepcopy(messages)})
-            api_started = perf_counter()
-            try:
-                payload = model.complete(messages, allow_tools=allow_tools, timeout=min(remaining, 60))
-                usage = _usage(payload)
-                if usage is None:
-                    usage_complete = False
-                else:
-                    for key in usage_total:
-                        usage_total[key] += usage[key]
-                message, reason = _message(payload)
-            except Exception as exc:
-                usage_complete = False
-                session.record({"event": "model_failed", "model_call": model_calls,
-                                "error_type": type(exc).__name__,
-                                "elapsed_ms": (perf_counter() - api_started) * 1000})
+            message, reason, usage_total, usage_complete = _call_model(
+                session, model, messages, model_calls, allow_tools, remaining, usage_total, usage_complete
+            )
+            if message is None:
                 return finish("model_error", "failed")
-            session.record({"event": "model_finished", "model_call": model_calls,
-                            "message": message, "finish_reason": reason, "usage": usage,
-                            "elapsed_ms": (perf_counter() - api_started) * 1000})
             if perf_counter() - started >= limits.max_seconds:
                 return finish("time_budget")
             calls = message.get("tool_calls", [])
-            if calls:
-                if reason != "tool_calls":
-                    return finish("invalid_model_response", "failed")
-                if not allow_tools or len(calls) > limits.max_tool_calls - attempted:
-                    return finish("tool_budget")
-                if any(call["id"] in ids_seen for call in calls):
-                    return finish("duplicate_call_id", "failed")
-                messages.append(message)
-                for call in calls:
-                    if perf_counter() - started >= limits.max_seconds:
-                        return finish("time_budget")
-                    attempted += 1
-                    ids_seen.add(call["id"])
-                    function = call["function"]
-                    name = function["name"]
-                    try:
-                        args = json.loads(function["arguments"])
-                        if not isinstance(args, dict):
-                            raise ValueError("not an object")
-                        canonical = dict(args)
-                        if name == "search_knowledge":
-                            canonical.setdefault("top_k", 3)
-                            if isinstance(canonical.get("query"), str):
-                                canonical["query"] = canonical["query"].strip()
-                        elif name == "read_document":
-                            canonical.setdefault("start", 0)
-                            canonical.setdefault("max_chars", 2000)
-                        key = name + json.dumps(canonical, sort_keys=True, allow_nan=False)
-                        if key in calls_seen:
-                            observation = {"ok": False, "error": {"code": "duplicate_call"}}
-                        else:
-                            calls_seen.add(key)
-                            observation = session.call(name, args)
-                    except (ValueError, TypeError):
-                        observation = {"ok": False, "error": {"code": "invalid_arguments"}}
-                    if observation["ok"]:
-                        result = observation["result"]
-                        items = result.get("results", []) if name == "search_knowledge" else [result]
-                        for item in items:
-                            if not item.get("text"):
-                                continue
-                            evidence_key = (item["source"], item["start"], item["end"], item["text"])
-                            if evidence_key not in evidence_keys:
-                                evidence_keys[evidence_key] = len(evidence) + 1
-                                evidence.append({"citation_id": len(evidence) + 1, **deepcopy(item)})
-                            item["citation_id"] = evidence_keys[evidence_key]
-                    session.record({"event": "tool_observation", "provider_call_id": call["id"],
-                                    "tool": name, "observation": observation})
-                    messages.append({"role": "tool", "tool_call_id": call["id"],
-                                     "content": _json(observation)})
-            else:
-                if reason != "stop" or not (message.get("content") or "").strip():
-                    return finish("invalid_model_response", "failed")
-                answer = message["content"].strip()
-                refs = sorted(set(int(x) for x in re.findall(r"\[(\d+)\]", answer)))
-                if any(ref < 1 or ref > len(evidence) for ref in refs):
-                    return finish("invalid_citations", "failed")
-                if answer.startswith("根据当前资料无法确定"):
-                    return finish("model_abstained", "abstained", answer,
-                                  [evidence[i - 1] for i in refs])
-                if not evidence or not refs:
-                    return finish("missing_citations", "failed")
-                return finish("model_answered", "completed", answer, [evidence[i - 1] for i in refs])
+            if not calls:
+                return finish(**_answer_outcome(message, reason, evidence))
+            if error := _tool_batch_error(calls, reason, limits.max_tool_calls - attempted, ids_seen):
+                return finish(**error)
+            messages.append(message)
+            for call in calls:
+                if perf_counter() - started >= limits.max_seconds:
+                    return finish("time_budget")
+                attempted += 1
+                ids_seen.add(call["id"])
+                messages.append(_tool_message(call, session, calls_seen, evidence, evidence_keys))
         return finish("model_budget")
