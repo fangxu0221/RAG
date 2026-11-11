@@ -132,6 +132,8 @@ class DeepSeekGenerator:
         api_key: str | None = None,
         timeout: float = 120.0,
         max_tokens: int = 1024,
+        *,
+        answer_style: str | None = None,
     ):
         # 优先允许测试显式注入 key；正常运行从环境变量读取，绝不写死在源码中。
         resolved_api_key = api_key or os.environ.get("DEEPSEEK_API_KEY")
@@ -145,6 +147,7 @@ class DeepSeekGenerator:
         self.api_key = resolved_api_key
         self.timeout = timeout
         self.max_tokens = max_tokens
+        self.system_prompt = f"{SYSTEM_PROMPT}\n\n{answer_style}" if answer_style else SYSTEM_PROMPT
 
     def generate(
         self,
@@ -157,7 +160,7 @@ class DeepSeekGenerator:
             {
                 "model": self.model,
                 "messages": [
-                    {"role": "system", "content": SYSTEM_PROMPT},
+                    {"role": "system", "content": self.system_prompt},
                     {
                         "role": "user",
                         "content": build_user_prompt(question, results),

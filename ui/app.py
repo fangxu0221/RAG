@@ -261,17 +261,16 @@ def render_trace(events):
 
 
 def render_result(result, mode, strategy, events, titles):
+    reason = result.get("stop_reason", "")
     with st.chat_message("assistant"):
-        st.subheader("最终回答")
-        st.caption(f"{runtime.MODE_LABELS[mode]} · {strategy} · {STATUS[result['status']]} · "
-                   f"{result['elapsed_seconds']:.2f} 秒")
-        reason = result.get("stop_reason", "")
         if result["status"] in {"failed", "stopped"}:
             st.warning(STOP_REASONS.get(reason, reason or "请求未完成"))
         if result["answer"]:
             st.markdown(result["answer"])
+        st.caption(f"{runtime.MODE_LABELS[mode]} · {strategy} · {STATUS[result['status']]} · "
+                   f"{result['elapsed_seconds']:.2f} 秒")
+    with st.expander("引用证据"):
         if result["citations"]:
-            st.markdown("**引用证据**")
             for row in result["citations"]:
                 st.text(f"[{row['citation_id']}] {evidence_title(row, titles)}")
                 excerpt = row["text"]
@@ -312,7 +311,7 @@ def render_qa(config, documents, titles, issue):
                     horizontal=True, key="_mode")
     state.mode = mode
     strategy = runtime.STRATEGIES[state.strategy].label
-    st.caption(f"12306 铁路规则　|　{strategy}　|　界面 Top-K · {config['top_k']}")
+    st.caption(f"12306 铁路规则　|　{strategy}　|　界面 Top-K · {config['top_k']}　|　回答风格 · 通俗简洁")
     if mode != "rag":
         st.caption("Agent 可指定 Top-K，省略时使用工具默认值 3。每次检索的实际值见执行过程。")
     st.button("修改检索设置", on_click=navigate, args=(SETTINGS,))

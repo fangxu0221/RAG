@@ -136,7 +136,7 @@ python -m streamlit run ui/app.py
 若使用本机已有的 `.venv-studio-ui`，可直接运行 `& .\.venv-studio-ui\Scripts\python.exe -m streamlit run ui/app.py`。浏览器打开 [http://127.0.0.1:8501](http://127.0.0.1:8501)。
 
 - **知识库浏览**按常见问题、使用须知和相关规程展示当前检索快照。铁路快照有 9 份资料、197 个知识单元。选一份资料后可搜索条目，规程可按章和节定位，原文可以折叠。点击「用此问题测试」会填入问答草稿。索引缺失时可展开快照中的文档原文。知识单元用于阅读，Chunk 用于检索和引用。
-- **问答测试**可切换纯 RAG、原生 Agent 和 LangGraph V1。点击「发送」后，DeepSeek 接收问题和流程取得的证据。结果显示引用、状态、耗时和可折叠的轨迹与统计。问答需在启动 Streamlit 的 PowerShell 中设置 `DEEPSEEK_API_KEY`，可复用上面的安全输入命令。没有密钥时仍可浏览知识库及运行本地检索。
+- **问答测试**可切换纯 RAG、原生 Agent 和 LangGraph V1，三种模式默认用「通俗简洁」风格。回答先给结论，再说明影响结论的条件，保留数字、适用范围、重要例外和 `[1]` 式引用。引用证据、检索证据、轨迹和统计可按需展开。点击「发送」后，DeepSeek 接收问题和流程取得的证据。问答需在启动 Streamlit 的 PowerShell 中设置 `DEEPSEEK_API_KEY`，可复用上面的安全输入命令。没有密钥时仍可浏览知识库及运行本地检索。
 - **检索调试**可切换会话中的全局检索策略，独立返回排名、来源、Chunk ID、原始分数和完整片段。BM25、余弦相似度、RRF 和 CrossEncoder 分数各有自己的尺度。
 - **检索设置**可选 BM25、BGE Embedding、BM25 + BGE + RRF、RRF + CrossEncoder Reranker。初始策略为重排，初始 Top-K 为 3。参数从 `configs/railway_dev_*.json` 读取，修改在当前会话中生效。纯 RAG 和检索调试使用界面 Top-K；Agent 工具调用可传入自己的 Top-K，省略时使用既有默认值 3。执行过程会显示请求值和实际返回数量。
 
@@ -151,6 +151,8 @@ python -m pip install -e ".[ui,langgraph,reranker]"
 各问答请求的 JSONL 轨迹保存在 `results/studio_traces/`。文件含问题、工具参数与证据，供本机复盘。界面只读取结构化的运行事件。新请求使用提交时的文档快照与配置，缓存按文档内容和索引参数复用已装配的检索链。
 
 验证环境为 Python 3.12、Streamlit 1.67.0、LangGraph 1.2.20。全量 126 项测试通过，其中 10 项覆盖 Studio 的目录、交互、缓存、离线 BM25 和问答适配。这 10 项也在 Streamlit 1.37.0 通过。桌面浏览器走通了条目带入问答页及 BM25 检索。检索调试页用真实语料执行了四种策略的冒烟验证，BGE 与 ONNX 重排使用本地权重。三种问答使用模型替身验证，真实 DeepSeek 请求待验证。
+
+「通俗简洁」更新后，全量 128 项测试通过。用「只有学生证能否实名购票」和「网上退票怎么收费」走通三种模式的实际请求组装、本地检索及引用映射。回答使用离线替身，真实模型的表达效果待验证。CLI 的默认提示词与更新前一致，RailPolicy V2-auto 四组冻结排名重放通过。
 
 ```powershell
 python -B -X utf8 -m unittest discover -s tests -p test_studio.py -v

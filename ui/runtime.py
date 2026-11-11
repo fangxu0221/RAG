@@ -25,6 +25,11 @@ from domainrag.workflows.native_agent import run_agent
 ROOT = Path(__file__).resolve().parents[1]
 TRACE_DIR = ROOT / "results" / "studio_traces"
 MODE_LABELS = {"rag": "纯 RAG", "agent": "原生 Agent", "langgraph": "LangGraph V1"}
+PLAIN_ANSWER_STYLE = """最终回答采用通俗简洁的中文，像给旅客当面解释。第一句话直接给结论，然后只说明影响结论的条件、原因或注意事项。
+简单问题通常用 1～3 句话。涉及多档收费或条件对比时可用简短列表，复杂问题按需展开。
+用自己的话解释规则，保留准确的数字、时间边界（含或不含）、比例、计费基数、适用条件和重要例外。
+只回答当前问题。避免照抄规章段落、逐章逐条罗列、Markdown 大标题、重复总结和不必要的表格。
+保留 [1]、[2] 这样的真实证据引用，紧跟在它支持的结论或一组条目之后。证据不足时，以“根据当前资料无法确定”开头，简短说明缺少什么。"""
 
 
 @dataclass(frozen=True)
@@ -177,14 +182,15 @@ def run_fixed_rag(question: str, retriever: Retriever, config: dict,
 def run_answer(mode: str, question: str, config: dict, documents: list[Document],
                retriever: Retriever, trace_dir: Path) -> dict:
     if mode == "rag":
-        return run_fixed_rag(question, retriever, config, DeepSeekGenerator(), trace_dir)
+        generator = DeepSeekGenerator(answer_style=PLAIN_ANSWER_STYLE)
+        return run_fixed_rag(question, retriever, config, generator, trace_dir)
     if mode == "langgraph":
         from domainrag.workflows.langgraph_agent import run_langgraph_agent
         runner = run_langgraph_agent
     else:
         runner = run_agent
     tools = KnowledgeTools(retriever, documents, config)
-    return runner(question, tools, DeepSeekToolModel(), trace_dir)
+    return runner(question, tools, DeepSeekToolModel(), trace_dir, answer_style=PLAIN_ANSWER_STYLE)
 
 
 def read_trace(path: Path) -> list[dict]:

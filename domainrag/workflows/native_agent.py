@@ -80,17 +80,18 @@ def _message(payload: dict) -> tuple[dict, str]:
     return clean, choice.get("finish_reason", "")
 
 
-def _initial_messages(question: str) -> list[dict]:
+def _initial_messages(question: str, *, answer_style: str | None = None) -> list[dict]:
     if not isinstance(question, str) or not question.strip() or len(question) > 2000:
         raise ValueError("question must contain 1 to 2000 characters")
-    return [{"role": "system", "content": AGENT_PROMPT},
+    system_prompt = f"{AGENT_PROMPT}\n\n{answer_style}" if answer_style else AGENT_PROMPT
+    return [{"role": "system", "content": system_prompt},
             {"role": "user", "content": question.strip()}]
 
 
 def _record_agent_start(session: ToolSession, model: ChatModel, question: str,
-                        limits: AgentLimits) -> None:
+                        limits: AgentLimits, system_prompt: str) -> None:
     session.record({"event": "agent_started", "model": model.model,
-                    "question": question, "limits": asdict(limits), "prompt": AGENT_PROMPT})
+                    "question": question, "limits": asdict(limits), "prompt": system_prompt})
 
 
 def _call_model(session: ToolSession, model: ChatModel, messages: list[dict],
@@ -204,16 +205,17 @@ def _finish(session: ToolSession, evidence: list[dict], model_calls: int, tool_a
 
 
 def run_agent(question: str, tools: KnowledgeTools, model: ChatModel,
-              trace_dir: Path, limits: AgentLimits | None = None) -> dict:
+              trace_dir: Path, limits: AgentLimits | None = None, *,
+              answer_style: str | None = None) -> dict:
     limits = limits or AgentLimits()
-    messages = _initial_messages(question)
+    messages = _initial_messages(question, answer_style=answer_style)
     evidence, evidence_keys, calls_seen, ids_seen = [], {}, set(), set()
     attempted = model_calls = 0
     usage_total = {"prompt_tokens": 0, "completion_tokens": 0, "total_tokens": 0}
     usage_complete = True
     started = perf_counter()
     with ToolSession(tools, trace_dir) as session:
-        _record_agent_start(session, model, question, limits)
+        _record_agent_start(session, model, question, limits, messages[0]["content"])
 
         def finish(stop_reason, status="stopped", answer=None, citations=None):
             return _finish(session, evidence, model_calls, attempted, usage_total, usage_complete,

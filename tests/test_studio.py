@@ -1,6 +1,7 @@
 """本地 Studio 的资料、检索、三种问答入口和 Streamlit 交互回归。"""
 
 from importlib.util import find_spec
+from io import BytesIO
 import json
 import os
 from pathlib import Path
@@ -9,8 +10,10 @@ import unittest
 from unittest.mock import Mock, patch
 
 from domainrag.domain.protocols import ApiCallStats, GenerationResult
+from domainrag.infrastructure.llm import generator as llm_generator, tool_model
 from domainrag.io import load_config
 from domainrag.models import Document
+from domainrag.workflows.native_agent import AGENT_PROMPT, _initial_messages
 from test_agent import ScriptedModel, call, reply
 from ui import runtime
 from ui.catalog import filter_units, load_catalog, question_for
@@ -112,6 +115,74 @@ class StudioRuntimeTests(unittest.TestCase):
             trace = Path(result["trace_path"]).read_text(encoding="utf-8")
             self.assertNotIn("sensitive exception text", trace)
             self.assertEqual(json.loads(trace.splitlines()[-1])["stop_reason"], reason)
+
+    def test_studio_plain_style_in_model_requests_and_citations(self):
+        config = {**self.config, "top_k": 8}
+        cases = (
+            ("只有学生证，没有身份证，能否购买实名制车票？",
+             ("学生证不是实名制购票有效身份证件",),
+             "不行，学生证不能当作实名购票的身份证明。请使用铁路认可的有效身份证件。[{ref}]"),
+            ("网上退票怎么收费？",
+             ("开车前8天以上的不收退票费", "48小时以上、不足8天", "24小时以上、不足48小时",
+              "不足24小时的,按车票票面价格20%计", "又在距开车前8天以上退票的,核收5%",
+              "改签后的车票乘车日期在春运期间"),
+             "通常越早退，退票费越低。按车票上的乘车站开车时间来算：\n\n"
+             "- 至少 8 天：免费。\n- 满 48 小时、不满 8 天：收票价的 5%。\n"
+             "- 满 24 小时、不满 48 小时：收票价的 10%。\n- 不满 24 小时：收票价的 20%。[{ref}]\n\n"
+             "原票离开车不足 8 天时改签，即使提前至少 8 天退掉新票，也要收 5%。"
+             "改签后在春运期间乘车的票，退票按 20% 收。[{ref}]"),
+        )
+        modes = ("rag", "agent", "langgraph") if find_spec("langgraph") else ("rag", "agent")
+        for question, required_evidence, answer_template in cases:
+            hits = self.retriever.search(question, config["top_k"])
+            ref, hit = next((rank, hit) for rank, hit in enumerate(hits, 1)
+                            if all(text in hit.chunk.text for text in required_evidence))
+            answer = answer_template.format(ref=ref)
+            for mode in modes:
+                args = {"query": question, "top_k": config["top_k"]}
+                replies = [reply(content=answer)]
+                if mode != "rag":
+                    replies.insert(0, reply(calls=[call(args=args)]))
+                response = Mock(side_effect=[BytesIO(json.dumps(item).encode()) for item in replies])
+                with self.subTest(question=question, mode=mode), \
+                        patch.dict(os.environ, {"DEEPSEEK_API_KEY": "offline-test-key"}), \
+                        patch.object(llm_generator, "urlopen", response), \
+                        patch.object(tool_model, "urlopen", response):
+                    result = runtime.run_answer(mode, question, config, self.docs, self.retriever, self.trace_dir)
+                    self.assertEqual((result["status"], result["answer"]), ("completed", answer))
+                    cited, = result["citations"]
+                    self.assertEqual((cited["citation_id"], cited["chunk_id"], cited["text"]),
+                                     (ref, hit.chunk.chunk_id, hit.chunk.text))
+                    bodies = [json.loads(item.args[0].data) for item in response.call_args_list]
+                    base = llm_generator.SYSTEM_PROMPT if mode == "rag" else AGENT_PROMPT
+                    expected_prompt = f"{base}\n\n{runtime.PLAIN_ANSWER_STYLE}"
+                    self.assertEqual(len(bodies), len(replies))
+                    for body in bodies:
+                        self.assertEqual(body["messages"][0], {"role": "system", "content": expected_prompt})
+                    if mode == "rag":
+                        self.assertEqual(bodies[0]["messages"][1]["content"],
+                                         llm_generator.build_user_prompt(question, hits))
+                    else:
+                        messages = bodies[1]["messages"]
+                        self.assertEqual([message["role"] for message in messages],
+                                         ["system", "user", "assistant", "tool"])
+                        observation = json.loads(messages[-1]["content"])
+                        self.assertEqual(observation["result"]["results"][ref - 1]["citation_id"], ref)
+                        trace = Path(result["trace_path"]).read_text(encoding="utf-8").splitlines()
+                        self.assertEqual(json.loads(trace[1])["prompt"], expected_prompt)
+
+    def test_default_prompts_without_studio_style(self):
+        with patch.object(llm_generator, "urlopen", return_value=BytesIO(json.dumps(reply("回答")).encode())) as send:
+            llm_generator.DeepSeekGenerator(api_key="offline-test-key").generate(QUESTION, [])
+        body = json.loads(send.call_args.args[0].data)
+        self.assertEqual(body["messages"], [
+            {"role": "system", "content": llm_generator.SYSTEM_PROMPT},
+            {"role": "user", "content": llm_generator.build_user_prompt(QUESTION, [])},
+        ])
+        self.assertEqual(_initial_messages(QUESTION), [
+            {"role": "system", "content": AGENT_PROMPT},
+            {"role": "user", "content": QUESTION},
+        ])
 
 
 @unittest.skipUnless(find_spec("streamlit"), "requires the UI extra")
@@ -218,7 +289,9 @@ st.session_state["same_with_new_docs"] = retriever is get_retriever(config, chan
             self.assertFalse(self.app.exception)
             self.app.run()
             generator.generate.assert_called_once()
-            self.assertTrue(any("引用证据" in row.value for row in self.app.markdown))
+            self.assertEqual([exp.label for exp in self.app.expander],
+                             ["引用证据", "查看检索证据", "查看问答执行过程", "查看运行统计"])
+            self.assertTrue(any("回答风格 · 通俗简洁" in row.value for row in self.app.caption))
             self.assertTrue(any("成功" in row.value for row in self.app.caption))
 
     def test_agent_trace_ui_shows_tool_top_k_and_usage(self):

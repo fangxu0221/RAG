@@ -104,10 +104,11 @@ def _build_graph(session: ToolSession, model: ChatModel, limits: AgentLimits, st
 
 
 def run_langgraph_agent(question: str, tools: KnowledgeTools, model: ChatModel,
-                        trace_dir: Path, limits: AgentLimits | None = None) -> dict:
+                        trace_dir: Path, limits: AgentLimits | None = None, *,
+                        answer_style: str | None = None) -> dict:
     """以与原生 run_agent 相同的契约执行一次 LangGraph 请求。"""
     limits = limits or AgentLimits()
-    messages = _initial_messages(question)
+    messages = _initial_messages(question, answer_style=answer_style)
     # LangGraph 间接安装此客户端，显式关闭环境变量可开启的远程追踪。
     from langsmith import tracing_context
 
@@ -122,7 +123,7 @@ def run_langgraph_agent(question: str, tools: KnowledgeTools, model: ChatModel,
     with tracing_context(enabled=False):
         started = perf_counter()
         with ToolSession(tools, trace_dir) as session:
-            _record_agent_start(session, model, question, limits)
+            _record_agent_start(session, model, question, limits, messages[0]["content"])
             graph = _build_graph(session, model, limits, started)
             # 每次模型调用至多对应一个工具节点，另给预算检查、验证和收尾留余量。
             result = graph.invoke(state, config={"recursion_limit": 2 * limits.max_model_calls + 4})
