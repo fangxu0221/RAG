@@ -51,6 +51,24 @@ class BootstrapTests(unittest.TestCase):
         self.assertEqual((retriever.query_instruction, retriever.batch_size), ("query: ", 7))
         self.assertEqual(len(retriever.search("注意力", 1)), 1)
 
+    def test_embedding_can_use_cached_model_without_network_and_fallback(self):
+        hub = ModuleType("huggingface_hub")
+        hub.try_to_load_from_cache = Mock(return_value="/cache/modules.json")
+        encoder = self.models.SentenceTransformer.return_value
+        config = {"retriever": "embedding", **self.config}
+
+        def build_dense(chunks, config):
+            return bootstrap.build_embedding(chunks, config, prefer_cached_model=True)
+
+        with patch.dict(sys.modules, {"sentence_transformers": self.models, "huggingface_hub": hub}):
+            bootstrap.build_retriever_from_documents(self.documents, config, embedding_builder=build_dense)
+            self.models.SentenceTransformer.assert_called_once_with(str(Path("/cache")), local_files_only=True)
+            self.models.SentenceTransformer.reset_mock()
+            self.models.SentenceTransformer.side_effect = [OSError("incomplete cache"), encoder]
+            bootstrap.build_retriever_from_documents(self.documents, config, embedding_builder=build_dense)
+            self.assertEqual([call.kwargs for call in self.models.SentenceTransformer.call_args_list],
+                             [{"local_files_only": True}, {}])
+
     def test_hybrid_wires_both_retrievers(self):
         cfg = {**self.config, "retriever": "hybrid", "hybrid": {"candidate_k": 4, "rrf_k": 11}}
         with patch.dict(sys.modules, {"sentence_transformers": self.models}):

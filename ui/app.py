@@ -30,7 +30,15 @@ EVENT_NAMES = {
 TOOL_ERRORS = {"invalid_arguments": "参数无效", "tool_failed": "工具执行失败",
                "duplicate_call": "重复的工具请求"}
 
-cached_retriever = st.cache_resource(show_spinner=False, max_entries=4)(runtime.prepare_retriever)
+cached_embedding = st.cache_resource(show_spinner=False, max_entries=4)(runtime.prepare_embedding)
+
+
+@st.cache_resource(show_spinner=False, max_entries=4)
+def cached_retriever(documents, index_config):
+    return runtime.prepare_retriever(
+        documents, index_config,
+        embedding_builder=lambda chunks, config: cached_embedding(tuple(chunks), config.get("embedding", {})),
+    )
 
 
 def navigate(page, question=None):
@@ -192,16 +200,20 @@ def render_debug(config, documents, titles, issue):
         with st.spinner("正在准备索引并检索…"):
             try:
                 started = perf_counter()
-                hits = get_retriever(config, documents).search(query.strip(), config["top_k"])
-                state.debug_result = (strategy, config["top_k"], runtime.evidence_rows(hits), perf_counter() - started)
+                retriever = get_retriever(config, documents)
+                prepared = perf_counter()
+                hits = retriever.search(query.strip(), config["top_k"])
+                state.debug_result = (strategy, config["top_k"], runtime.evidence_rows(hits),
+                                      perf_counter() - prepared, prepared - started)
             except Exception:
                 st.error("检索失败。请检查模型依赖、权重缓存和高级参数，或切换为 BM25。")
     elif submit:
         st.warning("请输入检索问题。")
     if "debug_result" in state:
-        run_strategy, top_k, rows, elapsed = state.debug_result
+        run_strategy, top_k, rows, elapsed, *preparation = state.debug_result
         st.subheader("检索结果")
-        st.caption(f"{run_strategy} · Top-K {top_k} · 命中 {len(rows)} 条 · {elapsed:.2f} 秒。"
+        timing = f"准备索引 {preparation[0]:.3f} 秒 · 检索 {elapsed:.3f} 秒" if preparation else f"{elapsed:.2f} 秒"
+        st.caption(f"{run_strategy} · Top-K {top_k} · 命中 {len(rows)} 条 · {timing}。"
                    "分数保留检索器原值，各策略的分数尺度不同。")
         for row in rows:
             with st.expander(f"第 {row['rank']} 名 · {evidence_title(row, titles)}"):
@@ -288,6 +300,18 @@ def render_result(result, mode, strategy, events, titles):
         st.caption(f"停止原因 · {STOP_REASONS.get(reason, reason or '未记录')}")
     with st.expander("查看运行统计"):
         st.text(f"请求 ID · {result['request_id']}")
+        if "index_seconds" in result:
+            st.text(f"准备索引 · {result['index_seconds']:.3f} 秒")
+        retrieval_times = [row["elapsed_ms"] for row in events if "elapsed_ms" in row and (
+            row["event"] == "retrieval_finished" or
+            (row["event"] == "tool_finished" and row.get("tool") == "search_knowledge")
+        )]
+        model_times = [row["elapsed_ms"] for row in events if "elapsed_ms" in row
+                       and row["event"] in {"model_finished", "model_failed"}]
+        if retrieval_times:
+            st.text(f"检索耗时 · {sum(retrieval_times):.1f} 毫秒")
+        if model_times:
+            st.text(f"模型调用耗时 · {sum(model_times) / 1000:.3f} 秒")
         st.text(f"模型调用 · {result['model_calls']} 次")
         finished = next((row for row in events if row["event"] == "request_finished"), {})
         if "tool_calls" in finished:
@@ -335,23 +359,26 @@ def render_qa(config, documents, titles, issue):
             send.empty()
             state.pop("answer_result", None)
             state.pop("answer_error", None)
-            with st.spinner("正在准备索引并执行问答…"):
-                try:
+            try:
+                with st.spinner("正在准备索引…"):
                     started = perf_counter()
                     retriever = get_retriever(config, documents)
+                    prepared = perf_counter()
+                with st.spinner("正在检索并生成回答…"):
                     result = runtime.run_answer(mode, question, config, documents, retriever, runtime.TRACE_DIR)
                     result["elapsed_seconds"] = perf_counter() - started
+                    result["index_seconds"] = prepared - started
                     try:
                         events = runtime.read_trace(Path(result["trace_path"]))
                     except (OSError, ValueError, KeyError):
                         events = []
                     state.answer_result = (result, mode, strategy, events, titles)
-                except ImportError:
-                    state.answer_error = "依赖加载失败，请检查当前检索策略和问答模式的安装说明。"
-                except Exception:
-                    state.answer_error = "运行失败。请检查模型权重、网络或 results 目录的写入权限。"
-                finally:
-                    state.running = False
+            except ImportError:
+                state.answer_error = "依赖加载失败，请检查当前检索策略和问答模式的安装说明。"
+            except Exception:
+                state.answer_error = "运行失败。请检查模型权重、网络或 results 目录的写入权限。"
+            finally:
+                state.running = False
             st.rerun()
     if "answer_error" in state:
         st.error(state.answer_error)

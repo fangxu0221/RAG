@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from collections.abc import Callable
 from pathlib import Path
 
 from .infrastructure.retrievers.bm25 import BM25Retriever
@@ -40,7 +41,7 @@ def build_bm25(chunks: list[Chunk], config: dict[str, object]) -> BM25Retriever:
 
 
 def build_embedding(
-    chunks: list[Chunk], config: dict[str, object]
+    chunks: list[Chunk], config: dict[str, object], *, prefer_cached_model: bool = False
 ) -> EmbeddingRetriever:
     """从配置读取模型、查询指令和批大小并构造稠密检索器。"""
 
@@ -52,6 +53,7 @@ def build_embedding(
             embedding_config.get("query_instruction", DEFAULT_QUERY_INSTRUCTION)
         ),
         batch_size=int(embedding_config.get("batch_size", 32)),
+        prefer_cached_model=prefer_cached_model,
     )
 
 
@@ -70,7 +72,8 @@ def build_retriever(config_path: Path) -> tuple[Retriever, dict[str, object]]:
 
 
 def build_retriever_from_documents(
-    documents: list[Document], config: dict[str, object]
+    documents: list[Document], config: dict[str, object], *,
+    embedding_builder: Callable[[list[Chunk], dict[str, object]], Retriever] | None = None,
 ) -> Retriever:
     """从调用方已加载的快照装配；文件加载和冻结检查由入口负责。"""
 
@@ -81,16 +84,17 @@ def build_retriever_from_documents(
         chunk_overlap=int(config["chunk_overlap"]),
     )
     # 3. 根据配置选择第一阶段召回器。
+    build_dense = embedding_builder or build_embedding
     retriever_name = str(config.get("retriever", "bm25")).lower()
     if retriever_name == "bm25":
         retriever: Retriever = build_bm25(chunks, config)
     elif retriever_name == "embedding":
-        retriever = build_embedding(chunks, config)
+        retriever = build_dense(chunks, config)
     elif retriever_name == "hybrid":
         hybrid_config = dict(config.get("hybrid", {}))
         # Hybrid 同时执行 BM25 与 Embedding，再使用 RRF 融合名次。
         retriever = HybridRetriever(
-            [build_bm25(chunks, config), build_embedding(chunks, config)],
+            [build_bm25(chunks, config), build_dense(chunks, config)],
             candidate_k=int(hybrid_config.get("candidate_k", 10)),
             rrf_k=int(hybrid_config.get("rrf_k", 60)),
         )

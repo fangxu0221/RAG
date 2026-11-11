@@ -1,5 +1,6 @@
 """复用现有检索、生成和 Agent 入口，提供界面需要的请求结果。"""
 
+from collections.abc import Callable
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from importlib.util import find_spec
@@ -13,12 +14,12 @@ from uuid import uuid4
 
 from domainrag.application.evaluation_service import CITATION_PATTERN
 from domainrag.application.knowledge_service import KnowledgeTools
-from domainrag.bootstrap import build_retriever_from_documents, load_retrieval_snapshot
+from domainrag.bootstrap import build_embedding, build_retriever_from_documents, load_retrieval_snapshot
 from domainrag.domain.protocols import AnswerGenerator, Retriever
 from domainrag.infrastructure.llm.generator import DeepSeekGenerator
 from domainrag.infrastructure.llm.tool_model import DeepSeekToolModel
 from domainrag.infrastructure.storage.trace import JsonlTrace
-from domainrag.models import Document, SearchResult
+from domainrag.models import Chunk, Document, SearchResult
 from domainrag.workflows.native_agent import run_agent
 
 
@@ -73,8 +74,16 @@ class SharedRetriever:
             return self._retriever.search(query, top_k)
 
 
-def prepare_retriever(documents: tuple[Document, ...], index_config: dict) -> SharedRetriever:
-    return SharedRetriever(build_retriever_from_documents(list(documents), index_config))
+def prepare_embedding(chunks: tuple[Chunk, ...], embedding_config: dict) -> SharedRetriever:
+    return SharedRetriever(build_embedding(list(chunks), {"embedding": embedding_config},
+                                           prefer_cached_model=True))
+
+
+def prepare_retriever(documents: tuple[Document, ...], index_config: dict, *,
+                      embedding_builder: Callable[[list[Chunk], dict[str, object]], Retriever] | None = None
+                      ) -> SharedRetriever:
+    return SharedRetriever(build_retriever_from_documents(list(documents), index_config,
+                                                          embedding_builder=embedding_builder))
 
 
 def generation_issue(mode: str) -> str | None:
@@ -132,13 +141,15 @@ def run_fixed_rag(question: str, retriever: Retriever, config: dict,
     try:
         record("request_started", config=config, question=question)
         record("retrieval_started", top_k=config["top_k"])
+        retrieval_started = perf_counter()
         try:
             hits = retriever.search(question, config["top_k"])
         except Exception:
             result["stop_reason"] = "retrieval_failed"
             return result
+        retrieval_ms = (perf_counter() - retrieval_started) * 1000
         result["evidence"] = evidence_rows(hits)
-        record("retrieval_finished", count=len(hits), evidence=result["evidence"])
+        record("retrieval_finished", count=len(hits), elapsed_ms=retrieval_ms, evidence=result["evidence"])
 
         record("model_started", model_call=1)
         result["model_calls"] = 1
@@ -196,7 +207,7 @@ def run_answer(mode: str, question: str, config: dict, documents: list[Document]
 def read_trace(path: Path) -> list[dict]:
     """只把界面使用的结构化事件和字段送到浏览器。"""
     fields = {
-        "retrieval_started": ("top_k",), "retrieval_finished": ("count",),
+        "retrieval_started": ("top_k",), "retrieval_finished": ("count", "elapsed_ms"),
         "model_started": ("model_call", "allow_tools"),
         "model_finished": ("model_call", "finish_reason", "elapsed_ms", "usage"),
         "model_failed": ("model_call", "error_type", "elapsed_ms"),

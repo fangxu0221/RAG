@@ -274,6 +274,33 @@ st.session_state["same_with_new_docs"] = retriever is get_retriever(config, chan
         self.assertFalse(app.session_state["same_with_new_config"])
         self.assertFalse(app.session_state["same_with_new_docs"])
 
+    def test_dense_index_is_shared_across_strategies(self):
+        from streamlit.testing.v1 import AppTest
+
+        app = AppTest.from_string("""
+import streamlit as st
+from unittest.mock import patch
+from domainrag.bootstrap import build_bm25
+from domainrag.models import Document
+from ui import runtime
+from ui.app import get_retriever
+
+embedding, docs = runtime.snapshot("embedding", {}, None)
+hybrid, _ = runtime.snapshot("rrf", {}, None)
+changed_config = {**embedding, "embedding": {**embedding["embedding"], "batch_size": 7}}
+changed_docs = [Document(docs[0].source, docs[0].text + "新增内容"), *docs[1:]]
+with patch.object(runtime, "build_embedding", side_effect=lambda chunks, config, **opts: build_bm25(chunks, config)) as build:
+    get_retriever(embedding, docs)
+    get_retriever(hybrid, docs)
+    st.session_state["builds_after_switch"] = build.call_count
+    get_retriever(changed_config, docs)
+    get_retriever(embedding, changed_docs)
+    st.session_state["builds_after_changes"] = build.call_count
+""", default_timeout=15).run()
+        self.assertFalse(app.exception)
+        self.assertEqual(app.session_state["builds_after_switch"], 1)
+        self.assertEqual(app.session_state["builds_after_changes"], 3)
+
     def test_submit_is_explicit_and_rerun_does_not_repeat_model_call(self):
         self.apply_bm25()
         with tempfile.TemporaryDirectory() as directory, \
@@ -292,6 +319,9 @@ st.session_state["same_with_new_docs"] = retriever is get_retriever(config, chan
             self.assertEqual([exp.label for exp in self.app.expander],
                              ["引用证据", "查看检索证据", "查看问答执行过程", "查看运行统计"])
             self.assertTrue(any("回答风格 · 通俗简洁" in row.value for row in self.app.caption))
+            stats = [row.value for row in self.app.text]
+            for label in ("准备索引", "检索耗时", "模型调用耗时"):
+                self.assertTrue(any(line.startswith(label) for line in stats), label)
             self.assertTrue(any("成功" in row.value for row in self.app.caption))
 
     def test_agent_trace_ui_shows_tool_top_k_and_usage(self):

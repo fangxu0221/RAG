@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import math
 from collections.abc import Sequence
+from pathlib import Path
 from typing import Protocol
 
 from ...models import Chunk, SearchResult
@@ -61,6 +62,8 @@ class EmbeddingRetriever:
         query_instruction: str = DEFAULT_QUERY_INSTRUCTION,
         batch_size: int = 32,
         encoder: Encoder | None = None,
+        *,
+        prefer_cached_model: bool = False,
     ):
         if not chunks:
             raise ValueError("EmbeddingRetriever requires at least one chunk")
@@ -76,7 +79,19 @@ class EmbeddingRetriever:
                     "Embedding retrieval requires sentence-transformers. "
                     'Install it with: python -m pip install -e ".[embedding]"'
                 ) from exc
-            encoder = SentenceTransformer(model_name)
+            if prefer_cached_model and not Path(model_name).is_dir():
+                from huggingface_hub import try_to_load_from_cache
+
+                # 用现有 Sentence Transformers 快照，避免对每个模型文件发远端检查。
+                cached_modules = try_to_load_from_cache(model_name, "modules.json")
+                if isinstance(cached_modules, str):
+                    try:
+                        encoder = SentenceTransformer(str(Path(cached_modules).parent), local_files_only=True)
+                    except OSError:
+                        # 缓存不完整时，交给原加载流程补齐模型文件。
+                        pass
+            if encoder is None:
+                encoder = SentenceTransformer(model_name)
 
         self.chunks = chunks
         self.model_name = model_name
