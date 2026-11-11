@@ -10,11 +10,11 @@ import unittest
 from unittest.mock import Mock, patch
 
 from domainrag import bootstrap, cli
-from domainrag.bm25 import BM25Retriever
-from domainrag.embedding import EmbeddingRetriever
-from domainrag.hybrid import HybridRetriever
+from domainrag.infrastructure.retrievers.bm25 import BM25Retriever
+from domainrag.infrastructure.retrievers.embedding import EmbeddingRetriever
+from domainrag.infrastructure.retrievers.hybrid import HybridRetriever
+from domainrag.infrastructure.retrievers.reranker import CrossEncoderReranker
 from domainrag.models import Document
-from domainrag.reranker import CrossEncoderReranker
 
 
 ROOT = Path(__file__).resolve().parents[1]

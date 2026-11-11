@@ -7,13 +7,12 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from domainrag.answer_evaluation import (
-    CitationAssessment, DeepSeekAnswerJudge, SemanticJudgement,
-    build_judge_prompt, evaluate_answers,
-)
+from domainrag.application.evaluation_service import evaluate_answers
+from domainrag.domain.protocols import CitationAssessment, GenerationResult, SemanticJudgement
 from domainrag.evaluation import evaluate_retrieval
 from domainrag.frozen import text_sha256, verify_frozen_dataset
-from domainrag.generator import GenerationResult, SYSTEM_PROMPT, USER_PROMPT_TEMPLATE
+from domainrag.infrastructure.llm.answer_judge import DeepSeekAnswerJudge, build_judge_prompt
+from domainrag.infrastructure.llm.generator import SYSTEM_PROMPT, USER_PROMPT_TEMPLATE
 from domainrag.io import load_evaluation_cases
 from domainrag.models import Chunk, EvaluationCase, SearchResult
 
@@ -88,7 +87,7 @@ class RefusalTests(unittest.TestCase):
 
     def test_label_is_only_in_judge_prompt(self):
         self.assertIn("False", build_judge_prompt(self.unknown, "无法确定", []))
-        from domainrag.generator import build_user_prompt
+        from domainrag.infrastructure.llm.generator import build_user_prompt
         self.assertNotIn("参考答案", build_user_prompt(self.unknown.question, []))
 
     def test_jsonl_rejects_ambiguous_answerability(self):
@@ -210,7 +209,7 @@ class FrozenTests(unittest.TestCase):
 
     def test_failure_after_one_case_preserves_checkpoint(self):
         from domainrag.holdout import run
-        from domainrag.answer_evaluation import summarize_answers
+        from domainrag.application.evaluation_service import summarize_answers
         output = self.root/"partial.json"
         cfg = json.loads(self.config.read_text(encoding="utf-8"))
         row = evaluate_answers(StaticRetriever(), [EvaluationCase("fixture-001", "?", ("a.md",), "alpha")],

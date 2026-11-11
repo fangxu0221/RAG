@@ -51,6 +51,20 @@ python -m pip install -e .
 
 macOS/Linux激活命令为 `source .venv/bin/activate`。
 
+在 Windows 终端提问铁路规则时，可用本机 Python 环境、铁路 BM25 配置和 DeepSeek。密钥仅设置在当前 PowerShell 进程中。
+
+```powershell
+if (-not $env:DEEPSEEK_API_KEY) {
+    $railKey = Read-Host "DeepSeek API Key" -AsSecureString
+    $env:DEEPSEEK_API_KEY = [System.Net.NetworkCredential]::new('', $railKey).Password
+    Remove-Variable railKey
+}
+$railQuestion = Read-Host "请输入铁路问题"
+& .\.venv-web\Scripts\python.exe -B -X utf8 -m domainrag.cli answer --config configs/railway_dev_bm25.json --provider deepseek --question "$railQuestion"
+```
+
+每次运行处理一道题，输出回答及检索来源。DeepSeek 会接收问题与检索到的片段。
+
 只检索，不调用生成模型：
 
 ```powershell
@@ -147,5 +161,9 @@ python -B -X utf8 -m domainrag.cli benchmark --config configs/railway_dev_bm25.j
 完整 86 项测试通过。[审计记录](data/railway/eval_dev_v2_auto.audit.json)、[冻结清单](docs/experiments/railpolicy_v2_auto/manifest.json)和[指标摘要](docs/experiments/railpolicy_v2_auto/summary.json)可查。复现所需的 A–D 原始报告保存在本机 V1 运行目录。
 
 ## 维护约定
+
+普通测试直接导入分层后的实现。兼容测试继续验证七个旧模块的公共导出。其中六个可列为未来的弃用候选，待明确撤销旧导入承诺后再处理。`retriever.py` 还被 V2 冻结的 `evaluation.py` 导入，其移除需要单独做版本迁移。
+
+本地清理暂存目录为 `垃圾桶/`，由 Git 忽略。2026-11-10 将 uv 安装缓存及与仓库已跟踪版本逐字节相同的 V2 审计、重放副本移入该目录，并保留原相对路径。需要恢复时，可把目录内的文件移回项目根目录对应位置。Python 环境、模型权重及 V1 原始实验报告仍用于运行和复现。
 
 每次新增、修改、移动、归档或删除项目文件时，同步更新本 README 中受影响的说明；没有使用层变化时，补充简短变更记录。专题文档仍按需同步维护，验证结果只记录实际执行的检查。此约定已写入 `AGENTS.md`。

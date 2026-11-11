@@ -6,9 +6,9 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from domainrag.bm25 import BM25Retriever
 from domainrag.chunking import chunk_documents
 from domainrag.cli import build_retriever
+from domainrag.infrastructure.retrievers.bm25 import BM25Retriever
 from domainrag.models import Document
 from domainrag.text import normalize_text
 from domainrag.tools import KnowledgeTools, ToolInputError, ToolSession

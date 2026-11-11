@@ -13,21 +13,17 @@ from types import ModuleType
 import unittest
 from unittest.mock import Mock, patch
 
-from domainrag.answer_evaluation import (
-    CitationAssessment,
-    DeepSeekAnswerJudge,
-    SemanticJudgement,
-    evaluate_answers,
-    evaluate_citations,
-)
-from domainrag.bm25 import BM25Retriever
+from domainrag.application.evaluation_service import evaluate_answers, evaluate_citations
 from domainrag.chunking import chunk_document
-from domainrag.embedding import EmbeddingRetriever
+from domainrag.domain.protocols import ApiCallStats, CitationAssessment, GenerationResult, SemanticJudgement
 from domainrag.evaluation import evaluate_retrieval
-from domainrag.generator import ApiCallStats, DeepSeekGenerator, GenerationResult
-from domainrag.hybrid import HybridRetriever
+from domainrag.infrastructure.llm.answer_judge import DeepSeekAnswerJudge
+from domainrag.infrastructure.llm.generator import DeepSeekGenerator
+from domainrag.infrastructure.retrievers.bm25 import BM25Retriever
+from domainrag.infrastructure.retrievers.embedding import EmbeddingRetriever
+from domainrag.infrastructure.retrievers.hybrid import HybridRetriever
+from domainrag.infrastructure.retrievers.reranker import DEFAULT_RERANKER_MODEL, CrossEncoderReranker
 from domainrag.models import Chunk, Document, EvaluationCase, SearchResult
-from domainrag.reranker import DEFAULT_RERANKER_MODEL, CrossEncoderReranker
 from domainrag.text import tokenize
 
 

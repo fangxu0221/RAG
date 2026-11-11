@@ -5,8 +5,8 @@ import unittest
 from unittest.mock import patch
 
 from domainrag.agent import AgentLimits, DeepSeekToolModel, run_agent
-from domainrag.bm25 import BM25Retriever
 from domainrag.chunking import chunk_documents
+from domainrag.infrastructure.retrievers.bm25 import BM25Retriever
 from domainrag.models import Document
 from domainrag.tools import KnowledgeTools
 

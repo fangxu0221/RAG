@@ -8,3 +8,4 @@ __pycache__/
 # New query traces and reports are local outputs; keep the empty directory marker.
 results/*
 !results/.gitkeep
+/垃圾桶/
