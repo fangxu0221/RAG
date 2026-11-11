@@ -1,6 +1,6 @@
 # DomainRAG-Benchmark
 
-当前只围绕 **BM25 + BGE → RRF → Cross-Encoder Reranker → 固定 RAG / 原生 Agent** 学习和运行。
+项目主线是 **BM25 + BGE → RRF → Cross-Encoder Reranker**，可用于固定 RAG、原生 Agent 和 LangGraph Agent V1。
 
 独立仓库：[fangxu0221/RAG](https://github.com/fangxu0221/RAG)。项目文件直接放在仓库根目录。
 
@@ -14,7 +14,8 @@ DomainRAG-Benchmark/
 │   ├── domain/          # 数据契约、协议、工具 Schema
 │   ├── application/     # 知识工具、请求会话、答案评测
 │   ├── infrastructure/  # retrievers/、llm/、storage/
-│   ├── workflows/       # native_agent.py
+│   ├── workflows/       # native_agent.py、langgraph_agent.py、langgraph_state.py
+│   ├── langgraph_cli.py  # LangGraph Agent V1 独立入口
 │   ├── bootstrap.py     # 配置、冻结校验、文档快照及检索器装配
 │   └── ...              # CLI、旧路径兼容导出、按原路径校验的冻结源码
 ├── configs/          # 四个基础配置 + 四组独立铁路Dev评测配置
@@ -33,7 +34,7 @@ DomainRAG-Benchmark/
 
 历史结果、审核、研究脚本和专项测试、冻结评测套件及辅助文档已移到项目外的本地归档。原README和完整复习笔记也保存在归档中。归档位置与恢复方法见 [数据流复习文档](docs/项目数据流与面试复习.md#5-归档和恢复)。
 
-CLI 和知识工具使用同一个 [bootstrap](domainrag/bootstrap.py)，顺序为读取配置、校验冻结数据、加载文档快照、切块并创建检索链。Evidence 评测与检索索引使用同一个快照。原生 Agent 通过 `run_agent(question, tools, model, trace_dir, limits)` 接收已装配的知识服务和 `ChatModel`，具体 DeepSeek 传输位于基础设施层。未来的 LangGraph 编排可在 `workflows/` 单独实现，复用这些接口。[分层与兼容边界](docs/代码分层与阅读导航.md#1-目录与依赖)
+CLI 和知识工具使用同一个 [bootstrap](domainrag/bootstrap.py)，顺序为读取配置、校验冻结数据、加载文档快照、切块并创建检索链。Evidence 评测与检索索引使用同一个快照。原生 `run_agent(question, tools, model, trace_dir, limits)` 和图版 `run_langgraph_agent(...)` 接收已装配的知识服务与 `ChatModel`，共用工具执行和结果契约。具体 DeepSeek 传输位于基础设施层。[分层与兼容边界](docs/代码分层与阅读导航.md#1-目录与依赖)
 
 ## 环境与运行
 
@@ -87,11 +88,31 @@ python -m domainrag.agent --config configs/hybrid_reranker.json --question "为�
 
 后两条命令使用 `DEEPSEEK_API_KEY` 调用真实模型，将问题、提示词和取得的证据发给供应商并产生用量。Agent在预算内可能调用多次。`.venv-web/`仍用于轻量验证；独立的`.venv-railpolicy-v1/`已准备BGE与ONNX重排依赖及权重用于检索实验，没有运行生成或Judge请求。
 
-回归测试：
+### LangGraph Agent V1
+
+在 Python 3.10+ 环境按需安装 extra。本机验证使用 Python 3.12 和 LangGraph 1.2.20。
+
+```powershell
+python -m pip install -e ".[langgraph]"
+python -m domainrag.langgraph_cli --help
+```
+
+下面的示例使用 BM25 配置和 `DEEPSEEK_API_KEY`，会调用真实 DeepSeek 并产生用量。
+
+```powershell
+python -m domainrag.langgraph_cli --config configs/bm25_baseline.json --question "为什么注意力分数要除以根号维度？"
+```
+
+新入口与 `python -m domainrag.agent` 共用参数和默认值。Python 调用方还可通过 `AgentLimits.max_context_chars` 设置上下文字符预算。两种入口均输出 JSON 与本地 JSONL Trace，完成或合法拒答返回退出码 0，预算停止或失败返回 1。图版在同一个请求会话内执行 `model → tools → model`，最终经过引用校验或按停止原因收尾。
+
+离线回归及专项测试使用 ScriptedModel 和本地 BM25：
 
 ```powershell
 python -B -X utf8 -m unittest discover -s tests -v
+python -B -X utf8 -m unittest discover -s tests -p test_langgraph_agent.py -v
 ```
+
+安装 extra 后执行全部测试。基础环境可运行固定 RAG、原生 Agent 和回归测试，其中需要图运行时的测试会跳过。图版专项测试核对原生与图版的模型入参、工具顺序、引用、终态和 Trace。[状态与执行细节](docs/项目数据流与面试复习.md#8-langgraph-agent-v1)
 
 独立知识工具示例：
 
