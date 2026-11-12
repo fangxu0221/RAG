@@ -34,7 +34,7 @@ python -m venv .venv
 
 - **知识库**来自 12306 的 9 份资料，共 197 个知识单元。原始资料、Markdown 和来源索引可追溯。 [采集与校验说明](docs/铁路旅客知识库_第一版.md)
 - **检索**支持 BM25、BGE、BM25 + BGE 的 RRF 融合，以及 Cross-Encoder 重排。调试页显示命中片段、来源、排名与分数。 [代码分层与检索链路](docs/代码分层与阅读导航.md)
-- **问答**支持纯 RAG、原生 Agent 和 LangGraph Agent V1。纯 RAG 先检索再生成，Agent 可主动发起检索或补读原文。结果中的引用可以回查到相应证据。 [数据流与 Agent 实现](docs/项目数据流与面试复习.md)
+- **问答**支持纯 RAG、原生 Agent 和 LangGraph Agent V1。纯 RAG 先检索再生成，Agent 可主动发起检索或补读原文。结果中的引用可以回查到相应证据。 [架构与数据流说明](docs/架构与数据流说明.md)
 
 ## 评测与复现
 
