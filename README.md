@@ -14,6 +14,14 @@ RailPolicy_RAG 是一个基于 **12306 铁路规则**的本地问答与检索实
 
 [![执行过程显示模型调用、检索工具与证据返回](docs/images/studio-agent-trace.png)](docs/images/studio-agent-trace.png)
 
+**知识库浏览** · 按常见问题、使用须知和相关规程筛选 12306 资料，选择条目后可查看对应原文。
+
+[![知识库浏览页显示资料分类、条目列表和原文](docs/images/studio-knowledge-base.png)](docs/images/studio-knowledge-base.png)
+
+**检索调试** · 可切换检索策略并查看命中排名、来源和耗时。图中的结果区展示了一次 BGE 检索，分别记录索引准备和查询耗时。
+
+[![检索调试页显示 BGE 检索结果、排名和耗时](docs/images/studio-retrieval-debug.png)](docs/images/studio-retrieval-debug.png)
+
 ## 快速体验
 
 如需在本地试用，用 **Python 3.10+** 启动界面。以下命令适用于 Windows PowerShell。
