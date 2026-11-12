@@ -1,4 +1,4 @@
-# RailPolicy-RAG V1：四组检索对照
+# RailPolicy_RAG V1 四组检索对照
 
 2026-11-09。仅检索层开发实验；不改检索算法、Evidence评分器、Judge、Agent或Ground Truth，不按结果改题、换引文或调参。
 

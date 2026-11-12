@@ -1,6 +1,6 @@
-# RailPolicy RAG
+# RailPolicy_RAG
 
-RailPolicy RAG 是一个基于 **12306 铁路规则**的本地问答与检索实验台。它可以回答购票、改签、退票等问题，展示回答引用的原文，并记录 Agent 查找证据的过程。
+RailPolicy_RAG 是一个基于 **12306 铁路规则**的本地问答与检索实验台。它可以回答购票、改签、退票等问题，展示回答引用的原文，并记录 Agent 查找证据的过程。
 
 [界面演示](#界面演示) · [快速体验](#快速体验) · [技术实现](#技术实现) · [评测与复现](#评测与复现)
 
@@ -19,8 +19,8 @@ RailPolicy RAG 是一个基于 **12306 铁路规则**的本地问答与检索实
 如需在本地试用，用 **Python 3.10+** 启动界面。以下命令适用于 Windows PowerShell。
 
 ```powershell
-git clone https://github.com/fangxu0221/RAG.git
-cd RAG
+git clone https://github.com/fangxu0221/RailPolicy_RAG.git
+cd RailPolicy_RAG
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -e ".[ui]"
 .\.venv\Scripts\python.exe -m streamlit run ui/app.py
@@ -41,7 +41,7 @@ python -m venv .venv
 铁路 Dev 集共 10 题，其中 8 题可回答、2 题用于观察证据不足的情况。检索评测同时统计来源命中和原文证据覆盖。四种检索策略在同一份知识库上比较，V2-auto 使用 AI 辅助审核的 Silver 标签，对已保存的排名重新评分。
 
 - [确定性证据评测与复现](docs/确定性Evidence检索评测.md)
-- [四种检索策略的指标与逐题分析](docs/RailPolicy-RAG_V1_检索对照实验.md)
-- [V2-auto 的标签审核与离线重评分](docs/RailPolicy-RAG_V2-auto_离线重评分.md)
+- [四种检索策略的指标与逐题分析](docs/RailPolicy_RAG_V1_检索对照实验.md)
+- [V2-auto 的标签审核与离线重评分](docs/RailPolicy_RAG_V2-auto_离线重评分.md)
 
 代码以 [MIT 许可证](LICENSE) 发布。

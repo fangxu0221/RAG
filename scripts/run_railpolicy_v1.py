@@ -243,7 +243,7 @@ def run(output: Path, allow_hub_metadata: bool = False) -> None:
     # 确认元数据访问没有替换固定缓存权重/版本。
     verify_models(set(MODELS))
     write(output / "network_metadata_requests.json", network_requests)
-    write(output / "comparison.json", {"experiment": "RailPolicy-RAG V1", "groups": summaries,
+    write(output / "comparison.json", {"experiment": "RailPolicy_RAG V1", "groups": summaries,
           "eval_sha256": text_sha256(ROOT / "data/railway/eval_dev.jsonl"),
           "environment": "environment.json", "models": "model_manifest.json"})
 

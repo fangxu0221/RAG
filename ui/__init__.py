@@ -1,1 +1,1 @@
-"""RailPolicy RAG Studio 本地界面。"""
+"""RailPolicy_RAG 本地界面。"""

@@ -1,4 +1,4 @@
-# RailPolicy-RAG V2-auto 离线重评分
+# RailPolicy_RAG V2-auto 离线重评分
 
 2026-11-09 冻结。数据级别为 **AI-assisted Silver Ground Truth**，人审状态为 `false`。沿用 V1 的十道题、标准答案、必要答案要点及每题证据组数。13 条 V1 引文作为继承标注保留，双模型审核覆盖 26 条新增候选。
 

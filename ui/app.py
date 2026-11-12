@@ -387,7 +387,7 @@ def render_qa(config, documents, titles, issue):
 
 
 def main():
-    st.set_page_config(page_title="RailPolicy RAG Studio", layout="wide")
+    st.set_page_config(page_title="RailPolicy_RAG", layout="wide")
     st.markdown("""<style>
         .block-container { max-width: 76rem; padding-top: 3rem; }
         .stText pre { white-space: pre-wrap; overflow-wrap: anywhere; }
@@ -404,7 +404,7 @@ def main():
         documents = []
         issue = "无法加载铁路知识库，请检查当前配置与资料目录。"
     with st.sidebar:
-        st.title("RailPolicy RAG Studio")
+        st.title("RailPolicy_RAG")
         page = st.radio("功能导航", (QA, LIBRARY, DEBUG, SETTINGS), key="page", label_visibility="collapsed")
         st.divider()
         st.caption("当前知识库 · 12306 铁路规则")
