@@ -6,11 +6,11 @@ RailPolicy RAG Studio 是一个基于 **12306 铁路规则**的本地问答与�
 
 ## 界面演示
 
-**铁路政策问答** · 用 LangGraph Agent 和 BM25 回答「改签后可以退票吗？」。回答带有引用编号，展开「引用证据」可以查阅对应原文。
+**铁路政策问答** · 用原生 Agent 和 BM25 回答「改签后可以退票吗？」。回答带有引用编号，展开「引用证据」可以查阅对应原文。
 
 [![问答页显示改签后能否退票的回答及引用编号](docs/images/studio-qa.png)](docs/images/studio-qa.png)
 
-**Agent 执行过程** · 同一次问答中，模型调用检索工具、接收返回的证据，再生成回答。面板记录检索参数、返回条数、调用耗时和停止原因。
+**Agent 执行过程** · 展开同一次问答的执行记录，可以看到模型发起检索、请求 Top-K 3，以及工具返回的证据条数和调用耗时。
 
 [![执行过程显示模型调用、检索工具与证据返回](docs/images/studio-agent-trace.png)](docs/images/studio-agent-trace.png)
 
@@ -28,7 +28,7 @@ python -m venv .venv
 
 打开浏览器进入 [本地 Studio](http://127.0.0.1:8501)。可以直接浏览知识库。做检索时，先在「检索调试」选择 **BM25**，输入「改签后可以退票吗？」并点击「开始检索」。浏览和 BM25 检索无需 API Key 或模型权重。
 
-想体验生成式问答，在启动 Studio 的终端设置 `DEEPSEEK_API_KEY`，再到「问答测试」选择执行模式。体验截图中的 **LangGraph V1** 模式需要额外安装 `langgraph`。DeepSeek 配置、BGE 与重排依赖、macOS/Linux 启动方式见 [本地运行指南](docs/本地运行指南.md)。
+想体验生成式问答，在启动 Studio 的终端设置 `DEEPSEEK_API_KEY`，再到「问答测试」选择执行模式。使用 **LangGraph V1** 时需额外安装 `langgraph`。DeepSeek 配置、BGE 与重排依赖、macOS/Linux 启动方式见 [本地运行指南](docs/本地运行指南.md)。
 
 ## 技术实现
 
